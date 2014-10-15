@@ -65,7 +65,7 @@ app.get('/', routes.index)
 app.get('/login', account.login)
 app.post('/login', account.loginPost)
 
-var options = { pfx: fs.readFileSync('TMTest.pfx') }
+var options = { pfx: fs.readFileSync('localhost.pfx') }
 
 https.createServer(options, app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));

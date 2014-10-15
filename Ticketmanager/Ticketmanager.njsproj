@@ -49,7 +49,6 @@
     <Content Include="public\stylesheets\font-awesome.min.css" />
     <Content Include="public\stylesheets\pure-min.css" />
     <Content Include="README.md" />
-    <Content Include="tmtest.pfx" />
     <Content Include="views\account\login.hbs" />
     <Content Include="views\index.hbs">
       <SubType>Code</SubType>
