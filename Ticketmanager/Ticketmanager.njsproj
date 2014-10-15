@@ -5,6 +5,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <Name>ExpressApp7</Name>
     <RootNamespace>ExpressApp7</RootNamespace>
+    <LaunchUrl>https://localhost:1337/</LaunchUrl>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -31,9 +32,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="config.js" />
     <Compile Include="public\javascripts\classie.js" />
     <Compile Include="public\javascripts\gnmenu.js" />
     <Compile Include="public\javascripts\modernizr.custom.js" />
+    <Compile Include="routes\account.js" />
     <Compile Include="routes\index.js" />
     <Content Include="AuthenticationMapper.dll" />
     <Content Include="package.json" />
@@ -46,6 +49,8 @@
     <Content Include="public\stylesheets\font-awesome.min.css" />
     <Content Include="public\stylesheets\pure-min.css" />
     <Content Include="README.md" />
+    <Content Include="tmtest.pfx" />
+    <Content Include="views\account\login.hbs" />
     <Content Include="views\index.hbs">
       <SubType>Code</SubType>
     </Content>
@@ -60,6 +65,7 @@
     <Folder Include="routes\" />
     <Folder Include="views\" />
     <Folder Include="views\layouts\" />
+    <Folder Include="views\account\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
   <ProjectExtensions>

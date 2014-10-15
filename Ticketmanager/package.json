@@ -1,19 +1,20 @@
 {
-  "name": "Ticketmanager",
-  "version": "0.1.0",
-  "description": "Ticketmanager",
-  "main": "app.js",
-  "author": {
-    "name": "Imanuel Ulbricht",
-    "email": "imanuel.ulbricht@arvato.com"
-  },
-  "dependencies": {
-    "express": "3.4.4",
-    "edge": "*",
-    "grunt": "^0.4.5",
-    "handle": "^1.0.0",
-    "express-handlebars": "^1.0.3",
-    "express-session": "^1.8.1",
-    "handlebars-helpers": "^0.5.8"
-  }
+    "name": "Ticketmanager",
+    "version": "0.1.0",
+    "description": "Ticketmanager",
+    "main": "app.js",
+    "author": {
+        "name": "Imanuel Ulbricht",
+        "email": "imanuel.ulbricht@arvato.com"
+    },
+    "dependencies": {
+        "express": "3.4.4",
+        "edge": "*",
+        "grunt": "^0.4.5",
+        "handle": "^1.0.0",
+        "express-handlebars": "^1.0.3",
+        "express-session": "^1.8.1",
+        "handlebars-helpers": "^0.5.8",
+        "pem": "^1.4.1"
+    }
 }

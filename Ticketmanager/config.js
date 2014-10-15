@@ -1,0 +1,1 @@
+﻿exports.DefaultDomain = 'garbsen1'

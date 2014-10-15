@@ -79,8 +79,8 @@
                                 <li><a class="gn-icon fa-plus">Hinzufügen</a></li>
                             </ul>
                         </li>
-                        <li><a class="gn-icon fa-cog">Settings</a></li>
-                        <li><a class="gn-icon fa-question">Help</a></li>
+                        <li><a class="gn-icon fa-cog">Einstellungen</a></li>
+                        <li><a class="gn-icon fa-question">Hilfe</a></li>
                     </ul>
                 </div>
             </nav>
@@ -90,6 +90,7 @@
         {{#isAdmin}}
         <li><a href="admin/users"><span><i class="fa fa-users"></i> Benutzer verwalten</span></a></li>
         {{/isAdmin}}
+        <li><a><span><i class="fa fa-user"></i> Hallo {{{username}}}</span></a></li>
     </ul>
     <div class="pure-container">
         {{{body}}}
