@@ -33,6 +33,7 @@
   <ItemGroup>
     <Compile Include="app.js" />
     <Compile Include="config.js" />
+    <Compile Include="persistence\ticketProvider.js" />
     <Compile Include="public\javascripts\classie.js" />
     <Compile Include="public\javascripts\gnmenu.js" />
     <Compile Include="public\javascripts\modernizr.custom.js" />
@@ -56,6 +57,7 @@
     <Content Include="views\layouts\layout.hbs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="persistence\" />
     <Folder Include="public\" />
     <Folder Include="public\fonts\" />
     <Folder Include="public\images\" />

@@ -238,3 +238,5 @@ $RECYCLE.BIN/
 *.lnk
 
 
+*.cer
+*.pvk
