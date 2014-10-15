@@ -13,8 +13,13 @@ var hbshelper = require('handlebars-helpers')
 var app = express()
 var hbs = exphbs.create({
     defaultLayout: 'layout',
-    extname: '.hbs'
-});
+    extname: '.hbs',
+    helpers: {
+        isAdmin: function (opts) { 
+            return opts.fn(this)
+        }
+    }
+})
 
 hbshelper.register(hbs.handlebars, { marked: undefined })
 

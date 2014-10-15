@@ -12,55 +12,57 @@ namespace AuthenticationMapper
     public class Startup
     {
 
-        public async Task<object> Invoke(object input)
+        public async Task<object> Invoke(dynamic input)
         {
-            IDictionary<string, object> payload = (IDictionary<string, object>)input;
-            string Domain = (string)payload["Domain"];
-            string UserName = (string)payload["UserName"];
-            string Password = (string)payload["Password"];
-            WindowsIdentity id = LogonUserTCPListen(UserName, Domain, Password);
+            var Domain = input.Domain;
+            var UserName = input.UserName;
+            var Password = input.Password;
+            var id = LogonUserTCPListen(UserName, Domain, Password);
             return id.IsAuthenticated;
         }
 
         private static WindowsIdentity LogonUserTCPListen(string userName, string domain, string password)
         {
             // need a full duplex stream - loopback is easiest way to get that
-            TcpListener tcpListener = new TcpListener(IPAddress.Loopback, 0);
+            var tcpListener = new TcpListener(IPAddress.Loopback, 0);
             tcpListener.Start();
-            ManualResetEvent done = new ManualResetEvent(false);
+            var done = new ManualResetEvent(false);
 
-            WindowsIdentity id = null;
+            var id = default(WindowsIdentity);
             tcpListener.BeginAcceptTcpClient(delegate(IAsyncResult asyncResult)
             {
                 try
                 {
-                    using (NegotiateStream serverSide = new NegotiateStream(
+                    using (var serverSide = new NegotiateStream(
                     tcpListener.EndAcceptTcpClient(asyncResult).GetStream()))
                     {
-                        serverSide.AuthenticateAsServer(CredentialCache.DefaultNetworkCredentials,
-                        ProtectionLevel.None, TokenImpersonationLevel.Impersonation);
+                        serverSide.AuthenticateAsServer(CredentialCache.DefaultNetworkCredentials, ProtectionLevel.None, TokenImpersonationLevel.Impersonation);
                         id = (WindowsIdentity)serverSide.RemoteIdentity;
                     }
                 }
                 catch
-                { id = null; }
+                {
+                    id = null;
+                }
                 finally
-                { done.Set(); }
+                {
+                    done.Set();
+                }
             }, null);
 
-            using (NegotiateStream clientSide = new NegotiateStream(new TcpClient("localhost",
-             ((IPEndPoint)tcpListener.LocalEndpoint).Port).GetStream()))
+            using (var clientSide = new NegotiateStream(new TcpClient("localhost", ((IPEndPoint)tcpListener.LocalEndpoint).Port).GetStream()))
             {
                 try
                 {
-                    clientSide.AuthenticateAsClient(new NetworkCredential(userName, password, domain),
-                    "", ProtectionLevel.None, TokenImpersonationLevel.Impersonation);
+                    clientSide.AuthenticateAsClient(new NetworkCredential(userName, password, domain), "", ProtectionLevel.None, TokenImpersonationLevel.Impersonation);
                 }
                 catch
-                { id = null; }//When the authentication fails it throws an exception
+                {
+                    id = null;
+                }
             }
             tcpListener.Stop();
-            done.WaitOne();//Wait until we really have the id populated to continue
+            done.WaitOne();
             return id;
         }
 
