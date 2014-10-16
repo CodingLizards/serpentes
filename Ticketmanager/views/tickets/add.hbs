@@ -1,0 +1,25 @@
+﻿<form action="/ticket/add" method="post" class="pure-form">
+    <fieldset class="pure-group pure-u-1-4">
+        <legend>Allgemein</legend>
+        <input name="ticketnumber" type="text" class="pure-input-1" placeholder="Ticketnummer" />
+        <input name="priority" type="number" class="pure-input-1" placeholder="Priorität" />
+        <textarea name="description" cols="10" rows="10" class="pure-input-1" placeholder="Beschreibung"></textarea>
+    </fieldset>
+    <fieldset class="pure-group pure-u-1-4">
+        <legend>Impact</legend>
+        <input name="deadline" type="date" class="pure-input-1" placeholder="Deadline" />
+        <input name="emergency" type="checkbox" class="pure-input-1" /><span>Emergency</span>
+        <input name="minutesperweek" type="number" class="pure-input-1" placeholder="Minuten pro Woche" />
+        <input name="ordervolume" type="number" class="pure-input-1" placeholder="Ordervolumen in €" />
+        <textarea name="impactdescription" cols="10" rows="10" class="pure-input-1" placeholder="Impact Beschreibung"></textarea>
+    </fieldset>
+    <fieldset class="pure-group pure-u-1-4">
+        <legend>Anwendungen</legend>
+        <select class="pure-input-1" multiple name="applications">
+            {{#each Application}}
+            <option value="{{_id}}">{{Name}}</option>
+            {{/each}}
+        </select>
+    </fieldset>
+    <button type="submit" class="pure-button pure-input-1-4 pure-button-primary">Speichern</button>
+</form>

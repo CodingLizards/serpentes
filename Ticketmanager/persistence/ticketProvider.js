@@ -1,31 +1,27 @@
 ﻿var config = require('../config.js')
 var cradle = require('cradle')
 
-ticketprovider = function () {
-    this.connection = new (cradle.Connection)(host, port, {
+TicketProvider = function () {
+    this.connection = new (cradle.Connection)(config.CouchDBServerHost, config.CouchDBServerPort, {
         cache: true,
         raw: false
     })
-    this.db = this.connection.database('tickets')
+    var db = this.connection.database('ticketmanagement')
+    this.db = db;
 }
-ticketprovider.prototype.setup = function (callback) {
-    this.db.save('_design/tickets', {
-        free: {
-            map: function (doc) {
-                if (!doc.assigned)
-                    emit(doc.id, doc);
-            }
-        },
-        unprioritised: {
-            map: function (doc) {
-                if (!doc.priority) {
-                    emit(doc.id, doc)
-                }
-            }
+TicketProvider.prototype.save = function (ticket, callback) {
+    ticket['type'] = 'ticket';
+    this.db.save(ticket, function (err, res) {
+        if (err) {
+            console.error(err)
+            callback(err, null)
+        } else {
+            console.log(res)
+            callback(null, res)
         }
     })
 }
-ticketprovider.prototype.findAllFree = function (callback) {
+TicketProvider.prototype.findAllFree = function (callback) {
     this.db.view('tickets/free', function (error, result) {
         if (error) {
             callback(error)
@@ -38,3 +34,17 @@ ticketprovider.prototype.findAllFree = function (callback) {
         }
     })
 }
+TicketProvider.prototype.findAllUnprioritised = function (callback) {
+    this.db.view('tickets/unprioritised', function (error, result) {
+        if (error) {
+            callback(error)
+        } else {
+            var docs = []
+            result.forEach(function (row) {
+                docs.push(row)
+            })
+            callback(null, docs);
+        }
+    })
+}
+exports.TicketProvider = TicketProvider

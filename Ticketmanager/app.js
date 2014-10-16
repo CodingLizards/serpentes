@@ -6,12 +6,16 @@ var express = require('express')
 var session = require('express-session')
 var routes = require('./routes')
 var account = require('./routes/account.js')
+var ticket = require('./routes/ticket.js')
 var https = require('https')
 var path = require('path')
 var fs = require('fs')
 
 var exphbs = require('express-handlebars')
 var hbshelper = require('handlebars-helpers')
+
+var config = require('./config.js')
+var cradle = require('cradle')
 
 var app = express()
 var hbs = exphbs.create({
@@ -62,11 +66,79 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index)
+
 app.get('/login', account.login)
 app.post('/login', account.loginPost)
+
+app.get('/ticket/add', ticket.add)
+app.get('/ticket/add/success', ticket.addSuccess)
+app.get('/ticket/add/fail', ticket.addFail)
+app.post('/ticket/add', ticket.addPost)
 
 var options = { pfx: fs.readFileSync('localhost.pfx') }
 
 https.createServer(options, app).listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
+})
+
+
+var connection = new (cradle.Connection)(config.CouchDBServerHost, config.CouchDBServerPort, {
+    cache: true,
+    raw: false
+})
+var db = connection.database('ticketmanagement')
+db.exists(function (err, exists) {
+    if (err) {
+        console.error(err)
+    } else if (!exists) {
+        console.log('call setup to create database and views')
+        db.create()
+        db.save('_design/tickets', {
+            free: {
+                map: function (doc) {
+                    if (doc.type == 'ticket') {
+                        if (!doc.assigned && doc.priority) {
+                            emit(doc.id, doc)
+                        }
+                    }
+                }
+            },
+            unprioritised: {
+                map: function (doc) {
+                    if (doc.type == 'ticket') {
+                        if (!doc.priority) {
+                            emit(doc.id, doc)
+                        }
+                    }
+                }
+            },
+            archived: {
+                map: function (doc) {
+                    if (doc.type == 'ticket') {
+                        if (doc.archived) {
+                            emit(doc.id, doc)
+                        }
+                    }
+                }
+            },
+            active: {
+                map: function (doc) {
+                    if (doc.type == 'ticket') {
+                        if (doc.assigned) {
+                            emit(doc.id, doc)
+                        }
+                    }
+                }
+            }
+        })
+        db.save('_design/applications', {
+            all: {
+                map: function (doc) {
+                    if (doc.type == 'application') {
+                        emit(doc.id, doc)
+                    }
+                }
+            }
+        })
+    }
 })

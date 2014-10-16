@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <link href="stylesheets/pure-min.css" rel="stylesheet" />
-    <link href="stylesheets/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="stylesheets/component.css" />
+    <link href="/stylesheets/pure-min.css" rel="stylesheet" />
+    <link href="/stylesheets/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/component.css" />
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="javascripts/modernizr.custom.js"></script>
+    <script src="/javascripts/modernizr.custom.js"></script>
     <title>OPS Liste - {{title}}</title>
     <style>
         .pure-footer {
@@ -41,7 +41,7 @@
                                 <li><a class="gn-icon fa-eye">Freie Tickets</a></li>
                                 <li><a class="gn-icon fa-certificate">Unpriorisierte Tickets</a></li>
                                 <li><a class="gn-icon fa-archive">Archivierte Tickets</a></li>
-                                <li><a class="gn-icon fa-plus">Hinzufügen</a></li>
+                                <li><a class="gn-icon fa-plus" href="/ticket/add">Hinzufügen</a></li>
                             </ul>
                         </li>
                         <li>
@@ -86,9 +86,9 @@
             </nav>
         </li>
         <li><a href="/"><i class="fa fa-home"></i> Start</a></li>
-        <li><a href="tickets"><span><i class="fa fa-ticket"></i> Tickets anzeigen</span></a></li>
+        <li><a href="/ticket"><span><i class="fa fa-ticket"></i> Tickets anzeigen</span></a></li>
         {{#isAdmin}}
-        <li><a href="admin/users"><span><i class="fa fa-users"></i> Benutzer verwalten</span></a></li>
+        <li><a href="/admin/users"><span><i class="fa fa-users"></i> Benutzer verwalten</span></a></li>
         {{/isAdmin}}
         <li><a><span><i class="fa fa-user"></i> Hallo {{{username}}}</span></a></li>
     </ul>
@@ -98,8 +98,8 @@
     <footer class="pure-footer">
         <p>Gemacht von Imanuel Ulbricht :)</p>
     </footer>
-    <script src="javascripts/classie.js"></script>
-    <script src="javascripts/gnmenu.js"></script>
+    <script src="/javascripts/classie.js"></script>
+    <script src="/javascripts/gnmenu.js"></script>
     <script>
         new gnMenu(document.getElementById('gn-menu'));
     </script>
