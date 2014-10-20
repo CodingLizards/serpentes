@@ -8,6 +8,9 @@ var routes = require('./routes')
 var account = require('./routes/account.js')
 var ticket = require('./routes/ticket.js')
 var application = require('./routes/application.js')
+var department = require('./routes/department.js')
+var client = require('./routes/client.js')
+var release = require('./routes/release.js')
 var https = require('https')
 var path = require('path')
 var fs = require('fs')
@@ -81,6 +84,21 @@ app.get('/application/add/success', application.addSuccess)
 app.get('/application/add/fail', application.addFail)
 app.post('/application/add', application.addPost)
 
+app.get('/department/add', department.add)
+app.get('/department/add/success', department.addSuccess)
+app.get('/department/add/fail', department.addFail)
+app.post('/department/add', department.addPost)
+
+app.get('/client/add', client.add)
+app.get('/client/add/success', client.addSuccess)
+app.get('/client/add/fail', client.addFail)
+app.post('/client/add', client.addPost)
+
+app.get('/release/add', release.add)
+app.get('/release/add/success', release.addSuccess)
+app.get('/release/add/fail', release.addFail)
+app.post('/release/add', release.addPost)
+
 var options = { pfx: fs.readFileSync('localhost.pfx') }
 
 https.createServer(options, app).listen(app.get('port'), function () {
@@ -141,6 +159,33 @@ db.exists(function (err, exists) {
             all: {
                 map: function (doc) {
                     if (doc.type == 'application') {
+                        emit(doc.id, doc)
+                    }
+                }
+            }
+        })
+        db.save('_design/clients', {
+            all: {
+                map: function (doc) {
+                    if (doc.type == 'client') {
+                        emit(doc.id, doc)
+                    }
+                }
+            }
+        })
+        db.save('_design/departments', {
+            all: {
+                map: function (doc) {
+                    if (doc.type == 'department') {
+                        emit(doc.id, doc)
+                    }
+                }
+            }
+        })
+        db.save('_design/releases', {
+            all: {
+                map: function (doc) {
+                    if (doc.type == 'release') {
                         emit(doc.id, doc)
                     }
                 }

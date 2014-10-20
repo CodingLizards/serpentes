@@ -34,6 +34,9 @@
     <Compile Include="app.js" />
     <Compile Include="config.js" />
     <Compile Include="persistence\applicationProvider.js" />
+    <Compile Include="persistence\clientProvider.js" />
+    <Compile Include="persistence\departmentProvider.js" />
+    <Compile Include="persistence\releaseProvider.js" />
     <Compile Include="persistence\ticketProvider.js" />
     <Compile Include="public\javascripts\classie.js" />
     <Compile Include="public\javascripts\gnmenu.js" />
@@ -41,7 +44,10 @@
     <Compile Include="public\javascripts\wizard.js" />
     <Compile Include="routes\account.js" />
     <Compile Include="routes\application.js" />
+    <Compile Include="routes\client.js" />
+    <Compile Include="routes\department.js" />
     <Compile Include="routes\index.js" />
+    <Compile Include="routes\release.js" />
     <Compile Include="routes\ticket.js" />
     <Content Include="AuthenticationMapper.dll" />
     <Content Include="package.json" />
@@ -59,10 +65,19 @@
     <Content Include="views\applications\add.hbs" />
     <Content Include="views\applications\addfail.hbs" />
     <Content Include="views\applications\addsuccess.hbs" />
+    <Content Include="views\clients\add.hbs" />
+    <Content Include="views\clients\addfail.hbs" />
+    <Content Include="views\clients\addsuccess.hbs" />
+    <Content Include="views\departments\add.hbs" />
+    <Content Include="views\departments\addfail.hbs" />
+    <Content Include="views\departments\addsuccess.hbs" />
     <Content Include="views\index.hbs">
       <SubType>Code</SubType>
     </Content>
     <Content Include="views\layouts\layout.hbs" />
+    <Content Include="views\releases\add.hbs" />
+    <Content Include="views\releases\addfail.hbs" />
+    <Content Include="views\releases\addsuccess.hbs" />
     <Content Include="views\tickets\addsuccess.hbs" />
     <Content Include="views\tickets\addfail.hbs" />
     <Content Include="views\tickets\add.hbs" />
@@ -76,9 +91,12 @@
     <Folder Include="public\stylesheets\" />
     <Folder Include="routes\" />
     <Folder Include="views\" />
+    <Folder Include="views\clients\" />
+    <Folder Include="views\departments\" />
     <Folder Include="views\layouts\" />
     <Folder Include="views\account\" />
     <Folder Include="views\applications\" />
+    <Folder Include="views\releases\" />
     <Folder Include="views\tickets\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />

@@ -5,7 +5,7 @@ var applicationprovider = new ApplicationProvider()
  */
 exports.add = function (req, res) {
     applicationprovider.findAll(function (err, result) {
-        var data = { title: 'Ticket hinzufügen', Applications: result }
+        var data = { title: 'Anwendung hinzufügen', Applications: result }
         res.render('applications/add', data)
     })
 }

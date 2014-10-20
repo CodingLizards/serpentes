@@ -60,6 +60,30 @@
                     {{/each}}
                 </select>
             </div>
+            <div class="pure-u-1">
+                <label for="departments">Abteilungen</label>
+                <select class="pure-input-1" multiple id="departments" name="departments">
+                    {{#each Departments}}
+                    <option value="{{_id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="pure-u-1">
+                <label for="clients">Mandanten</label>
+                <select class="pure-input-1" multiple id="clients" name="clients">
+                    {{#each Clients}}
+                    <option value="{{_id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="pure-u-1">
+                <label for="release">Release</label>
+                <select class="pure-input-1" id="release" name="release">
+                    {{#each Releases}}
+                    <option value="{{_id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
         </div>
         <div class="pure-u-1">
             <button type="button" class="pure-button pure-button-wizard-prev">Zurück</button>
