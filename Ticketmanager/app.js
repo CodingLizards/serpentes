@@ -122,8 +122,16 @@ db.exists(function (err, exists) {
                 map: function (doc) {
                     if (doc.type == 'ticket') {
                         if (!doc.assigned && doc.priority) {
-                            emit(doc.id, doc)
+                            emit([doc.applications, doc.clients, doc.release, doc.departments, 0], doc)
                         }
+                    } else if (doc.type == 'application') {
+                        emit([doc._id, 1], doc)
+                    } else if (doc.type == 'client') {
+                        emit([doc._id, 2], doc)
+                    } else if (doc.type == 'release') {
+                        emit([doc._id, 3], doc)
+                    } else if (doc.type == 'department') {
+                        emit([doc._id, 4], doc)
                     }
                 }
             },
