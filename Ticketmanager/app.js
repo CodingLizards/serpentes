@@ -7,6 +7,7 @@ var session = require('express-session')
 var routes = require('./routes')
 var account = require('./routes/account.js')
 var ticket = require('./routes/ticket.js')
+var application = require('./routes/application.js')
 var https = require('https')
 var path = require('path')
 var fs = require('fs')
@@ -74,6 +75,11 @@ app.get('/ticket/add', ticket.add)
 app.get('/ticket/add/success', ticket.addSuccess)
 app.get('/ticket/add/fail', ticket.addFail)
 app.post('/ticket/add', ticket.addPost)
+
+app.get('/application/add', application.add)
+app.get('/application/add/success', application.addSuccess)
+app.get('/application/add/fail', application.addFail)
+app.post('/application/add', application.addPost)
 
 var options = { pfx: fs.readFileSync('localhost.pfx') }
 

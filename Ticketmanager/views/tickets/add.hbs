@@ -1,25 +1,72 @@
-﻿<form action="/ticket/add" method="post" class="pure-form">
-    <fieldset class="pure-group pure-u-1-4">
+﻿<form action="/ticket/add" method="post" class="pure-form pure-form-stacked" id="wizard">
+    <fieldset class="pure-wizard-page">
         <legend>Allgemein</legend>
-        <input name="ticketnumber" type="text" class="pure-input-1" placeholder="Ticketnummer" />
-        <input name="priority" type="number" class="pure-input-1" placeholder="Priorität" />
-        <textarea name="description" cols="10" rows="10" class="pure-input-1" placeholder="Beschreibung"></textarea>
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <label for="ticketnumber">Ticketnummer*</label>
+                <input required id="ticketnumber" name="ticketnumber" type="text" class="pure-input-1" />
+            </div>
+            <div class="pure-u-1">
+                <label for="priority">Priorität</label>
+                <input id="priority" name="priority" type="number" class="pure-input-1" />
+            </div>
+            <div class="pure-u-1">
+                <label for="description">Beschreibung*</label>
+                <textarea required id="description" name="description" cols="10" rows="10" class="pure-input-1"></textarea>
+            </div>
+            <div class="pure-u-1">
+                <button type="button" class="pure-button pure-button-wizard-next">Weiter</button>
+            </div>
+        </div>
     </fieldset>
-    <fieldset class="pure-group pure-u-1-4">
+    <fieldset class="pure-wizard-page">
         <legend>Impact</legend>
-        <input name="deadline" type="date" class="pure-input-1" placeholder="Deadline" />
-        <input name="emergency" type="checkbox" class="pure-input-1" /><span>Emergency</span>
-        <input name="minutesperweek" type="number" class="pure-input-1" placeholder="Minuten pro Woche" />
-        <input name="ordervolume" type="number" class="pure-input-1" placeholder="Ordervolumen in €" />
-        <textarea name="impactdescription" cols="10" rows="10" class="pure-input-1" placeholder="Impact Beschreibung"></textarea>
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <label for="deadline">Deadline</label>
+                <input name="deadline" id="deadline" type="date" class="pure-input-1" />
+            </div>
+            <div class="pure-u-1">
+                <label for="emergency" class="pure-checkbox">
+                    <input id="emergency" name="emergency" type="checkbox" />Emergency
+                </label>
+            </div>
+            <div class="pure-u-1">
+                <label for="minutesperweek">Minuten pro Woche*</label>
+                <input required id="minutesperweek" name="minutesperweek" type="number" class="pure-input-1" />
+            </div>
+            <div class="pure-u-1">
+                <label for="ordervolume">Ordervolumen in €*</label>
+                <input required id="ordervolume" name="ordervolume" type="number" class="pure-input-1" />
+            </div>
+            <div class="pure-u-1">
+                <label for="impactdescription">Impact Beschreibung</label>
+                <textarea required id="impactdescription" name="impactdescription" cols="10" rows="10" class="pure-input-1"></textarea>
+            </div>
+            <div class="pure-u-1">
+                <button type="button" class="pure-button pure-button-wizard-prev">Zurück</button>
+                <button type="button" class="pure-button pure-button-wizard-next">Weiter</button>
+            </div>
+        </div>
     </fieldset>
-    <fieldset class="pure-group pure-u-1-4">
-        <legend>Anwendungen</legend>
-        <select class="pure-input-1" multiple name="applications">
-            {{#each Application}}
-            <option value="{{_id}}">{{Name}}</option>
-            {{/each}}
-        </select>
+    <fieldset class="pure-wizard-page">
+        <legend>Weitere Angaben</legend>
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <label for="applications">Anwendungen</label>
+                <select class="pure-input-1" multiple id="applications" name="applications">
+                    {{#each Applications}}
+                    <option value="{{_id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+        <div class="pure-u-1">
+            <button type="button" class="pure-button pure-button-wizard-prev">Zurück</button>
+            <button type="submit" class="pure-button pure-button-primary">Speichern</button>
+        </div>
     </fieldset>
-    <button type="submit" class="pure-button pure-input-1-4 pure-button-primary">Speichern</button>
 </form>
+<script>
+    $('#wizard').wizard()
+</script>

@@ -8,23 +8,64 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/component.css" />
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="/javascripts/modernizr.custom.js"></script>
+    <script src="/javascripts/wizard.js"></script>
     <title>OPS Liste - {{title}}</title>
     <style>
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+
+        body {
+            margin-bottom: 60px;
+        }
+
         .pure-footer {
             position: absolute;
             bottom: 0;
             height: 50px;
             width: 100%;
-            background-color: white;
+            background-color: #ededed;
             border-top-color: #c6d0da;
             border-top-width: 1px;
             border-top-style: solid;
+            padding-left: 90px;
+            padding-right: 90px;
         }
 
         .pure-container {
             margin-top: 60px;
-            margin-bottom: 55px;
+            margin-left: 90px;
+            margin-right: 90px;
         }
+
+        .pure-button-wizard-next {
+            float: right;
+        }
+
+        .pure-validation-error {
+            color: red;
+        }
+
+            .pure-validation-error > input {
+                border-color: red !important;
+            }
+
+            .pure-validation-error > textarea {
+                border-color: red !important;
+            }
+
+        .pure-validation-success {
+            color: green;
+        }
+
+            .pure-validation-success > input {
+                border-color: green !important;
+            }
+
+            .pure-validation-success > textarea {
+                border-color: green !important;
+            }
     </style>
 </head>
 <body>
@@ -62,7 +103,7 @@
                             <a class="gn-icon fa-windows">Anwendungen</a>
                             <ul class="gn-submenu">
                                 <li><a class="gn-icon fa-eye">Anzeigen</a></li>
-                                <li><a class="gn-icon fa-plus">Hinzufügen</a></li>
+                                <li><a class="gn-icon fa-plus" href="/application/add">Hinzufügen</a></li>
                             </ul>
                         </li>
                         <li>
