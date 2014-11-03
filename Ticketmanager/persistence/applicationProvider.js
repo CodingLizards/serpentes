@@ -1,13 +1,7 @@
-﻿var config = require('../config.js')
-var cradle = require('cradle')
+﻿var cradle = require('cradle')
 
 ApplicationProvider = function () {
-    this.connection = new (cradle.Connection)(config.CouchDBServerHost, config.CouchDBServerPort, {
-        cache: true,
-        raw: false
-    })
-    var db = this.connection.database('ticketmanagement')
-    this.db = db;
+    this.db = require('./databaseSetup.js').getDatabase()
 }
 ApplicationProvider.prototype.save = function (application, callback) {
     application['type'] = 'application';
@@ -21,7 +15,7 @@ ApplicationProvider.prototype.save = function (application, callback) {
         }
     })
 }
-ApplicationProvider.prototype.findAll = function (callback) {
+ApplicationProvider.prototype.all = function (callback) {
     this.db.view('applications/all', function (error, result) {
         if (error) {
             callback(error)

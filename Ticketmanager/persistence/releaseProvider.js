@@ -1,13 +1,7 @@
-﻿var config = require('../config.js')
-var cradle = require('cradle')
+﻿var cradle = require('cradle')
 
 ReleaseProvider = function () {
-    this.connection = new (cradle.Connection)(config.CouchDBServerHost, config.CouchDBServerPort, {
-        cache: true,
-        raw: false
-    })
-    var db = this.connection.database('ticketmanagement')
-    this.db = db;
+    this.db = require('./databaseSetup.js').getDatabase()
 }
 ReleaseProvider.prototype.save = function (release, callback) {
     release['type'] = 'release';

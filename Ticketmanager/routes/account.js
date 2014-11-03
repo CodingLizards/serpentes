@@ -1,6 +1,5 @@
 ﻿var edge = require('edge')
 var login = edge.func('AuthenticationMapper.dll')
-var config = require('../config.js')
 
 /*
  * GET login
@@ -17,7 +16,7 @@ exports.login = function (req, res) {
 exports.loginPost = function (req, res) {
     var input = {
         UserName: req.body.username,
-        Domain: config.DefaultDomain,
+        Domain: process.env.DEFAULTDOMAIN,
         Password: req.body.password
     }
     login(input, function (error, result) {

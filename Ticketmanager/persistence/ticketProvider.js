@@ -1,16 +1,10 @@
-﻿var config = require('../config.js')
-var cradle = require('cradle')
+﻿var cradle = require('cradle')
 
 TicketProvider = function () {
-    this.connection = new (cradle.Connection)(config.CouchDBServerHost, config.CouchDBServerPort, {
-        cache: true,
-        raw: false
-    })
-    var db = this.connection.database('ticketmanagement')
-    this.db = db;
+    this.db = require('./databaseSetup.js').getDatabase()
 }
 TicketProvider.prototype.save = function (ticket, callback) {
-    ticket['type'] = 'ticket';
+    ticket['type'] = 'ticket'
     this.db.save(ticket, function (err, res) {
         if (err) {
             console.error(err)

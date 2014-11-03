@@ -35,9 +35,9 @@ DEFAULTDOMAIN=garbsen1</Environment>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
-    <Compile Include="config.js" />
     <Compile Include="persistence\applicationProvider.js" />
     <Compile Include="persistence\clientProvider.js" />
+    <Compile Include="persistence\databaseSetup.js" />
     <Compile Include="persistence\departmentProvider.js" />
     <Compile Include="persistence\releaseProvider.js" />
     <Compile Include="persistence\ticketProvider.js" />
@@ -51,6 +51,7 @@ DEFAULTDOMAIN=garbsen1</Environment>
     <Compile Include="routes\department.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\release.js" />
+    <Compile Include="routes\routesSetup.js" />
     <Compile Include="routes\ticket.js" />
     <Content Include="package.json" />
     <Content Include="public\fonts\fontawesome-webfont.eot" />
