@@ -17,7 +17,7 @@ exports.login = function (req, res) {
 exports.loginPost = function (req, res) {
     var input = {
         UserName: req.body.username,
-        Domain: req.body.domain != undefined ? req.body.domain : config.DefaultDomain,
+        Domain: config.DefaultDomain,
         Password: req.body.password
     }
     login(input, function (error, result) {

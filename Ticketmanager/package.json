@@ -8,14 +8,14 @@
         "email": "imanuel.ulbricht@arvato.com"
     },
     "dependencies": {
+        "cradle": "^0.6.7",
         "express": "3.4.4",
-        "edge": "*",
-        "grunt": "^0.4.5",
-        "handle": "^1.0.0",
         "express-handlebars": "^1.0.3",
         "express-session": "^1.8.1",
+        "grunt": "^0.4.5",
+        "handle": "^1.0.0",
+        "edge": "*",
         "handlebars-helpers": "^0.5.8",
-        "pem": "^1.4.1",
-        "cradle": "^0.6.7"
+        "pem": "^1.4.1"
     }
 }
