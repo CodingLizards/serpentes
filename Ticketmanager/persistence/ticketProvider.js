@@ -16,7 +16,7 @@ TicketProvider.prototype.save = function (ticket, callback) {
     })
 }
 TicketProvider.prototype.findAllFree = function (callback) {
-    this.db.view('tickets/free', function (error, result) {
+    this.db.view('tickets/free',new { include_docs: true }, function (error, result) {
         if (error) {
             callback(error)
         } else {

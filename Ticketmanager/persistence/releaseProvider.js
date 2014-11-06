@@ -15,7 +15,7 @@ ReleaseProvider.prototype.save = function (release, callback) {
         }
     })
 }
-ReleaseProvider.prototype.findAll = function (callback) {
+ReleaseProvider.prototype.all = function (callback) {
     this.db.view('releases/all', function (error, result) {
         if (error) {
             callback(error)

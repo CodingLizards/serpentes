@@ -13,16 +13,16 @@ var releaseprovider = new ReleaseProvider()
  * GET ticket/add
  */
 exports.add = function (req, res) {
-    applicationprovider.findAll(function (err, apps) {
+    applicationprovider.all(function (err, apps) {
         if (err)
             console.warn(err)
-        clientprovider.findAll(function (err, clients) {
+        clientprovider.all(function (err, clients) {
             if (err)
                 console.warn(err)
-            departmentprovider.findAll(function (err, departments) {
+            departmentprovider.all(function (err, departments) {
                 if (err)
                     console.warn(err)
-                releaseprovider.findAll(function (err, releases) {
+                releaseprovider.all(function (err, releases) {
                     if (err)
                         console.warn(err)
                     var data = { title: 'Ticket hinzufügen', Applications: apps, Clients: clients, Departments: departments, Releases: releases }
@@ -34,28 +34,14 @@ exports.add = function (req, res) {
 }
 
 /*
- * GET ticket/add/fail
- */
-exports.addFail = function (req, res) {
-    res.render('tickets/addfail')
-}
-
-/*
- * GET ticket/add/success
- */
-exports.addSuccess = function (req, res) {
-    res.render('tickets/addsuccess')
-}
-
-/*
  * POST ticket
  */
 exports.addPost = function (req, res) {
     ticketprovider.save(req.body, function (err, result) {
         if (err) {
-            res.redirect('ticket/add/fail')
+            res.render('tickets/add')
         } else {
-            res.redirect('ticket/add/success')
+            res.render('tickets/addsuccess')
         }
     })
 }

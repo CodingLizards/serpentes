@@ -4,24 +4,10 @@ var applicationprovider = new ApplicationProvider()
  * GET application/add
  */
 exports.add = function (req, res) {
-    applicationprovider.findAll(function (err, result) {
+    applicationprovider.all(function (err, result) {
         var data = { title: 'Anwendung hinzufügen', Applications: result }
         res.render('applications/add', data)
     })
-}
-
-/*
- * GET application/add/fail
- */
-exports.addFail = function (req, res) {
-    res.render('applications/addfail')
-}
-
-/*
- * GET application/add/success
- */
-exports.addSuccess = function (req, res) {
-    res.render('applications/addsuccess')
 }
 
 /*
@@ -30,9 +16,10 @@ exports.addSuccess = function (req, res) {
 exports.addPost = function (req, res) {
     applicationprovider.save(req.body, function (err, result) {
         if (err) {
-            res.redirect('application/add/fail')
+            req.body.errors = err
+            res.render('applications/add', req.body)
         } else {
-            res.redirect('application/add/success')
+            res.render('applications/addsuccess')
         }
     })
 }
