@@ -1,4 +1,11 @@
-﻿<form action="/ticket/add" method="post" class="pure-form pure-form-stacked" id="wizard">
+﻿<div>
+    {{#if error}}
+    {{#ol error.reason}}
+    {{.}}
+    {{/ol}}
+    {{/if}}
+</div>
+<form action="/ticket/add" method="post" class="pure-form pure-form-stacked" id="wizard">
     <fieldset class="pure-wizard-page">
         <legend>Allgemein</legend>
         <div class="pure-g">

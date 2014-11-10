@@ -39,7 +39,9 @@ exports.add = function (req, res) {
 exports.addPost = function (req, res) {
     ticketprovider.save(req.body, function (err, result) {
         if (err) {
-            res.render('tickets/add')
+            req.body.error = err
+            req.body.title = 'Ticket hinzufügen'
+            res.render('tickets/add', req.body)
         } else {
             res.render('tickets/addsuccess')
         }

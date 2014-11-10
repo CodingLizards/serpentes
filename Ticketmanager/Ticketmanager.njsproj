@@ -66,6 +66,7 @@ DEFAULTDOMAIN=garbsen1</Environment>
     <Content Include="public\stylesheets\grids-responsive-min.css" />
     <Content Include="public\stylesheets\pure-min.css" />
     <Content Include="README.md" />
+    <Content Include="start.bat" />
     <Content Include="views\account\login.hbs" />
     <Content Include="views\applications\add.hbs" />
     <Content Include="views\applications\addsuccess.hbs" />

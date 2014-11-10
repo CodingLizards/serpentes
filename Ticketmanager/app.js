@@ -42,6 +42,9 @@ app.use(function (req, res, next) {
     hbs.helpers.username = function () {
         return req.session['username']
     }
+    hbs.helpers.jsonStringify = function (value) {
+        return JSON.stringify(value)
+    }
     next()
 })
 app.use(function (req, res, next) {
