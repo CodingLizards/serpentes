@@ -8,7 +8,7 @@ TicketProvider.prototype.save = function (ticket, callback) {
     this.db.save(ticket, function (err, res) {
         if (err) {
             console.error(err)
-            callback(JSON.parse(err.reason), null)
+            callback(err, null)
         } else {
             console.log(res)
             callback(null, res)

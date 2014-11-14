@@ -25,7 +25,7 @@ DEFAULTDOMAIN=garbsen1</Environment>
     <OutputPath>.</OutputPath>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
     <NodejsPort>1337</NodejsPort>
     <StartWebBrowser>True</StartWebBrowser>
   </PropertyGroup>
@@ -45,6 +45,7 @@ DEFAULTDOMAIN=garbsen1</Environment>
     <Compile Include="persistence\ticketProvider.js" />
     <Compile Include="public\javascripts\classie.js" />
     <Compile Include="public\javascripts\gnmenu.js" />
+    <Compile Include="public\javascripts\jquery-2.1.1.min.js" />
     <Compile Include="public\javascripts\modernizr.custom.js" />
     <Compile Include="public\javascripts\wizard.js" />
     <Compile Include="routes\account.js" />
@@ -55,16 +56,19 @@ DEFAULTDOMAIN=garbsen1</Environment>
     <Compile Include="routes\release.js" />
     <Compile Include="routes\routesSetup.js" />
     <Compile Include="routes\ticket.js" />
+    <Compile Include="views\layouts\layout.hbs.js" />
     <Content Include="package.json" />
     <Content Include="public\fonts\fontawesome-webfont.eot" />
     <Content Include="public\fonts\fontawesome-webfont.svg" />
     <Content Include="public\fonts\fontawesome-webfont.ttf" />
     <Content Include="public\fonts\fontawesome-webfont.woff" />
     <Content Include="public\fonts\FontAwesome.otf" />
-    <Content Include="public\stylesheets\component.css" />
     <Content Include="public\stylesheets\font-awesome.min.css" />
     <Content Include="public\stylesheets\grids-responsive-min.css" />
-    <Content Include="public\stylesheets\pure-min.css" />
+    <Content Include="public\stylesheets\menu.less" />
+    <Content Include="public\stylesheets\pure-custom.less" />
+    <Content Include="public\stylesheets\pure.css" />
+    <Content Include="public\stylesheets\variables.less" />
     <Content Include="README.md" />
     <Content Include="start.bat" />
     <Content Include="views\account\login.hbs" />

@@ -1,25 +1,26 @@
-﻿<div>
-    {{#if error}}
-    {{#ol error.reason}}
+﻿{{#if error}}
+<div class="alert alert-danger">
+    <h4>{{error.reason.error}}</h4>
+    {{#ul error.reason.reason class="list-unstyled"}}
     {{.}}
-    {{/ol}}
-    {{/if}}
+    {{/ul}}
 </div>
+{{/if}}
 <form action="/ticket/add" method="post" class="pure-form pure-form-stacked" id="wizard">
     <fieldset class="pure-wizard-page">
         <legend>Allgemein</legend>
         <div class="pure-g">
             <div class="pure-u-1">
                 <label for="ticketnumber">Ticketnummer*</label>
-                <input required id="ticketnumber" name="ticketnumber" type="text" class="pure-input-1" />
+                <input id="ticketnumber" name="ticketnumber" type="text" class="pure-input-1" value="{{ticketnumber}}" />
             </div>
             <div class="pure-u-1">
                 <label for="priority">Priorität</label>
-                <input id="priority" name="priority" type="number" class="pure-input-1" />
+                <input id="priority" name="priority" type="number" class="pure-input-1" value="{{priority}}" />
             </div>
             <div class="pure-u-1">
                 <label for="description">Beschreibung*</label>
-                <textarea required id="description" name="description" cols="10" rows="10" class="pure-input-1"></textarea>
+                <textarea required id="description" name="description" cols="10" rows="10" class="pure-input-1">{{description}}</textarea>
             </div>
             <div class="pure-u-1">
                 <button type="button" class="pure-button pure-button-wizard-next">Weiter</button>
@@ -31,24 +32,24 @@
         <div class="pure-g">
             <div class="pure-u-1">
                 <label for="deadline">Deadline</label>
-                <input name="deadline" id="deadline" type="date" class="pure-input-1" />
+                <input name="deadline" id="deadline" type="date" class="pure-input-1" value="{{deadline}}" />
             </div>
             <div class="pure-u-1">
                 <label for="emergency" class="pure-checkbox">
-                    <input id="emergency" name="emergency" type="checkbox" />Emergency
+                    <input id="emergency" name="emergency" type="checkbox" checked="{{emergency}}" />Emergency
                 </label>
             </div>
             <div class="pure-u-1">
                 <label for="minutesperweek">Minuten pro Woche*</label>
-                <input required id="minutesperweek" name="minutesperweek" type="number" class="pure-input-1" />
+                <input required id="minutesperweek" name="minutesperweek" type="number" class="pure-input-1" value="{{minutesperweek}}" />
             </div>
             <div class="pure-u-1">
                 <label for="ordervolume">Ordervolumen in €*</label>
-                <input required id="ordervolume" name="ordervolume" type="number" class="pure-input-1" />
+                <input required id="ordervolume" name="ordervolume" type="number" class="pure-input-1" value="{{ordervolume}}" />
             </div>
             <div class="pure-u-1">
                 <label for="impactdescription">Impact Beschreibung</label>
-                <textarea required id="impactdescription" name="impactdescription" cols="10" rows="10" class="pure-input-1"></textarea>
+                <textarea required id="impactdescription" name="impactdescription" cols="10" rows="10" class="pure-input-1">{{impactdescription}}</textarea>
             </div>
             <div class="pure-u-1">
                 <button type="button" class="pure-button pure-button-wizard-prev">Zurück</button>
@@ -94,7 +95,7 @@
         </div>
         <div class="pure-u-1">
             <button type="button" class="pure-button pure-button-wizard-prev">Zurück</button>
-            <button type="submit" class="pure-button pure-button-primary">Speichern</button>
+            <button type="submit" class="pure-button pure-button-primary pure-button-wizard-next-primary">Speichern</button>
         </div>
     </fieldset>
 </form>

@@ -40,6 +40,7 @@ exports.addPost = function (req, res) {
     ticketprovider.save(req.body, function (err, result) {
         if (err) {
             req.body.error = err
+            console.log(req.body)
             req.body.title = 'Ticket hinzufügen'
             res.render('tickets/add', req.body)
         } else {

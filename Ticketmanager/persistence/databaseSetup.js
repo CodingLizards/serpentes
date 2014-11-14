@@ -321,7 +321,12 @@ exports.setup = function () {
                             break;
                     }
                     if (error.error != '') {
-                        throw { 'error': error.error, 'reason': error.reason }
+                        throw {
+                            forbidden: {
+                                'error': error.error, 
+                                'reason': error.reason
+                            }
+                        }
                     }
                 }
             })

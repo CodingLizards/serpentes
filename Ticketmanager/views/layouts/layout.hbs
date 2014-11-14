@@ -3,78 +3,26 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <link href="/stylesheets/pure-min.css" rel="stylesheet" />
+    <link href="/stylesheets/pure.css" rel="stylesheet" />
+    <link href="/stylesheets/pure-custom.css" rel="stylesheet" />
     <link href="/stylesheets/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/stylesheets/component.css" />
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/menu.css" />
+    <script src="/javascripts/jquery-2.1.1.min.js"></script>
     <script src="/javascripts/modernizr.custom.js"></script>
     <script src="/javascripts/wizard.js"></script>
     <title>OPS Liste - {{title}}</title>
-    <style>
-        html {
-            position: relative;
-            min-height: 100%;
-        }
-
-        body {
-            margin-bottom: 60px;
-        }
-
-        .pure-footer {
-            position: absolute;
-            bottom: 0;
-            height: 50px;
-            width: 100%;
-            background-color: #ededed;
-            border-top-color: #c6d0da;
-            border-top-width: 1px;
-            border-top-style: solid;
-            padding-left: 90px;
-            padding-right: 90px;
-        }
-
-        .pure-container {
-            margin-top: 60px;
-            margin-left: 90px;
-            margin-right: 90px;
-        }
-
-        .pure-button-wizard-next {
-            float: right;
-        }
-
-        .pure-validation-error {
-            color: red;
-        }
-
-            .pure-validation-error > input {
-                border-color: red !important;
-            }
-
-            .pure-validation-error > textarea {
-                border-color: red !important;
-            }
-
-        .pure-validation-success {
-            color: green;
-        }
-
-            .pure-validation-success > input {
-                border-color: green !important;
-            }
-
-            .pure-validation-success > textarea {
-                border-color: green !important;
-            }
-    </style>
 </head>
-<body class="pure-skin-arvato">
+<body class="pure-skin-custom">
     <ul id="gn-menu" class="gn-menu-main">
         <li class="gn-trigger">
             <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
             <nav class="gn-menu-wrapper">
                 <div class="gn-scroller">
                     <ul class="gn-menu">
+                        <li class="gn-search-item">
+                            <input class="gn-search" type="search" placeholder="Search">
+                            <a class="gn-icon fa-search"><span>Suchen</span></a>
+                        </li>
                         <li>
                             <a class="gn-icon fa-ticket">Tickets</a>
                             <ul class="gn-submenu">

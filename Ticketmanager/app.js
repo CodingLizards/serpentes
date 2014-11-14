@@ -7,6 +7,7 @@ var session = require('express-session')
 var https = require('https')
 var path = require('path')
 var fs = require('fs')
+var expless = require('less-middleware')
 
 var exphbs = require('express-handlebars')
 var hbshelper = require('handlebars-helpers')
@@ -34,6 +35,7 @@ app.use(express.json())
 app.use(express.urlencoded())
 app.use(express.methodOverride())
 app.use(session({ secret: '{18165D59-08BB-40EF-BBA4-1220B623282B}' }))
+app.use(expless(__dirname + "/public", { compress: true }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(function (req, res, next) {
     hbs.helpers.isAdmin = function (opts) {
