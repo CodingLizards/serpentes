@@ -237,6 +237,15 @@ exports.setup = function () {
                     }
                 }
             })
+            db.save('_design/workers', {
+                all: {
+                    map: function (doc) {
+                        if (doc.type == 'worker') {
+                            emit(doc.id, doc)
+                        }
+                    }
+                }
+            })
             db.save('_design/validation', {
                 language: 'javascript',
                 views: {},                
@@ -303,6 +312,10 @@ exports.setup = function () {
                             if (!newDoc.lastname) {
                                 error.error = "invalid value"
                                 error.reason.push("you need to give the worker a lastname")
+                            }
+                            if (!newDoc.username) {
+                                error.error = "invalid value"
+                                error.reason.push("you need to give the worker a username")
                             }
                             if (!newDoc.emailaddress) {
                                 error.error = "invalid value"

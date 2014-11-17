@@ -1,12 +1,43 @@
 ﻿var edge = require('edge')
-var login = edge.func('AuthenticationMapper.dll')
+//var login = edge.func('AuthenticationMapper.dll')
+var login = edge.func(function () { 
+    /*
+    
+    #r "System.DirectoryServices.AccountManagement.dll" 
+    
+    using System.DirectoryServices.AccountManagement;
+    using System.Diagnostics;
+    
+    async (dynamic input) => {
+        try {
+            Debugger.Break();
+            if (string.IsNullOrWhiteSpace(input.UserName) || string.IsNullOrWhiteSpace(input.Password))
+                return false;
+
+            var pc = default(PrincipalContext);
+            if (input.Domain != null)
+                pc = new PrincipalContext(ContextType.Domain, input.Domain);
+            else
+                pc = new PrincipalContext(ContextType.Domain);
+            
+            using (pc) {
+                return pc.ValidateCredentials(input.UserName, input.Password);
+            }
+        } catch {
+            return false;
+        }
+     }
+     */
+})
+var Workerprovider = require('../persistence/workerProvider.js').WorkerProvider
+var workerprovider = new Workerprovider()
 
 /*
  * GET login
  */
 
 exports.login = function (req, res) {
-    res.render('account/login', { layout: false })
+    res.render('account/login', { layout: 'login', title: 'Anmelden' })
 }
 
 /*
@@ -27,7 +58,14 @@ exports.loginPost = function (req, res) {
             console.log('login result ' + result)
             req.session['authenticated'] = result
             req.session['username'] = input.UserName
-            res.redirect('/')
+            workerprovider.byId(req.session['username'], function (error, result) {
+                if (error || !result) {
+                    res.render('account/adddetails', { layout: 'login', title: 'Meine Daten', username: req.session['username'] })
+                } else {
+                    req.session['fullname'] = result.firstname + ' ' + result.lastname
+                    res.redirect('/')
+                }
+            })
         }
     })
 }
