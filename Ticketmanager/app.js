@@ -8,6 +8,9 @@ var https = require('https')
 var path = require('path')
 var fs = require('fs')
 var expless = require('less-middleware')
+var localizer = require('./localizer.js').Localizer
+var locale = require('locale')
+var supported = ["de", "de_DE", "en"]
 
 var exphbs = require('express-handlebars')
 var hbshelper = require('handlebars-helpers')
@@ -21,6 +24,8 @@ var hbs = exphbs.create({
     extname: '.hbs',
     helpers: {}
 })
+var localizer = new Localizer()
+
 
 hbshelper.register(hbs.handlebars, { marked: undefined })
 
@@ -37,6 +42,7 @@ app.use(express.methodOverride())
 app.use(session({ secret: '{18165D59-08BB-40EF-BBA4-1220B623282B}' }))
 app.use(expless(__dirname + "/public", { compress: true }))
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(locale(supported))
 app.use(function (req, res, next) {
     hbs.helpers.isAdmin = function (opts) {
         return opts.fn(this)
@@ -49,14 +55,17 @@ app.use(function (req, res, next) {
     hbs.helpers.jsonStringify = function (value) {
         return JSON.stringify(value)
     }
+    hbs.helpers.localize = function (key) {
+        return localizer.localize(key, req)
+    }
     next()
 })
 app.use(function (req, res, next) {
-    if (req.url != '/login') {
+    if (req.path != '/login') {
         if (req.session['authenticated'] == true) {
             next()
         } else {
-            res.redirect('/login')
+            res.redirect('/login?target=' + encodeURIComponent(req.originalUrl))
         }
     } else {
         next()

@@ -37,7 +37,7 @@ var workerprovider = new Workerprovider()
  */
 
 exports.login = function (req, res) {
-    res.render('account/login', { layout: 'login', title: 'Anmelden' })
+    res.render('account/login', { layout: 'login', title: 'Anmelden', target: req.param('target') })
 }
 
 /*
@@ -63,7 +63,10 @@ exports.loginPost = function (req, res) {
                     res.render('account/adddetails', { layout: 'login', title: 'Meine Daten', username: req.session['username'] })
                 } else {
                     req.session['fullname'] = result.firstname + ' ' + result.lastname
-                    res.redirect('/')
+                    if (req.param('target'))
+                        req.redirect(req.param('target'))
+                    else
+                        res.redirect('/')
                 }
             })
         }

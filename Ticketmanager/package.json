@@ -17,6 +17,7 @@
     "handle": "^1.0.0",
     "handlebars-helpers": "^0.5.8",
     "less-middleware": "^1.0.4",
-    "pem": "^1.4.1"
+    "pem": "^1.4.1",
+    "locale": "*"
   }
 }

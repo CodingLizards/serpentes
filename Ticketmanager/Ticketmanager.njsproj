@@ -26,7 +26,7 @@ EDGE_CS_DEBUG=1</Environment>
     <OutputPath>.</OutputPath>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <NodejsPort>1337</NodejsPort>
     <StartWebBrowser>False</StartWebBrowser>
   </PropertyGroup>
@@ -38,6 +38,7 @@ EDGE_CS_DEBUG=1</Environment>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="localizer.js" />
     <Compile Include="persistence\applicationProvider.js" />
     <Compile Include="persistence\clientProvider.js" />
     <Compile Include="persistence\databaseSetup.js" />
@@ -58,6 +59,7 @@ EDGE_CS_DEBUG=1</Environment>
     <Compile Include="routes\release.js" />
     <Compile Include="routes\routesSetup.js" />
     <Compile Include="routes\ticket.js" />
+    <Content Include="languages\default.json" />
     <Content Include="package.json" />
     <Content Include="public\fonts\fontawesome-webfont.eot" />
     <Content Include="public\fonts\fontawesome-webfont.svg" />
@@ -91,6 +93,7 @@ EDGE_CS_DEBUG=1</Environment>
     <Content Include="views\tickets\add.hbs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="languages\" />
     <Folder Include="persistence\" />
     <Folder Include="public\" />
     <Folder Include="public\fonts\" />
