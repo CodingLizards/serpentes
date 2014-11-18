@@ -5,7 +5,7 @@ var workerprovider = new WorkerProvider()
  */
 exports.add = function (req, res) {
     workerprovider.all(function (err, result) {
-        var data = { title: 'Anwendung hinzufügen', Workers: result }
+        var data = { title: req.localize('add application', req), Workers: result }
         res.render('workers/add', data)
     })
 }

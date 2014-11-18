@@ -58,12 +58,12 @@ exports.loginPost = function (req, res) {
             req.session['username'] = input.UserName
             workerprovider.byId(req.session['username'], function (error, result) {
                 if (error || !result) {
-                    res.render('account/adddetails', { layout: 'login', title: req.localize('my data', req), username: req.session['username'], target: req.param('target') })
+                    res.render('account/adddetails', { layout: 'login', title: req.localize('my data', req), username: req.session['username'], target: encodeURIComponent(req.param('target')), username: req.session['username'] })
                 } else {
                     req.session['fullname'] = result.firstname + ' ' + result.lastname
                     req.session['isAdmin'] = result.isAdmin
                     if (req.param('target'))
-                        req.redirect(req.param('target'))
+                        res.redirect(req.param('target'))
                     else
                         res.redirect('/')
                 }
@@ -76,12 +76,22 @@ exports.loginPost = function (req, res) {
  * POST login/details
  */
 exports.addDetails = function (req, res) {
+    req.body.username = req.session['username']
     workerprovider.save(req.body, function (err, result) {
         if (err) {
             req.body.error = err
-            res.render('login/adddetails', req.body)
+            res.render('account/adddetails', req.body)
         } else {
-            res.render(req.param('target'))
+            res.redirect(req.param('target'))
         }
+    })
+}
+
+/*
+ * GET logout
+ */
+exports.logout = function (req, res) {
+    req.session.destroy(function (err) {
+        res.redirect('/')
     })
 }

@@ -30,5 +30,5 @@ exports.localize = function (key, req) {
         result = key
     return result
 }
-
+exports.initialize = init
 init()

@@ -92,6 +92,7 @@ EDGE_CS_DEBUG=1</Environment>
     <Content Include="views\releases\addsuccess.hbs" />
     <Content Include="views\tickets\addsuccess.hbs" />
     <Content Include="views\tickets\add.hbs" />
+    <Content Include="views\worker\add.hbs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="languages\" />
@@ -108,6 +109,7 @@ EDGE_CS_DEBUG=1</Environment>
     <Folder Include="views\layouts\" />
     <Folder Include="views\account\" />
     <Folder Include="views\applications\" />
+    <Folder Include="views\worker\" />
     <Folder Include="views\releases\" />
     <Folder Include="views\tickets\" />
   </ItemGroup>

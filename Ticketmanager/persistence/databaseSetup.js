@@ -313,10 +313,6 @@ exports.setup = function () {
                                 error.error = "invalid value"
                                 error.reason.push("you need to give the worker a lastname")
                             }
-                            if (!newDoc.username) {
-                                error.error = "invalid value"
-                                error.reason.push("you need to give the worker a username")
-                            }
                             if (!newDoc.emailaddress) {
                                 error.error = "invalid value"
                                 error.reason.push("\r\nyou need to give the worker an emailaddress")

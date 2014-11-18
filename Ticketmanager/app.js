@@ -47,7 +47,7 @@ app.use(function (req, res, next) {
         if (req.session['isAdmin'])
             return opts.fn(this)
         else
-            return opts.inverse(thist)
+            return opts.inverse(this)
     }
     hbs.helpers.username = function () {
         if (req.session['fullname'])

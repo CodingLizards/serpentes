@@ -10,82 +10,82 @@
     <script src="/javascripts/jquery-2.1.1.min.js"></script>
     <script src="/javascripts/modernizr.custom.js"></script>
     <script src="/javascripts/wizard.js"></script>
-    <title>OPS Liste - {{title}}</title>
+    <title>{{localize 'ticketmanager'}} - {{title}}</title>
 </head>
 <body class="pure-skin-custom">
     <ul id="gn-menu" class="gn-menu-main">
         <li class="gn-trigger">
-            <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+            <a class="gn-icon gn-icon-menu"><span>{{localize 'menu'}}</span></a>
             <nav class="gn-menu-wrapper">
                 <div class="gn-scroller">
                     <ul class="gn-menu">
                         <li class="gn-search-item">
-                            <input class="gn-search" type="search" placeholder="Search">
-                            <a class="gn-icon fa-search"><span>Suchen</span></a>
+                            <input class="gn-search" type="search" placeholder="{{localize 'search'}}">
+                            <a class="gn-icon fa-search"><span>{{localize 'search'}}</span></a>
                         </li>
                         <li>
-                            <a class="gn-icon fa-ticket">Tickets</a>
+                            <a class="gn-icon fa-ticket">{{localize 'tickets'}}</a>
                             <ul class="gn-submenu">
                                 <li><a class="gn-icon fa-wrench">Aktive Tickets</a></li>
                                 <li><a class="gn-icon fa-eye">Freie Tickets</a></li>
                                 <li><a class="gn-icon fa-certificate">Unpriorisierte Tickets</a></li>
                                 <li><a class="gn-icon fa-archive">Archivierte Tickets</a></li>
-                                <li><a class="gn-icon fa-plus" href="/ticket/add">Hinzufügen</a></li>
+                                <li><a class="gn-icon fa-plus" href="/ticket/add">{{localize 'add'}}</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a class="gn-icon fa-user">Mitarbeiter</a>
+                            <a class="gn-icon fa-user">{{localize 'worker'}}</a>
                             <ul class="gn-submenu">
-                                <li><a class="gn-icon fa-eye">Anzeigen</a></li>
-                                <li><a class="gn-icon fa-plus">Hinzufügen</a></li>
+                                <li><a class="gn-icon fa-eye">{{localize 'show'}}</a></li>
+                                <li><a class="gn-icon fa-plus" href="/worker/add">{{localize 'add'}}</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a class="gn-icon fa-bullhorn">Abteilungen</a>
+                            <a class="gn-icon fa-bullhorn">{{localize 'departments'}}</a>
                             <ul class="gn-submenu">
-                                <li><a class="gn-icon fa-eye">Anzeigen</a></li>
-                                <li><a class="gn-icon fa-plus" href="/department/add">Hinzufügen</a></li>
+                                <li><a class="gn-icon fa-eye">{{localize 'show'}}</a></li>
+                                <li><a class="gn-icon fa-plus" href="/department/add">{{localize 'add'}}</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a class="gn-icon fa-windows">Anwendungen</a>
+                            <a class="gn-icon fa-windows">{{localize 'applications'}}</a>
                             <ul class="gn-submenu">
-                                <li><a class="gn-icon fa-eye">Anzeigen</a></li>
-                                <li><a class="gn-icon fa-plus" href="/application/add">Hinzufügen</a></li>
+                                <li><a class="gn-icon fa-eye">{{localize 'show'}}</a></li>
+                                <li><a class="gn-icon fa-plus" href="/application/add">{{localize 'add'}}</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a class="gn-icon fa-suitcase">Mandanten</a>
+                            <a class="gn-icon fa-suitcase">{{localize 'clients'}}</a>
                             <ul class="gn-submenu">
-                                <li><a class="gn-icon fa-eye">Anzeigen</a></li>
-                                <li><a class="gn-icon fa-plus" href="/client/add">Hinzufügen</a></li>
+                                <li><a class="gn-icon fa-eye">{{localize 'show'}}</a></li>
+                                <li><a class="gn-icon fa-plus" href="/client/add">{{localize 'add'}}</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a class="gn-icon fa-calendar">Releases</a>
+                            <a class="gn-icon fa-calendar">{{localize 'releases'}}</a>
                             <ul class="gn-submenu">
-                                <li><a class="gn-icon fa-eye">Anzeigen</a></li>
-                                <li><a class="gn-icon fa-plus" href="/release/add">Hinzufügen</a></li>
+                                <li><a class="gn-icon fa-eye">{{localize 'show'}}</a></li>
+                                <li><a class="gn-icon fa-plus" href="/release/add">{{localize 'add'}}</a></li>
                             </ul>
                         </li>
-                        <li><a class="gn-icon fa-cog">Einstellungen</a></li>
-                        <li><a class="gn-icon fa-question">Hilfe</a></li>
+                        <li><a class="gn-icon fa-cog">{{localize 'settings'}}</a></li>
+                        <li><a class="gn-icon fa-question">{{localize 'help'}}</a></li>
                     </ul>
                 </div>
             </nav>
         </li>
-        <li><a href="/"><i class="fa fa-home"></i> Start</a></li>
-        <li><a href="/ticket"><span><i class="fa fa-ticket"></i> Tickets anzeigen</span></a></li>
+        <li><a href="/"><i class="fa fa-home"></i> {{localize 'start'}}</a></li>
+        <li><a href="/ticket"><span><i class="fa fa-ticket"></i> {{localize 'show tickets'}}</span></a></li>
         {{#isAdmin}}
-        <li><a href="/admin/users"><span><i class="fa fa-users"></i> Benutzer verwalten</span></a></li>
+        <li><a href="/admin/users"><span><i class="fa fa-users"></i> {{localize 'manage user'}}</span></a></li>
         {{/isAdmin}}
-        <li><a><span><i class="fa fa-user"></i> Hallo {{{username}}}</span></a></li>
+        <li><a href="/logout"><span><i class="fa fa-user"></i> Hallo {{{username}}}</span></a></li>
     </ul>
     <div class="pure-container">
         {{{body}}}
     </div>
     <footer class="pure-footer">
-        <p>Gemacht von Imanuel Ulbricht :)</p>
+        <p>{{localize 'made by Imanuel Ulbricht'}} :)</p>
     </footer>
     <script src="/javascripts/classie.js"></script>
     <script src="/javascripts/gnmenu.js"></script>
