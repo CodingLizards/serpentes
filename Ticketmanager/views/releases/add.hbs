@@ -1,14 +1,16 @@
-﻿<form action="/release/add" method="post" class="pure-form pure-form-stacked">
+﻿<form action="/release/add" method="post" class="pure-form pure-form-aligned">
     <fieldset>
-        <legend>Allgemein</legend>
-        <div class="pure-g">
-            <div class="pure-u-1">
-                <label for="name">Name*</label>
-                <input required id="name" name="name" type="text" class="pure-input-1" />
-            </div>
-            <div class="pure-u-1">
-                <button type="submit" class="pure-button pure-button-primary">Speichern</button>
-            </div>
+        <legend>{{localize 'general'}}</legend>
+        <div class="pure-control-group">
+            <label for="name">{{localize 'name'}}*</label>
+            <input required id="name" name="name" type="text" class="pure-u-20-24" />
+        </div>
+        <div class="pure-control-group">
+            <label for="releasedate">{{localize 'release date'}}</label>
+            <input id="releasedate" name="releasedate" type="date" class="pure-u-20-24" />
+        </div>
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">{{localize 'save'}}</button>
         </div>
     </fieldset>
 </form>

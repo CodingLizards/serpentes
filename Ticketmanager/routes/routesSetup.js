@@ -36,6 +36,8 @@ exports.setup = function (app) {
     if ('development' == app.get('env')) {
         app.get('/language/redo', function (req, res) {
             require('../localizer.js').initialize()
+            res.set('Content-Type', 'text/plain')
+            res.send('ready')
         })
     }
 }

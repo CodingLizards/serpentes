@@ -9,7 +9,6 @@ var login = edge.func(function () {
     
     async (dynamic input) => {
         try {
-            Debugger.Break();
             if (string.IsNullOrWhiteSpace(input.UserName) || string.IsNullOrWhiteSpace(input.Password))
                 return false;
 

@@ -285,7 +285,7 @@ exports.setup = function () {
                                 error.error = "invalid value"
                                 error.reason.push("you need to give the ticket a description")
                             }
-                            if (newDoc.priority && !/\d*[,|.]\d*/.test(newDoc.priority)) {
+                            if (newDoc.priority && !/\d*[,|.]?\d*/.test(newDoc.priority)) {
                                 error.error = "invalid value"
                                 error.reason.push("the priority is invalid")
                             }

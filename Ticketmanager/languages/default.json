@@ -32,5 +32,14 @@
     "menu": "Menü",
     "ticketmanager": "Ticketmanager",
     "manage user": "Benutzer verwalten",
-    "made by Imanuel Ulbricht": "Geschrieben von Imanuel Ulbricht"
+    "active tickets": "Aktive Tickets",
+    "free tickets": "Freie Tickets",
+    "unprioritized tickets": "Unpriorisierte Tickets",
+    "archived tickets": "Archivierte Tickets",
+    "made by Imanuel Ulbricht": "Geschrieben von Imanuel Ulbricht",
+    "general": "Allgemein",
+    "name": "Name",
+    "release date": "Releasedatum",
+    "saved release successfully": "Das Release wurde erfolgreich gespeichert",
+    "create another release": "Noch ein Release hinzufügen"
 }
