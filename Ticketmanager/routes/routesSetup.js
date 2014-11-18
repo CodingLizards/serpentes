@@ -11,6 +11,7 @@ exports.setup = function (app) {
     
     app.get('/login', account.login)
     app.post('/login', account.loginPost)
+    app.post('/login/details', account.addDetails)
     
     app.get('/ticket/add', ticket.add)
     app.post('/ticket/add', ticket.addPost)

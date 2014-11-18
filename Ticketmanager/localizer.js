@@ -1,8 +1,8 @@
 ﻿var fs = require('fs')
 var join = require('path').join
 
-Localizer = function () {
-    var languages = {}
+var languages = {}
+function init() {
     var files = fs.readdirSync(join(__dirname, 'languages'))
     for (lang in files) {
         var element = files[lang]
@@ -17,16 +17,18 @@ Localizer = function () {
         }
         languages[element.toLowerCase().replace('.json', '')] = JSON.parse(data.toString('utf-8', offset, data.length))
     }
-    this.languages = languages
 }
-Localizer.prototype.localize = function (key, req) {
+exports.localize = function (key, req) {
     var lang = req.locale
-    if (this.languages['lang']) {
-        return this.languages[lang][key]
-    } else if (this.languages['default']) {
-        return this.languages['default'][key]
-    } else {
-        return key
+    var result = undefined
+    if (languages[lang]) {
+        result = languages[lang][key]
+    } else if (languages['default']) {
+        result = languages['default'][key]
     }
+    if (!result)
+        result = key
+    return result
 }
-exports.localizer = Localizer
+
+init()

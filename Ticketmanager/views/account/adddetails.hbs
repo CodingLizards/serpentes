@@ -1,26 +1,34 @@
-﻿<h2>Leider fehlen uns noch ein paar Daten von dir, bist du so gut und pflegst die ein?</h2>
-<form class="pure-form pure-form-aligned" action="/worker/add" method="post">
+﻿<h2>{{localize 'we are missing some data, would you add them please?'}}</h2>
+{{#if error}}
+<div class="alert alert-danger">
+    <h4>{{error.reason.error}}</h4>
+    {{#ul error.reason.reason class="list-unstyled"}}
+    {{.}}
+    {{/ul}}
+</div>
+{{/if}}
+<form class="pure-form pure-form-aligned" action="/worker/add?target={{target}}" method="post">
     <fieldset>
-        <legend>Meine Daten</legend>
+        <legend>{{localize 'my data'}}</legend>
         <div class="pure-g">
             <div class="pure-u-1 pure-control-group">
-                <label for="firstname">Vorname*</label>
-                <input name="firstname" class="pure-input-2-3" id="firstname" type="text" value="">
+                <label for="firstname">{{localize 'firstname'}}*</label>
+                <input required name="firstname" class="pure-input-2-3" id="firstname" type="text" value="{{firstname}}" placeholder="{{localize 'firstname'}}">
             </div>
             <div class="pure-u-1 pure-control-group">
-                <label for="lastname">Nachname*</label>
-                <input name="lastname" class="pure-input-2-3" id="lastname" type="text" value="">
+                <label for="lastname">{{localize 'lastname'}}*</label>
+                <input required name="lastname" class="pure-input-2-3" id="lastname" type="text" value="{{lastname}}" placeholder="{{localize 'lastname'}}">
             </div>
             <div class="pure-u-1 pure-control-group">
-                <label for="emailaddress">Emailadresse*</label>
-                <input name="emailaddress" class="pure-input-2-3" id="emailaddress" type="email" value="">
+                <label for="emailaddress">{{localize 'emailaddress'}}*</label>
+                <input required name="emailaddress" class="pure-input-2-3" id="emailaddress" type="email" value="{{emailaddress}}" placeholder="{{localize 'emailaddress'}}">
             </div>
             <div class="pure-u-1 pure-control-group">
-                <label for="phonenumber">Telefonnummer*</label>
-                <input name="phonenumber" class="pure-input-2-3" id="phonenumber" type="tel" value="">
+                <label for="phonenumber">{{localize 'phonenumber'}}*</label>
+                <input required name="phonenumber" class="pure-input-2-3" id="phonenumber" type="tel" value="{{phonenumber}}" placeholder="{{localize 'phonenumber'}}">
             </div>
             <div class="pure-u-1 pure-controls">
-                <button class="pure-button pure-button-primary" type="button">Speichern</button>
+                <button class="pure-button pure-button-primary" type="button">{{localize 'save'}}</button>
             </div>
         </div>
     </fieldset>

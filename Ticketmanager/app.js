@@ -8,8 +8,8 @@ var https = require('https')
 var path = require('path')
 var fs = require('fs')
 var expless = require('less-middleware')
-var localizer = require('./localizer.js').Localizer
 var locale = require('locale')
+var localizer = require('./localizer.js')
 var supported = ["de", "de_DE", "en"]
 
 var exphbs = require('express-handlebars')
@@ -24,8 +24,7 @@ var hbs = exphbs.create({
     extname: '.hbs',
     helpers: {}
 })
-var localizer = new Localizer()
-
+var __localize = localizer.localize
 
 hbshelper.register(hbs.handlebars, { marked: undefined })
 
@@ -45,7 +44,10 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(locale(supported))
 app.use(function (req, res, next) {
     hbs.helpers.isAdmin = function (opts) {
-        return opts.fn(this)
+        if (req.session['isAdmin'])
+            return opts.fn(this)
+        else
+            return opts.inverse(thist)
     }
     hbs.helpers.username = function () {
         if (req.session['fullname'])
@@ -56,8 +58,9 @@ app.use(function (req, res, next) {
         return JSON.stringify(value)
     }
     hbs.helpers.localize = function (key) {
-        return localizer.localize(key, req)
+        return __localize(key, req)
     }
+    req.localize = __localize
     next()
 })
 app.use(function (req, res, next) {

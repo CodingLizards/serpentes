@@ -2,5 +2,12 @@
     "login": "Anmelden",
     "welcome to the ticketmanager": "Willkommen beim Ticketmanager!",
     "username": "Benutzername",
-    "password": "Passwort"
+    "password": "Passwort",
+    "we are missing some data, would you add them please?": "Leider fehlen uns noch ein paar Daten von dir, bist du so gut und pflegst die ein?",
+    "my data": "Meine Daten",
+    "firstname": "Vorname",
+    "lastname": "Nachname",
+    "emailaddress": "Emailadresse",
+    "phonenumber": "Telefonnummer",
+    "save": "Speichern"
 }

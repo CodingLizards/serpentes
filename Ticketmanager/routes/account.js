@@ -1,5 +1,4 @@
 ﻿var edge = require('edge')
-//var login = edge.func('AuthenticationMapper.dll')
 var login = edge.func(function () { 
     /*
     
@@ -37,13 +36,12 @@ var workerprovider = new Workerprovider()
  */
 
 exports.login = function (req, res) {
-    res.render('account/login', { layout: 'login', title: 'Anmelden', target: req.param('target') })
+    res.render('account/login', { layout: 'login', title: req.localize('login', req), target: req.param('target') })
 }
 
 /*
  * POST login
  */
-
 exports.loginPost = function (req, res) {
     var input = {
         UserName: req.body.username,
@@ -60,15 +58,30 @@ exports.loginPost = function (req, res) {
             req.session['username'] = input.UserName
             workerprovider.byId(req.session['username'], function (error, result) {
                 if (error || !result) {
-                    res.render('account/adddetails', { layout: 'login', title: 'Meine Daten', username: req.session['username'] })
+                    res.render('account/adddetails', { layout: 'login', title: req.localize('my data', req), username: req.session['username'], target: req.param('target') })
                 } else {
                     req.session['fullname'] = result.firstname + ' ' + result.lastname
+                    req.session['isAdmin'] = result.isAdmin
                     if (req.param('target'))
                         req.redirect(req.param('target'))
                     else
                         res.redirect('/')
                 }
             })
+        }
+    })
+}
+
+/*
+ * POST login/details
+ */
+exports.addDetails = function (req, res) {
+    workerprovider.save(req.body, function (err, result) {
+        if (err) {
+            req.body.error = err
+            res.render('login/adddetails', req.body)
+        } else {
+            res.render(req.param('target'))
         }
     })
 }
