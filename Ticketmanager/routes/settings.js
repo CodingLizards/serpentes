@@ -19,3 +19,10 @@ exports.reloadLanguage = function (req, res) {
     }
     res.render('admin/settings/language', { title: req.localize('reload language files'), result: req.localize(result) })
 }
+
+/*
+ * GET /admin/settings/design
+ */
+exports.design = function (req, res) {
+
+}
