@@ -60,7 +60,6 @@ EDGE_CS_DEBUG=1</Environment>
     <Compile Include="routes\settings.js" />
     <Compile Include="routes\ticket.js" />
     <Compile Include="routes\worker.js" />
-    <Compile Include="views\layouts\layout.hbs.js" />
     <Content Include="languages\default.json" />
     <Content Include="package.json" />
     <Content Include="public\fonts\fontawesome-webfont.eot" />
