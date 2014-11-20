@@ -10,7 +10,6 @@
 COUCHDBSERVERPORT=5984
 COUCHDBSERVERUSERNAME=admin
 COUCHDBSERVERPASSWORD=admin
-DEFAULTDOMAIN=garbsen1
 EDGE_CS_DEBUG=1</Environment>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
