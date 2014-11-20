@@ -36,4 +36,6 @@ exports.setup = function (app) {
     
     app.get('/admin/settings/language', settings.language)
     app.get('/admin/settings/language/reload', settings.reloadLanguage)
+    app.get('/admin/settings/design', settings.design)
+    app.post('/admin/settings/design', settings.configuredesign)
 }

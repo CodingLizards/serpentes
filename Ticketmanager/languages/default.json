@@ -90,5 +90,6 @@
     "reload language files": "Sprachdateien neu einlesen",
     "error reloading language files": "Fehler beim neu einlesen der Sprachdateien",
     "reloading language files worked fine": "Neu einlesen der Sprachdateien wurde erfolgreich abgeschlossen",
-    "design": "Design"
+    "design": "Design",
+    "configure colors": "Farben anpassen"
 }
