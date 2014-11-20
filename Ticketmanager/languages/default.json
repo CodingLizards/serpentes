@@ -5,6 +5,8 @@
     "general": "Allgemein",
     "name": "Name",
     "made by Imanuel Ulbricht": "Geschrieben von Imanuel Ulbricht",
+    "next": "Weiter",
+    "back": "Zurück",
 
     "add application": "Anwendung hinzufügen",
     "add worker": "Mitarbeiter hinzufügen",
@@ -54,6 +56,14 @@
     "priority": "Priorität",
     "ticketnumber": "Ticketnummer",
     "description": "Beschreibung",
+    "impact": "Impact",
+    "deadline": "Deadline",
+    "emergency": "Emergency",
+    "brand harming": "Brandschädigend",
+    "minutes per week": "Minuten pro Woche",
+    "order volume in €": "Ordervolumen in €",
+    "impact description": "Impact Beschreibung",
+    "more details": "Weitere Details",
 
     "worker": "Mitarbeiter",
     "saved worker successfully": "Der Mitarbeiter wurde erfolgreich gespeichert",
@@ -74,5 +84,11 @@
     "the emailaddress is invalid": "Die Emailadresse ist ungültig",
     "the phonenumber is invalid": "Die Telefonnummer darf lediglich aus Ziffern bestehen",
     "you need to give the worker a phonenumber": "Der Mitarbeiter braucht eine Telefonnummer",
-    "you need to give the worker a username": "Der Mitarbeiter braucht eine Benutzernamen (Windows Anmeldung)"
+    "you need to give the worker a username": "Der Mitarbeiter braucht eine Benutzernamen (Windows Anmeldung)",
+
+    "languages": "Sprachen",
+    "reload language files": "Sprachdateien neu einlesen",
+    "error reloading language files": "Fehler beim neu einlesen der Sprachdateien",
+    "reloading language files worked fine": "Neu einlesen der Sprachdateien wurde erfolgreich abgeschlossen",
+    "design": "Design"
 }

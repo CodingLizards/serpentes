@@ -6,6 +6,7 @@ var department = require('./department.js')
 var client = require('./client.js')
 var release = require('./release.js')
 var worker = require('./worker.js')
+var settings = require('./settings.js')
 
 exports.setup = function (app) {
     app.get('/', routes.index)
@@ -33,11 +34,6 @@ exports.setup = function (app) {
     app.get('/release/add', release.add)
     app.post('/release/add', release.addPost)
     
-    if ('development' == app.get('env')) {
-        app.get('/language/redo', function (req, res) {
-            require('../localizer.js').initialize()
-            res.set('Content-Type', 'text/plain')
-            res.send('ready')
-        })
-    }
+    app.get('/admin/settings/language', settings.language)
+    app.get('/admin/settings/language/reload', settings.reloadLanguage)
 }

@@ -31,7 +31,6 @@ var workerprovider = new Workerprovider()
 /*
  * GET login
  */
-
 exports.login = function (req, res) {
     res.render('account/login', { layout: 'login', title: req.localize('login'), target: req.param('target') })
 }
@@ -46,8 +45,8 @@ exports.loginPost = function (req, res) {
         Password: req.body.password
     }
     login(input, function (error, result) {
-        if (error) {
-            console.error(error)
+        if (error || !result) {
+            console.error(error ? error : "Couldn't login")
             res.redirect('/login')
         } else {
             console.log('login result ' + result)

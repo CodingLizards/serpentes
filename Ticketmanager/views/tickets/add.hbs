@@ -28,7 +28,12 @@
             </div>
             <div class="pure-u-1">
                 <label for="emergency" class="pure-checkbox">
-                    <input id="emergency" name="emergency" type="checkbox" checked="{{emergency}}" />{{localize 'emergency'}}
+                    <input id="emergency" name="emergency" type="checkbox" {{bindAttr checked="emergency"}} /> {{localize 'emergency'}}
+                </label>
+            </div>
+            <div class="pure-u-1">
+                <label for="brandharming" class="pure-checkbox">
+                    <input id="brandharming" name="brandharming" type="checkbox" {{bindAttr checked="brandharming"}} /> {{localize 'brand harming'}}
                 </label>
             </div>
             <div class="pure-u-1">

@@ -63,17 +63,25 @@ app.use(function (req, res, next) {
     req.localize = function (key) { return __localize(key, req) }
     next()
 })
-app.use(function (req, res, next) {
-    if (req.path != '/login') {
-        if (req.session['authenticated'] == true) {
-            next()
+if ('development' != app.get('env')) {
+    app.use(function (req, res, next) {
+        if (req.path != '/login') {
+            if (req.session['authenticated'] == true) {
+                next()
+            } else {
+                res.redirect('/login?target=' + encodeURIComponent(req.originalUrl))
+            }
         } else {
-            res.redirect('/login?target=' + encodeURIComponent(req.originalUrl))
+            next()
         }
-    } else {
+    })
+} else {
+    app.use(function (req, res, next) {
+        req.session['isAdmin'] = true
+        req.session['fullname'] = 'Theo Test'
         next()
-    }
-})
+    })
+}
 app.use(app.router)
 routesetup.setup(app)
 

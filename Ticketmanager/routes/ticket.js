@@ -26,7 +26,7 @@ exports.add = function (req, res) {
                 releaseprovider.all(function (err, releases) {
                     if (err)
                         console.warn(err)
-                    var data = { title: req.localize('add ticket'), Applications: apps, Clients: clients, Departments: departments, Releases: releases }
+                    var data = { title: req.localize('add ticket'), Applications: apps, Clients: clients, Departments: departments, Releases: releases, Emergency: false, Brandharming: false }
                     res.render('tickets/add', data)
                 })
             })

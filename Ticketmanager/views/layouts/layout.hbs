@@ -68,7 +68,13 @@
                                 <li><a class="gn-icon fa-plus" href="/release/add">{{localize 'add'}}</a></li>
                             </ul>
                         </li>
-                        <li><a class="gn-icon fa-cog">{{localize 'settings'}}</a></li>
+                        <li>
+                            <a class="gn-icon fa-cogs" href="/admin/settings/">{{localize 'settings'}}</a>
+                            <ul class="gn-submenu">
+                                <li><a class="gn-icon fa-eyedropper" href="/admin/settings/design">{{localize 'design'}}</a></li>
+                                <li><a class="gn-icon fa-language" href="/admin/settings/language">{{localize 'languages'}}</a></li>
+                            </ul>
+                        </li>
                         <li><a class="gn-icon fa-question">{{localize 'help'}}</a></li>
                     </ul>
                 </div>
