@@ -79,9 +79,10 @@
         {{#isAdmin}}
         <li><a href="/admin/users"><span><i class="fa fa-users"></i> {{localize 'manage user'}}</span></a></li>
         {{/isAdmin}}
-        <li><a href="/logout"><span><i class="fa fa-user"></i> Hallo {{{username}}}</span></a></li>
+        <li><a href="/logout"><span><i class="fa fa-user"></i> Hallo {{currentusername}}</span></a></li>
     </ul>
     <div class="pure-container">
+        {{> error}}
         {{{body}}}
     </div>
     <footer class="pure-footer">

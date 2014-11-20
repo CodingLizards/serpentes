@@ -9,6 +9,7 @@ var applicationprovider = new ApplicationProvider()
 var clientprovider = new ClientProvider()
 var departmentprovider = new DepartmentProvider()
 var releaseprovider = new ReleaseProvider()
+
 /*
  * GET ticket/add
  */
@@ -25,7 +26,7 @@ exports.add = function (req, res) {
                 releaseprovider.all(function (err, releases) {
                     if (err)
                         console.warn(err)
-                    var data = { title: 'Ticket hinzufügen', Applications: apps, Clients: clients, Departments: departments, Releases: releases }
+                    var data = { title: req.localize('add ticket'), Applications: apps, Clients: clients, Departments: departments, Releases: releases }
                     res.render('tickets/add', data)
                 })
             })
@@ -40,11 +41,10 @@ exports.addPost = function (req, res) {
     ticketprovider.save(req.body, function (err, result) {
         if (err) {
             req.body.error = err
-            console.log(req.body)
-            req.body.title = 'Ticket hinzufügen'
+            req.body.title = req.localize('add ticket')
             res.render('tickets/add', req.body)
         } else {
-            res.render('tickets/addsuccess')
+            res.render('tickets/addsuccess', { title: req.localize('add ticket') })
         }
     })
 }

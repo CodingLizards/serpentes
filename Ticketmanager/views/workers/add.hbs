@@ -1,17 +1,11 @@
-﻿<h2>{{localize 'we are missing some data, would you add them please?'}}</h2>
-{{#if error}}
-<div class="alert alert-danger">
-    <h4>{{error.reason.error}}</h4>
-    {{#ul error.reason.reason class="list-unstyled"}}
-    {{.}}
-    {{/ul}}
-</div>
-{{/if}}
-<form class="pure-form pure-form-aligned" action="/login/details?target={{target}}" method="post">
-    <input type="hidden" name="username" value="{{username}}" />
+﻿<form class="pure-form pure-form-aligned" action="/worker/add" method="post">
     <fieldset>
         <legend>{{localize 'my data'}}</legend>
         <div class="pure-g">
+            <div class="pure-u-1 pure-control-group">
+                <label for="username">{{localize 'username'}}*</label>
+                <input required name="username" class="pure-input-2-3" id="username" type="text" value="{{username}}" placeholder="{{localize 'username'}}">
+            </div>
             <div class="pure-u-1 pure-control-group">
                 <label for="firstname">{{localize 'firstname'}}*</label>
                 <input required name="firstname" class="pure-input-2-3" id="firstname" type="text" value="{{firstname}}" placeholder="{{localize 'firstname'}}">

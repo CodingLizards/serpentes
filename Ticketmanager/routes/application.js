@@ -4,10 +4,8 @@ var applicationprovider = new ApplicationProvider()
  * GET application/add
  */
 exports.add = function (req, res) {
-    applicationprovider.all(function (err, result) {
-        var data = { title: 'Anwendung hinzufügen', Applications: result }
-        res.render('applications/add', data)
-    })
+    var data = { title: req.localize('add application') }
+    res.render('applications/add', data)
 }
 
 /*
@@ -16,10 +14,11 @@ exports.add = function (req, res) {
 exports.addPost = function (req, res) {
     applicationprovider.save(req.body, function (err, result) {
         if (err) {
-            req.body.errors = err
+            req.body.error = err
+            req.body.title = req.localize('add application')
             res.render('applications/add', req.body)
         } else {
-            res.render('applications/addsuccess')
+            res.render('applications/addsuccess', { title: req.localize('successfully saved application') })
         }
     })
 }

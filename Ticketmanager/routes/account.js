@@ -1,11 +1,9 @@
 ﻿var edge = require('edge')
 var login = edge.func(function () { 
     /*
-    
     #r "System.DirectoryServices.AccountManagement.dll" 
     
     using System.DirectoryServices.AccountManagement;
-    using System.Diagnostics;
     
     async (dynamic input) => {
         try {
@@ -35,7 +33,7 @@ var workerprovider = new Workerprovider()
  */
 
 exports.login = function (req, res) {
-    res.render('account/login', { layout: 'login', title: req.localize('login', req), target: req.param('target') })
+    res.render('account/login', { layout: 'login', title: req.localize('login'), target: req.param('target') })
 }
 
 /*
@@ -57,7 +55,7 @@ exports.loginPost = function (req, res) {
             req.session['username'] = input.UserName
             workerprovider.byId(req.session['username'], function (error, result) {
                 if (error || !result) {
-                    res.render('account/adddetails', { layout: 'login', title: req.localize('my data', req), username: req.session['username'], target: encodeURIComponent(req.param('target')), username: req.session['username'] })
+                    res.render('account/adddetails', { layout: 'login', title: req.localize('my data'), username: req.session['username'], target: encodeURIComponent(req.param('target')), username: req.session['username'] })
                 } else {
                     req.session['fullname'] = result.firstname + ' ' + result.lastname
                     req.session['isAdmin'] = result.isAdmin

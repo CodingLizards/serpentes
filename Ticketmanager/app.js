@@ -49,7 +49,7 @@ app.use(function (req, res, next) {
         else
             return opts.inverse(this)
     }
-    hbs.helpers.username = function () {
+    hbs.helpers.currentusername = function () {
         if (req.session['fullname'])
             return req.session['fullname']
         return req.session['username']
@@ -60,7 +60,7 @@ app.use(function (req, res, next) {
     hbs.helpers.localize = function (key) {
         return __localize(key, req)
     }
-    req.localize = __localize
+    req.localize = function (key) { return __localize(key, req) }
     next()
 })
 app.use(function (req, res, next) {

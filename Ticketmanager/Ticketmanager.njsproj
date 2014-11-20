@@ -88,11 +88,13 @@ EDGE_CS_DEBUG=1</Environment>
     </Content>
     <Content Include="views\layouts\layout.hbs" />
     <Content Include="views\layouts\login.hbs" />
+    <Content Include="views\partials\error.hbs" />
     <Content Include="views\releases\add.hbs" />
     <Content Include="views\releases\addsuccess.hbs" />
     <Content Include="views\tickets\addsuccess.hbs" />
     <Content Include="views\tickets\add.hbs" />
-    <Content Include="views\worker\add.hbs" />
+    <Content Include="views\workers\add.hbs" />
+    <Content Include="views\workers\addsuccess.hbs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="languages\" />
@@ -109,7 +111,8 @@ EDGE_CS_DEBUG=1</Environment>
     <Folder Include="views\layouts\" />
     <Folder Include="views\account\" />
     <Folder Include="views\applications\" />
-    <Folder Include="views\worker\" />
+    <Folder Include="views\partials\" />
+    <Folder Include="views\workers\" />
     <Folder Include="views\releases\" />
     <Folder Include="views\tickets\" />
   </ItemGroup>

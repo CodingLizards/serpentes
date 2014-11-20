@@ -1,67 +1,59 @@
-﻿{{#if error}}
-<div class="alert alert-danger">
-    <h4>{{error.reason.error}}</h4>
-    {{#ul error.reason.reason class="list-unstyled"}}
-    {{.}}
-    {{/ul}}
-</div>
-{{/if}}
-<form action="/ticket/add" method="post" class="pure-form pure-form-stacked" id="wizard">
+﻿<form action="/ticket/add" method="post" class="pure-form pure-form-stacked" id="wizard">
     <fieldset class="pure-wizard-page">
-        <legend>Allgemein</legend>
+        <legend>{{localize 'general'}}</legend>
         <div class="pure-g">
             <div class="pure-u-1">
-                <label for="ticketnumber">Ticketnummer*</label>
-                <input id="ticketnumber" required name="ticketnumber" type="text" class="pure-input-1" value="{{ticketnumber}}" />
+                <label for="ticketnumber">{{localize 'ticketnumber'}}*</label>
+                <input id="ticketnumber" placeholder="{{localize 'ticketnumber'}}" required name="ticketnumber" type="text" class="pure-input-1" value="{{ticketnumber}}" />
             </div>
             <div class="pure-u-1">
-                <label for="priority">Priorität</label>
-                <input id="priority" name="priority" type="number" class="pure-input-1" value="{{priority}}" />
+                <label for="priority">{{localize 'priority'}}</label>
+                <input id="priority" placeholder="{{localize 'priority'}}" name="priority" type="number" class="pure-input-1" value="{{priority}}" />
             </div>
             <div class="pure-u-1">
-                <label for="description">Beschreibung*</label>
-                <textarea required id="description" name="description" cols="10" rows="10" class="pure-input-1">{{description}}</textarea>
+                <label for="description">{{localize 'description'}}*</label>
+                <textarea required id="description" placeholder="{{localize 'description'}}" name="description" cols="10" rows="10" class="pure-input-1">{{description}}</textarea>
             </div>
             <div class="pure-u-1">
-                <button type="button" class="pure-button pure-button-wizard-next">Weiter</button>
+                <button type="button" class="pure-button pure-button-wizard-next">{{localize 'next'}}</button>
             </div>
         </div>
     </fieldset>
     <fieldset class="pure-wizard-page">
-        <legend>Impact</legend>
+        <legend>{{localize 'impact'}}</legend>
         <div class="pure-g">
             <div class="pure-u-1">
-                <label for="deadline">Deadline</label>
-                <input name="deadline" id="deadline" type="date" class="pure-input-1" value="{{deadline}}" />
+                <label for="deadline">{{localize 'deadline'}}</label>
+                <input name="deadline" id="deadline" placeholder="{{localize 'deadline'}}" type="date" class="pure-input-1" value="{{deadline}}" />
             </div>
             <div class="pure-u-1">
                 <label for="emergency" class="pure-checkbox">
-                    <input id="emergency" name="emergency" type="checkbox" checked="{{emergency}}" />Emergency
+                    <input id="emergency" name="emergency" type="checkbox" checked="{{emergency}}" />{{localize 'emergency'}}
                 </label>
             </div>
             <div class="pure-u-1">
-                <label for="minutesperweek">Minuten pro Woche*</label>
-                <input required id="minutesperweek" name="minutesperweek" type="number" class="pure-input-1" value="{{minutesperweek}}" />
+                <label for="minutesperweek">{{localize 'minutes per week'}}*</label>
+                <input required id="minutesperweek" placeholder="{{localize 'minutes per week'}}" name="minutesperweek" type="number" class="pure-input-1" value="{{minutesperweek}}" />
             </div>
             <div class="pure-u-1">
-                <label for="ordervolume">Ordervolumen in €*</label>
-                <input required id="ordervolume" name="ordervolume" type="number" class="pure-input-1" value="{{ordervolume}}" />
+                <label for="ordervolume">{{localize 'order volume in €'}}*</label>
+                <input required id="ordervolume" placeholder="{{localize 'order volume in €'}}" name="ordervolume" type="number" class="pure-input-1" value="{{ordervolume}}" />
             </div>
             <div class="pure-u-1">
-                <label for="impactdescription">Impact Beschreibung</label>
-                <textarea required id="impactdescription" name="impactdescription" cols="10" rows="10" class="pure-input-1">{{impactdescription}}</textarea>
+                <label for="impactdescription">{{localize 'impact description'}}</label>
+                <textarea required id="impactdescription" placeholder="{{localize 'impact description'}}" name="impactdescription" cols="10" rows="10" class="pure-input-1">{{impactdescription}}</textarea>
             </div>
             <div class="pure-u-1">
-                <button type="button" class="pure-button pure-button-wizard-prev">Zurück</button>
-                <button type="button" class="pure-button pure-button-wizard-next">Weiter</button>
+                <button type="button" class="pure-button pure-button-wizard-prev">{{localize 'back'}}</button>
+                <button type="button" class="pure-button pure-button-wizard-next">{{localize 'next'}}</button>
             </div>
         </div>
     </fieldset>
     <fieldset class="pure-wizard-page">
-        <legend>Weitere Angaben</legend>
+        <legend>{{localize 'more details'}}</legend>
         <div class="pure-g">
             <div class="pure-u-1">
-                <label for="applications">Anwendungen</label>
+                <label for="applications">{{localize 'applications'}}</label>
                 <select class="pure-input-1" multiple id="applications" name="applications">
                     {{#each Applications}}
                     <option value="{{_id}}">{{name}}</option>
@@ -69,7 +61,7 @@
                 </select>
             </div>
             <div class="pure-u-1">
-                <label for="departments">Abteilungen</label>
+                <label for="departments">{{localize 'departments'}}</label>
                 <select class="pure-input-1" multiple id="departments" name="departments">
                     {{#each Departments}}
                     <option value="{{_id}}">{{name}}</option>
@@ -77,7 +69,7 @@
                 </select>
             </div>
             <div class="pure-u-1">
-                <label for="clients">Mandanten</label>
+                <label for="clients">{{localize 'clients'}}</label>
                 <select class="pure-input-1" multiple id="clients" name="clients">
                     {{#each Clients}}
                     <option value="{{_id}}">{{name}}</option>
@@ -85,7 +77,7 @@
                 </select>
             </div>
             <div class="pure-u-1">
-                <label for="release">Release</label>
+                <label for="release">{{localize 'releases'}}</label>
                 <select class="pure-input-1" id="release" name="release">
                     {{#each Releases}}
                     <option value="{{_id}}">{{name}}</option>
@@ -94,8 +86,8 @@
             </div>
         </div>
         <div class="pure-u-1">
-            <button type="button" class="pure-button pure-button-wizard-prev">Zurück</button>
-            <button type="submit" class="pure-button pure-button-primary pure-button-wizard-next-primary">Speichern</button>
+            <button type="button" class="pure-button pure-button-wizard-prev">{{localize 'back'}}</button>
+            <button type="submit" class="pure-button pure-button-primary pure-button-wizard-next-primary">{{localize 'save'}}</button>
         </div>
     </fieldset>
 </form>

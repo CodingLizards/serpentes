@@ -315,7 +315,7 @@ exports.setup = function () {
                             }
                             if (!newDoc.emailaddress) {
                                 error.error = "invalid value"
-                                error.reason.push("\r\nyou need to give the worker an emailaddress")
+                                error.reason.push("you need to give the worker an emailaddress")
                             } else if (!/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(newDoc.emailaddress)) {
                                 error.error = "invalid value"
                                 error.reason.push("the emailaddress is invalid")

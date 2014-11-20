@@ -4,10 +4,8 @@ var clientprovider = new ClientProvider()
  * GET client/add
  */
 exports.add = function (req, res) {
-    clientprovider.all(function (err, result) {
-        var data = { title: 'Mandant hinzufügen', Applications: result }
-        res.render('clients/add', data)
-    })
+    var data = { title: req.localize('add client') }
+    res.render('clients/add', data)
 }
 
 /*
@@ -16,9 +14,11 @@ exports.add = function (req, res) {
 exports.addPost = function (req, res) {
     clientprovider.save(req.body, function (err, result) {
         if (err) {
-            res.render('client/add')
+            req.body.error = err
+            req.body.title = req.localize('add client')
+            res.render('clients/add', req.body)
         } else {
-            res.render('clients/add/success')
+            res.render('clients/addsuccess', { title: req.localize('successfully saved client') })
         }
     })
 }

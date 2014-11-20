@@ -1,0 +1,8 @@
+﻿{{#if error}}
+<div class="alert alert-danger">
+    <h4>{{localize error.reason.error}}</h4>
+    {{#ul error.reason.reason class="list-unstyled"}}
+    {{localize .}}
+    {{/ul}}
+</div>
+{{/if}}

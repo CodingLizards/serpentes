@@ -4,10 +4,8 @@ var releaseprovider = new ReleaseProvider()
  * GET release/add
  */
 exports.add = function (req, res) {
-    releaseprovider.all(function (err, result) {
-        var data = { title: 'Release hinzufügen', Releases: result }
-        res.render('releases/add', data)
-    })
+    var data = { title: req.localize('add release') }
+    res.render('releases/add', data)
 }
 
 /*
@@ -16,9 +14,11 @@ exports.add = function (req, res) {
 exports.addPost = function (req, res) {
     releaseprovider.save(req.body, function (err, result) {
         if (err) {
-            res.render('releases/add')
+            req.body.error = err
+            req.body.title = req.localize('add release')
+            res.render('releases/add', req.body)
         } else {
-            res.render('releases/addsuccess')
+            res.render('releases/addsuccess', { title: req.localize('add release') })
         }
     })
 }

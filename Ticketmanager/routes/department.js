@@ -4,10 +4,8 @@ var departmentprovider = new DepartmentProvider()
  * GET department/add
  */
 exports.add = function (req, res) {
-    departmentprovider.all(function (err, result) {
-        var data = { title: 'Abteilung hinzufügen', Applications: result }
-        res.render('departments/add', data)
-    })
+    var data = { title: req.localize('add department') }
+    res.render('departments/add', data)
 }
 
 /*
@@ -16,9 +14,11 @@ exports.add = function (req, res) {
 exports.addPost = function (req, res) {
     departmentprovider.save(req.body, function (err, result) {
         if (err) {
-            res.render('departments/add')
+            req.body.error = err
+            req.body.title = req.localize('add department')
+            res.render('departments/add', req.body)
         } else {
-            res.render('departments/addsuccess')
+            res.render('departments/addsuccess', { title: req.localize('successfully saved department') })
         }
     })
 }
