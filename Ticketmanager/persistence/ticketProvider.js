@@ -19,7 +19,7 @@ TicketProvider.prototype.save = function (ticket, callback) {
     })
 }
 TicketProvider.prototype.findAllFree = function (callback) {
-    this.db.view('tickets/free', new { include_docs: true}, function (error, result) {
+    this.db.view('tickets/free', new { include_docs: true }, function (error, result) {
         if (error) {
             callback(error)
         } else {
@@ -33,6 +33,32 @@ TicketProvider.prototype.findAllFree = function (callback) {
 }
 TicketProvider.prototype.findAllUnprioritised = function (callback) {
     this.db.view('tickets/unprioritised', function (error, result) {
+        if (error) {
+            callback(error)
+        } else {
+            var docs = []
+            result.forEach(function (row) {
+                docs.push(row)
+            })
+            callback(null, docs);
+        }
+    })
+}
+TicketProvider.prototype.findAllArchived = function (callback) {
+    this.db.view('tickets/archived', function (error, result) {
+        if (error) {
+            callback(error)
+        } else {
+            var docs = []
+            result.forEach(function (row) {
+                docs.push(row)
+            })
+            callback(null, docs);
+        }
+    })
+}
+TicketProvider.prototype.findAllActive = function (callback) {
+    this.db.view('tickets/active', function (error, result) {
         if (error) {
             callback(error)
         } else {
