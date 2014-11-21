@@ -21,36 +21,32 @@
     </fieldset>
     <fieldset class="pure-menu-page" id="impact">
         <legend>{{localize 'impact'}}</legend>
-        <dl>
-            {{#if deadline}}
-            <dt>{{localize 'deadline'}}</dt>
-            <dd>{{deadline}}</dd>
+        {{#if deadline}}
+        <h4>{{localize 'deadline'}}</h4>
+        <p>{{deadline}}</p>
+        {{/if}}
+        <h4>{{localize 'emergency'}}</h4>
+        <p>
+            {{#if emergency}}
+            <i class="fa fa-toggle-on fa-2x"></i>
+            {{else}}
+            <i class="fa fa-toggle-off fa-2x"></i>
             {{/if}}
-        </dl>
-        <div class="pure-g">
-            <div class="pure-u-1">
-                <label for="emergency" class="pure-checkbox">
-                    <input id="emergency" name="emergency" type="checkbox" {{bindAttr checked="emergency"}} /> {{localize 'emergency'}}
-                </label>
-            </div>
-            <div class="pure-u-1">
-                <label for="brandharming" class="pure-checkbox">
-                    <input id="brandharming" name="brandharming" type="checkbox" {{bindAttr checked="brandharming"}} /> {{localize 'brand harming'}}
-                </label>
-            </div>
-            <div class="pure-u-1">
-                <label for="minutesperweek">{{localize 'minutes per week'}}*</label>
-                <input required id="minutesperweek" placeholder="{{localize 'minutes per week'}}" name="minutesperweek" type="number" class="pure-input-1" value="{{minutesperweek}}" />
-            </div>
-            <div class="pure-u-1">
-                <label for="ordervolume">{{localize 'order volume in €'}}*</label>
-                <input required id="ordervolume" placeholder="{{localize 'order volume in €'}}" name="ordervolume" type="number" class="pure-input-1" value="{{ordervolume}}" />
-            </div>
-            <div class="pure-u-1">
-                <label for="impactdescription">{{localize 'impact description'}}</label>
-                <textarea required id="impactdescription" placeholder="{{localize 'impact description'}}" name="impactdescription" cols="10" rows="10" class="pure-input-1">{{impactdescription}}</textarea>
-            </div>
-        </div>
+        </p>
+        <h4>{{localize 'brand harming'}}</h4>
+        <p>
+            {{#if brandharming}}
+            <i class="fa fa-toggle-on fa-2x"></i>
+            {{else}}
+            <i class="fa fa-toggle-off fa-2x"></i>
+            {{/if}}
+        </p>
+        <h4>{{localize 'minutes per week'}}</h4>
+        <p>{{minutesperweek}}</p>
+        <h4>{{localize 'order volume in €'}}</h4>
+        <p>{{ordervolume}}</p>
+        <h4>{{localize 'impact description'}}</h4>
+        <p>{{impactdescription}}</p>
     </fieldset>
     <fieldset class="pure-menu-page" id="more">
         <legend>{{localize 'more details'}}</legend>

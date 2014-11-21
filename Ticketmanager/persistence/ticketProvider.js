@@ -45,7 +45,7 @@ TicketProvider.prototype.addComment = function (id, comment, callback) {
 }
 
 TicketProvider.prototype.findAllFree = function (callback) {
-    this.db.view('tickets/free', new { include_docs: true}, function (error, result) {
+    this.db.view('tickets/free', new { include_docs: true }, function (error, result) {
         if (error) {
             callback(error)
         } else {
@@ -108,7 +108,7 @@ TicketProvider.prototype.byCurrentWorker = function (workerid, callback) {
 TicketProvider.prototype.byId = function (id, callback) {
     var opts = {
         startkey: [id],
-        endkey: [id],
+        endkey: [id, {}],
         reduce: true,
         json: true
     }

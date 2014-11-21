@@ -45,16 +45,18 @@ exports.setup = function () {
                         var release = []
                         var departments = []
                         for (var i = 0; i < values.length; i++) {
-                            if (values[i].type == 'ticket') {
-                                result = values[i]
-                            } else if (values[i].type == 'application') {
-                                applications.push(values[i])
-                            } else if (values[i].type == 'client') {
-                                clients.push(values[i])
-                            } else if (values[i].type == 'release') {
-                                release.push(values[i])
-                            } else if (values[i].type == 'department') {
-                                departments.push(values[i])
+                            if (values[i]) {
+                                if (values[i].type == 'ticket') {
+                                    result = values[i]
+                                } else if (values[i].type == 'application') {
+                                    applications.push(values[i])
+                                } else if (values[i].type == 'client') {
+                                    clients.push(values[i])
+                                } else if (values[i].type == 'release') {
+                                    release.push(values[i])
+                                } else if (values[i].type == 'department') {
+                                    departments.push(values[i])
+                                }
                             }
                         }
                         if (result != null) {
@@ -89,16 +91,18 @@ exports.setup = function () {
                         var release = []
                         var departments = []
                         for (var i = 0; i < values.length; i++) {
-                            if (values[i].type == 'ticket') {
-                                result = values[i]
-                            } else if (values[i].type == 'application') {
-                                applications.push(values[i])
-                            } else if (values[i].type == 'client') {
-                                clients.push(values[i])
-                            } else if (values[i].type == 'release') {
-                                release.push(values[i])
-                            } else if (values[i].type == 'department') {
-                                departments.push(values[i])
+                            if (values[i]) {
+                                if (values[i].type == 'ticket') {
+                                    result = values[i]
+                                } else if (values[i].type == 'application') {
+                                    applications.push(values[i])
+                                } else if (values[i].type == 'client') {
+                                    clients.push(values[i])
+                                } else if (values[i].type == 'release') {
+                                    release.push(values[i])
+                                } else if (values[i].type == 'department') {
+                                    departments.push(values[i])
+                                }
                             }
                         }
                         if (result != null) {
@@ -133,16 +137,18 @@ exports.setup = function () {
                         var release = []
                         var departments = []
                         for (var i = 0; i < values.length; i++) {
-                            if (values[i].type == 'ticket') {
-                                result = values[i]
-                            } else if (values[i].type == 'application') {
-                                applications.push(values[i])
-                            } else if (values[i].type == 'client') {
-                                clients.push(values[i])
-                            } else if (values[i].type == 'release') {
-                                release.push(values[i])
-                            } else if (values[i].type == 'department') {
-                                departments.push(values[i])
+                            if (values[i]) {
+                                if (values[i].type == 'ticket') {
+                                    result = values[i]
+                                } else if (values[i].type == 'application') {
+                                    applications.push(values[i])
+                                } else if (values[i].type == 'client') {
+                                    clients.push(values[i])
+                                } else if (values[i].type == 'release') {
+                                    release.push(values[i])
+                                } else if (values[i].type == 'department') {
+                                    departments.push(values[i])
+                                }
                             }
                         }
                         if (result != null) {
@@ -177,16 +183,18 @@ exports.setup = function () {
                         var release = []
                         var departments = []
                         for (var i = 0; i < values.length; i++) {
-                            if (values[i].type == 'ticket') {
-                                result = values[i]
-                            } else if (values[i].type == 'application') {
-                                applications.push(values[i])
-                            } else if (values[i].type == 'client') {
-                                clients.push(values[i])
-                            } else if (values[i].type == 'release') {
-                                release.push(values[i])
-                            } else if (values[i].type == 'department') {
-                                departments.push(values[i])
+                            if (values[i]) {
+                                if (values[i].type == 'ticket') {
+                                    result = values[i]
+                                } else if (values[i].type == 'application') {
+                                    applications.push(values[i])
+                                } else if (values[i].type == 'client') {
+                                    clients.push(values[i])
+                                } else if (values[i].type == 'release') {
+                                    release.push(values[i])
+                                } else if (values[i].type == 'department') {
+                                    departments.push(values[i])
+                                }
                             }
                         }
                         if (result != null) {
@@ -221,16 +229,18 @@ exports.setup = function () {
                         var release = []
                         var departments = []
                         for (var i = 0; i < values.length; i++) {
-                            if (values[i].type == 'ticket') {
-                                result = values[i]
-                            } else if (values[i].type == 'application') {
-                                applications.push(values[i])
-                            } else if (values[i].type == 'client') {
-                                clients.push(values[i])
-                            } else if (values[i].type == 'release') {
-                                release.push(values[i])
-                            } else if (values[i].type == 'department') {
-                                departments.push(values[i])
+                            if (values[i]) {
+                                if (values[i].type == 'ticket') {
+                                    result = values[i]
+                                } else if (values[i].type == 'application') {
+                                    applications.push(values[i])
+                                } else if (values[i].type == 'client') {
+                                    clients.push(values[i])
+                                } else if (values[i].type == 'release') {
+                                    release.push(values[i])
+                                } else if (values[i].type == 'department') {
+                                    departments.push(values[i])
+                                }
                             }
                         }
                         if (result != null) {
