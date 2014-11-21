@@ -99,5 +99,13 @@
     "error reloading language files": "Fehler beim neu einlesen der Sprachdateien",
     "reloading language files worked fine": "Neu einlesen der Sprachdateien wurde erfolgreich abgeschlossen",
     "design": "Design",
-    "configure colors": "Farben anpassen"
+    "configure colors": "Farben anpassen",
+
+    "my tickets": "Meine Tickets",
+    "ticket details": "Ticketdetails",
+    "comments": "Kommentare",
+    "submit comment": "Kommentar abschicken",
+    "content": "Inhalt",
+    "from": "von",
+    "release": "Release"
 }

@@ -1,0 +1,120 @@
+﻿{{#with details}}
+<div class="pure-menu pure-menu-open pure-menu-horizontal">
+    <ul>
+        <li class="pure-menu-selected"><a href="#general" data-toggle="tabs">{{localize 'general'}}</a></li>
+        <li><a href="#impact" data-toggle="tabs">{{localize 'impact'}}</a></li>
+        <li><a href="#more" data-toggle="tabs">{{localize 'more details'}}</a></li>
+        <li><a href="#comments" data-toggle="tabs">{{localize 'comments'}}</a></li>
+    </ul>
+</div>
+<div class="pure-form pure-form-stacked">
+    <fieldset class="pure-menu-page pure-menu-selected" id="general">
+        <legend>{{localize 'general'}}</legend>
+        <h4>{{localize 'ticketnumber'}}</h4>
+        <p>{{_id}}</p>
+        {{#if priority}}
+        <h4>{{localize 'priority'}}</h4>
+        <p>{{priority}}</p>
+        {{/if}}
+        <h4>{{localize 'description'}}</h4>
+        <article>{{description}}</article>
+    </fieldset>
+    <fieldset class="pure-menu-page" id="impact">
+        <legend>{{localize 'impact'}}</legend>
+        <dl>
+            {{#if deadline}}
+            <dt>{{localize 'deadline'}}</dt>
+            <dd>{{deadline}}</dd>
+            {{/if}}
+        </dl>
+        <div class="pure-g">
+            <div class="pure-u-1">
+                <label for="emergency" class="pure-checkbox">
+                    <input id="emergency" name="emergency" type="checkbox" {{bindAttr checked="emergency"}} /> {{localize 'emergency'}}
+                </label>
+            </div>
+            <div class="pure-u-1">
+                <label for="brandharming" class="pure-checkbox">
+                    <input id="brandharming" name="brandharming" type="checkbox" {{bindAttr checked="brandharming"}} /> {{localize 'brand harming'}}
+                </label>
+            </div>
+            <div class="pure-u-1">
+                <label for="minutesperweek">{{localize 'minutes per week'}}*</label>
+                <input required id="minutesperweek" placeholder="{{localize 'minutes per week'}}" name="minutesperweek" type="number" class="pure-input-1" value="{{minutesperweek}}" />
+            </div>
+            <div class="pure-u-1">
+                <label for="ordervolume">{{localize 'order volume in €'}}*</label>
+                <input required id="ordervolume" placeholder="{{localize 'order volume in €'}}" name="ordervolume" type="number" class="pure-input-1" value="{{ordervolume}}" />
+            </div>
+            <div class="pure-u-1">
+                <label for="impactdescription">{{localize 'impact description'}}</label>
+                <textarea required id="impactdescription" placeholder="{{localize 'impact description'}}" name="impactdescription" cols="10" rows="10" class="pure-input-1">{{impactdescription}}</textarea>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="pure-menu-page" id="more">
+        <legend>{{localize 'more details'}}</legend>
+        <div class="pure-g">
+            {{#if applications}}
+            <div class="pure-u-1">
+                <h4>{{localize 'applications'}}</h4>
+                {{#ul applications}}
+                {{name}}
+                {{/ul}}
+            </div>
+            {{/if}}
+            {{#if departments}}
+            <div class="pure-u-1">
+                <h4>{{localize 'departments'}}</h4>
+                {{#ul departments}}
+                {{name}}
+                {{/ul}}
+            </div>
+            {{/if}}
+            {{#if clients}}
+            <div class="pure-u-1">
+                <h4>{{localize 'clients'}}</h4>
+                {{#ul clients}}
+                {{name}}
+                {{/ul}}
+            </div>
+            {{/if}}
+            {{#if release}}
+            <div class="pure-u-1">
+                <h4>{{localize 'release'}}</h4>
+                <dl>
+                    <dt>{{localize 'name'}}</dt>
+                    <dd>{{name}}</dd>
+                    <dt>{{localize 'release date'}}</dt>
+                    <dd>{{releasedate}}</dd>
+                </dl>
+            </div>
+            {{/if}}
+        </div>
+    </fieldset>
+    <fieldset id="comments" class="pure-menu-page">
+        <legend>{{localize 'comments'}}</legend>
+        {{#if comments}}
+        {{#ul comments class="list-unstyled"}}
+        <blockquote>
+            {{commentvalue}}
+            <footer>{{localize 'from'}} {{creator}} - {{formatDate created '%d.%m.%y %H:%M'}}</footer>
+        </blockquote>
+        {{/ul}}
+        {{/if}}
+        <form action="/ticket/comments/{{_id}}" method="post" class="pure-form pure-form-stacked">
+            <div class="pure-g">
+                <div class="pure-u-1">
+                    <label for="content">{{localize 'content'}}*</label>
+                    <textarea required id="content" placeholder="{{localize 'content'}}" name="commentvalue" class="pure-input-1"></textarea>
+                </div>
+                <div class="pure-u-1">
+                    <button class="pure-button pure-button-primary" type="submit">{{localize 'submit comment'}}</button>
+                </div>
+            </div>
+        </form>
+    </fieldset>
+</div>
+{{/with}}
+<script>
+</script>

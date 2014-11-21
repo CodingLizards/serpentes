@@ -50,6 +50,7 @@ EDGE_CS_DEBUG=1</Environment>
     <Compile Include="public\javascripts\gnmenu.js" />
     <Compile Include="public\javascripts\jquery-2.1.1.min.js" />
     <Compile Include="public\javascripts\modernizr.custom.js" />
+    <Compile Include="public\javascripts\pure-menu.js" />
     <Compile Include="public\javascripts\wizard.js" />
     <Compile Include="routes\account.js" />
     <Compile Include="routes\application.js" />
@@ -96,6 +97,7 @@ EDGE_CS_DEBUG=1</Environment>
     <Content Include="views\releases\addsuccess.hbs" />
     <Content Include="views\tickets\addsuccess.hbs" />
     <Content Include="views\tickets\add.hbs" />
+    <Content Include="views\tickets\details.hbs" />
     <Content Include="views\workers\add.hbs" />
     <Content Include="views\workers\addsuccess.hbs" />
   </ItemGroup>

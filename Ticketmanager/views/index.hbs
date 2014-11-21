@@ -1,1 +1,21 @@
-﻿<p>{{title}}</p>
+﻿<h3>{{localize 'my tickets'}}</h3>
+<table class="pure-table pure-table-horizontal pure-table-striped pure-table-fullsize">
+    <thead>
+        <tr>
+            <th style="width: 150px">#</th>
+            <th style="width: 50px">{{localize 'priority'}}</th>
+            <th>{{localize 'description'}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each tickets}}
+        {{#with value}}
+        <tr>
+            <td><a href="/ticket/details/{{ticketnumber}}">{{ticketnumber}}</a></td>
+            <td>{{priority}}</td>
+            <td>{{description}}</td>
+        </tr>
+        {{/with}}
+        {{/each}}
+    </tbody>
+</table>

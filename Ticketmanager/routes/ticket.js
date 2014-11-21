@@ -60,3 +60,26 @@ exports.addPost = function (req, res) {
         res.render('tickets/add', req.body)
     }
 }
+
+/*
+ * GET ticket/details/:id
+ */
+exports.details = function (req, res) {
+    ticketprovider.byId('2013052410000466', function (error, result) {
+        res.render('tickets/details', { title: req.localize('ticket details'), details: result })
+    })
+}
+
+/*
+ * POST ticket/comments/:id
+ */
+exports.comment = function (req, res) {
+    var data = {
+        commentvalue: req.param('commentvalue'), 
+        creator: req.session['username'],
+        created: new Date(Date.now())
+    }
+    ticketprovider.addComment(req.param('id'), data, function (error, result) {
+        res.redirect('ticket/details/' + req.param('id') + '#comments')
+    })
+}
