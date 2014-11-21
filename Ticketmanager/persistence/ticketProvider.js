@@ -5,7 +5,10 @@ TicketProvider = function () {
 }
 TicketProvider.prototype.save = function (ticket, callback) {
     ticket['type'] = 'ticket'
-    this.db.save(ticket, function (err, res) {
+    var ticketnumber = ticket.ticketnumber
+    delete ticket['ticketnumber']
+    this.db.save(ticketnumber, ticket, function (err, res) {
+        ticket.ticketnumber = ticketnumber
         if (err) {
             console.error(err)
             callback(err, null)
@@ -16,7 +19,7 @@ TicketProvider.prototype.save = function (ticket, callback) {
     })
 }
 TicketProvider.prototype.findAllFree = function (callback) {
-    this.db.view('tickets/free',new { include_docs: true }, function (error, result) {
+    this.db.view('tickets/free', new { include_docs: true}, function (error, result) {
         if (error) {
             callback(error)
         } else {

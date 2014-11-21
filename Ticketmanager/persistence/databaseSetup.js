@@ -277,10 +277,6 @@ exports.setup = function () {
                             }
                             break;
                         case 'ticket':
-                            if (!newDoc.ticketnumber) {
-                                error.error = "invalid value"
-                                error.reason.push("you need to give the ticket a ticketnumber")
-                            }
                             if (!newDoc.description) {
                                 error.error = "invalid value"
                                 error.reason.push("you need to give the ticket a description")
@@ -302,6 +298,10 @@ exports.setup = function () {
                             } else if (!/\d*/.test(newDoc.ordervolume)) {
                                 error.error = "invalid value"
                                 error.reason.push("the impact in orders per week is invalid")
+                            }
+                            if (!newDoc.impactdescription) {
+                                error.error = "invalid value"
+                                error.reason.push("you need to give the ticket an impact description")
                             }
                             break;
                         case 'worker':

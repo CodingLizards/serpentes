@@ -38,13 +38,25 @@ exports.add = function (req, res) {
  * POST ticket
  */
 exports.addPost = function (req, res) {
-    ticketprovider.save(req.body, function (err, result) {
-        if (err) {
-            req.body.error = err
-            req.body.title = req.localize('add ticket')
-            res.render('tickets/add', req.body)
-        } else {
-            res.render('tickets/addsuccess', { title: req.localize('add ticket') })
+    if (req.body.ticketnumber) {
+        ticketprovider.save(req.body, function (err, result) {
+            if (err) {
+                req.body.error = err
+                req.body.title = req.localize('add ticket')
+                res.render('tickets/add', req.body)
+            } else {
+                res.render('tickets/addsuccess', { title: req.localize('add ticket') })
+            }
+        })
+    } else {
+        req.body.error = {
+            error: "forbidden",
+            reason: {
+                error: "invalid value", 
+                reason: ["you need to give the ticket a ticketnumber"]
+            }
         }
-    })
+        req.body.title = req.localize('add ticket')
+        res.render('tickets/add', req.body)
+    }
 }
