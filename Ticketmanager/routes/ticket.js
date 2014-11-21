@@ -65,7 +65,7 @@ exports.addPost = function (req, res) {
  * GET ticket/details/:id
  */
 exports.details = function (req, res) {
-    ticketprovider.byId('2013052410000466', function (error, result) {
+    ticketprovider.byId(req.param('id'), function (error, result) {
         res.render('tickets/details', { title: req.localize('ticket details'), details: result })
     })
 }
