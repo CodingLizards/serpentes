@@ -1,33 +1,32 @@
-﻿<form action="/admin/settings/design/" method="post" class="pure-form pure-form-stacked">
+﻿<form action="/admin/settings/design/" method="post" class="pure-form pure-form-aligned">
     <fieldset>
-        <div class="pure-g">
-            <div class="pure-u-1">
-                <label for="brand-color">@brand-color</label>
-                <input id="brand-color" name="brand-color" type="color" class="pure-input-1" value="{{colors.brand-color}}" placeholder="@brand-color" />
-            </div>
-            <div class="pure-u-1">
-                <label for="success-color">@success-color</label>
-                <input id="success-color" name="success-color" type="color" class="pure-input-1" value="{{colors.success-color}}" placeholder="@success-color" />
-            </div>
-            <div class="pure-u-1">
-                <label for="info-color">@info-color</label>
-                <input id="info-color" name="info-color" type="color" class="pure-input-1" value="{{colors.info-color}}" placeholder="@info-color" />
-            </div>
-            <div class="pure-u-1">
-                <label for="warning-color">@warning-color</label>
-                <input id="warning-color" name="warning-color" type="color" class="pure-input-1" value="{{colors.warning-color}}" placeholder="@warning-color" />
-            </div>
-            <div class="pure-u-1">
-                <label for="error-color">@error-color</label>
-                <input id="error-color" name="error-color" type="color" class="pure-input-1" value="{{colors.error-color}}" placeholder="@error-color" />
-            </div>
-            <div class="pure-u-1">
-                <label for="text-color">@text-color</label>
-                <input id="text-color" name="text-color" type="color" class="pure-input-1" value="{{colors.text-color}}" placeholder="@text-color" />
-            </div>
-            <div class="pure-u-1">
-                <button type="submit" class="pure-button pure-button-primary">{{localize 'save'}}</button>
-            </div>
+        <legend>{{localize 'design'}}</legend>
+        <div class="pure-control-group">
+            <label for="brand-color">@brand-color</label>
+            <input id="brand-color" name="brand-color" type="color" class="pure-u-20-24" value="{{colors.brand-color}}" placeholder="@brand-color" />
+        </div>
+        <div class="pure-control-group">
+            <label for="success-color">@success-color</label>
+            <input id="success-color" name="success-color" type="color" class="pure-u-20-24" value="{{colors.success-color}}" placeholder="@success-color" />
+        </div>
+        <div class="pure-control-group">
+            <label for="info-color">@info-color</label>
+            <input id="info-color" name="info-color" type="color" class="pure-u-20-24" value="{{colors.info-color}}" placeholder="@info-color" />
+        </div>
+        <div class="pure-control-group">
+            <label for="warning-color">@warning-color</label>
+            <input id="warning-color" name="warning-color" type="color" class="pure-u-20-24" value="{{colors.warning-color}}" placeholder="@warning-color" />
+        </div>
+        <div class="pure-control-group">
+            <label for="error-color">@error-color</label>
+            <input id="error-color" name="error-color" type="color" class="pure-u-20-24" value="{{colors.error-color}}" placeholder="@error-color" />
+        </div>
+        <div class="pure-control-group">
+            <label for="text-color">@text-color</label>
+            <input id="text-color" name="text-color" type="color" class="pure-u-20-24" value="{{colors.text-color}}" placeholder="@text-color" />
+        </div>
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">{{localize 'save'}}</button>
         </div>
     </fieldset>
 </form>
