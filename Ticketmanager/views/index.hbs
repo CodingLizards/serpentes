@@ -11,7 +11,7 @@
         {{#each tickets}}
         {{#with value}}
         <tr>
-            <td><a href="/ticket/details/{{ticketnumber}}">{{ticketnumber}}</a></td>
+            <td><a href="/ticket/details/{{uriencode ticketnumber}}">{{ticketnumber}}</a></td>
             <td>{{priority}}</td>
             <td>{{description}}</td>
         </tr>

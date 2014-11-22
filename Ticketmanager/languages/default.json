@@ -7,6 +7,9 @@
     "made by Imanuel Ulbricht": "Geschrieben von Imanuel Ulbricht",
     "next": "Weiter",
     "back": "Zurück",
+    "view": "Anzeigen",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
 
     "add application": "Anwendung hinzufügen",
     "add worker": "Mitarbeiter hinzufügen",
@@ -107,5 +110,8 @@
     "submit comment": "Kommentar abschicken",
     "content": "Inhalt",
     "from": "von",
-    "release": "Release"
+    "release": "Release",
+
+    "worker details": "Mitarbeiterdetails",
+    "edit worker": "Mitarbeiter bearbeiten"
 }

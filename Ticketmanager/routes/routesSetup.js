@@ -21,8 +21,11 @@ exports.setup = function (app) {
     app.get('/ticket/details/:id', ticket.details)
     app.post('/ticket/comments/:id', ticket.comment)
     
+    app.get('/worker', worker.index)
+    app.get('/worker/details/:id', worker.details)
     app.get('/worker/add', worker.add)
     app.post('/worker/add', worker.addPost)
+    app.post('/worker/update/:id', worker.update)
     
     app.get('/application/add', application.add)
     app.post('/application/add', application.addPost)

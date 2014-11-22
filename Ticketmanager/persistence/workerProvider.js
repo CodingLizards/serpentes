@@ -18,6 +18,17 @@ WorkerProvider.prototype.save = function (worker, callback) {
         }
     })
 }
+WorkerProvider.prototype.update = function (id, worker, callback) {
+    this.db.merge(id, worker, function (err, res) {
+        if (err) {
+            console.error(err)
+            callback(err, null)
+        } else {
+            console.log(res)
+            callback(null, res)
+        }
+    })
+}
 WorkerProvider.prototype.byId = function (id, callback) {
     this.db.get(id, function (error, result) {
         if (error) {

@@ -71,6 +71,9 @@ app.use(function (req, res, next) {
     hbs.helpers.localize = function (key) {
         return __localize(key, req)
     }
+    hbs.helpers.uriencode = function (item) {
+        return encodeURIComponent(item)
+    }
     req.localize = function (key) { return __localize(key, req) }
     next()
 })

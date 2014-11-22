@@ -1,10 +1,28 @@
-﻿<form class="pure-form pure-form-aligned" action="/worker/add" method="post">
+﻿{{#with data}}
+<div class="pure-menu pure-menu-open pure-menu-horizontal">
+    <ul>
+        <li class="pure-menu-selected"><a href="#details" data-toggle="tabs">{{localize 'worker details'}}</a></li>
+        <li><a href="#edit" data-toggle="tabs">{{localize 'edit worker'}}</a></li>
+    </ul>
+</div>
+<div class="pure-form pure-menu-page pure-menu-selected" id="details">
     <fieldset>
-        <legend>{{localize 'add worker'}}</legend>
-        <div class="pure-control-group">
-            <label for="username">{{localize 'username'}}*</label>
-            <input required name="username" class="pure-u-20-24" id="username" type="text" value="{{username}}" placeholder="{{localize 'username'}}">
-        </div>
+        <legend>{{localize 'worker details'}}</legend>
+        <h4>{{localize 'username'}}</h4>
+        <p>{{_id}}</p>
+        <h4>{{localize 'firstname'}}</h4>
+        <p>{{firstname}}</p>
+        <h4>{{localize 'lastname'}}</h4>
+        <p>{{lastname}}</p>
+        <h4>{{localize 'emailaddress'}}</h4>
+        <p>{{emailaddress}}</p>
+        <h4>{{localize 'phonenumber'}}</h4>
+        <p>{{phonenumber}}</p>
+    </fieldset>
+</div>
+<form class="pure-form pure-form-aligned pure-menu-page" action="/worker/update/{{uriencode _id}}" method="post" id="edit">
+    <fieldset>
+        <legend>{{localize 'edit worker'}}</legend>
         <div class="pure-control-group">
             <label for="firstname">{{localize 'firstname'}}*</label>
             <input required name="firstname" class="pure-u-20-24" id="firstname" type="text" value="{{firstname}}" placeholder="{{localize 'firstname'}}">
@@ -26,3 +44,4 @@
         </div>
     </fieldset>
 </form>
+{{/with}}

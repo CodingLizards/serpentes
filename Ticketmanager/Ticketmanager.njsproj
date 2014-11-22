@@ -97,8 +97,10 @@ EDGE_CS_DEBUG=1</Environment>
     <Content Include="views\tickets\addsuccess.hbs" />
     <Content Include="views\tickets\add.hbs" />
     <Content Include="views\tickets\details.hbs" />
+    <Content Include="views\workers\details.hbs" />
     <Content Include="views\workers\add.hbs" />
     <Content Include="views\workers\addsuccess.hbs" />
+    <Content Include="views\workers\index.hbs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="languages\" />

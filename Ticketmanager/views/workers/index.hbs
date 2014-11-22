@@ -1,0 +1,22 @@
+﻿<table class="pure-table pure-table-horizontal pure-table-striped pure-table-fullsize">
+    <thead>
+        <tr>
+            <th>{{localize 'username'}}</th>
+            <th>{{localize 'firstname'}}</th>
+            <th>{{localize 'lastname'}}</th>
+            <th>{{localize 'emailaddress'}}</th>
+            <th>{{localize 'phonenumber'}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each data}}
+        <tr>
+            <td><a href="/worker/details/{{uriencode _id}}">{{_id}}</a></td>
+            <td>{{firstname}}</td>
+            <td>{{lastname}}</td>
+            <td>{{emailaddress}}</td>
+            <td>{{phonenumber}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
