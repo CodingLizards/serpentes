@@ -48,6 +48,8 @@
     "clients": "Mandanten",
     "saved client successfully": "Der Mandant wurde erfolgreich gespeichert",
     "create another client": "Noch einen Mandanten hinzufügen",
+    "client details": "Mandantendetails",
+    "edit client": "Mandant bearbeiten",
 
     "departments": "Abteilungen",
     "saved department successfully": "Die Abteilung wurde erfolgreich gespeichert",

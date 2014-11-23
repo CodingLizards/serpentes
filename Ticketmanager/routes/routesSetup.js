@@ -36,8 +36,11 @@ exports.setup = function (app) {
     app.post('/department/add', department.addPost)
     app.post('/department/update/:id', department.update)
     
+    app.get('/client', client.index)
+    app.get('/client/details/:id', client.details)
     app.get('/client/add', client.add)
     app.post('/client/add', client.addPost)
+    app.post('/client/update/:id', client.update)
     
     app.get('/release/add', release.add)
     app.post('/release/add', release.addPost)

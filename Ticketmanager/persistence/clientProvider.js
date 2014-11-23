@@ -15,6 +15,17 @@ ClientProvider.prototype.save = function (client, callback) {
         }
     })
 }
+ClientProvider.prototype.update = function (id, client, callback) {
+    this.db.merge(id, client, function (err, res) {
+        if (err) {
+            console.error(err)
+            callback(err, null)
+        } else {
+            console.log(res)
+            callback(null, res)
+        }
+    })
+}
 ClientProvider.prototype.all = function (callback) {
     this.db.view('clients/all', function (error, result) {
         if (error) {
@@ -28,4 +39,14 @@ ClientProvider.prototype.all = function (callback) {
         }
     })
 }
+ClientProvider.prototype.byId = function (id, callback) {
+    this.db.get(id, function (error, res) {
+        if (error) {
+            callback(error)
+        } else {
+            callback(null, res)
+        }
+    })
+}
+
 exports.ClientProvider = ClientProvider
