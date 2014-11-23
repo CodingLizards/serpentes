@@ -21,6 +21,14 @@
             <label for="phonenumber">{{localize 'phonenumber'}}*</label>
             <input required name="phonenumber" class="pure-u-20-24" id="phonenumber" type="tel" value="{{phonenumber}}" placeholder="{{localize 'phonenumber'}}">
         </div>
+        <div class="pure-control-group">
+            <label for="department">{{localize 'department'}}*</label>
+            <select required name="department" class="pure-u-20-24" id="department">
+                <option value="development">{{localize 'development'}}</option>
+                <option value="qualityassurance">{{localize 'qualityassurance'}}</option>
+                <option value="operations">{{localize 'operations'}}</option>
+            </select>
+        </div>
         <div class="pure-controls">
             <button class="pure-button pure-button-primary" type="submit">{{localize 'save'}}</button>
         </div>

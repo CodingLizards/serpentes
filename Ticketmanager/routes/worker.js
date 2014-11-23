@@ -61,7 +61,8 @@ exports.update = function (req, res) {
         firstname: req.param('firstname'),
         lastname: req.param('lastname'),
         emailaddress: req.param('emailaddress'),
-        phonenumber: req.param('phonenumber')
+        phonenumber: req.param('phonenumber'),
+        department: req.param('department')
     }
     workerprovider.update(req.param('id'), data, function (err, result) {
         res.redirect('worker/details/' + req.param('id'))

@@ -18,6 +18,8 @@
         <p>{{emailaddress}}</p>
         <h4>{{localize 'phonenumber'}}</h4>
         <p>{{phonenumber}}</p>
+        <h4>{{localize 'department'}}</h4>
+        <p>{{localize department}}</p>
     </fieldset>
 </div>
 <form class="pure-form pure-form-aligned pure-menu-page" action="/worker/update/{{uriencode _id}}" method="post" id="edit">
@@ -38,6 +40,29 @@
         <div class="pure-control-group">
             <label for="phonenumber">{{localize 'phonenumber'}}*</label>
             <input required name="phonenumber" class="pure-u-20-24" id="phonenumber" type="tel" value="{{phonenumber}}" placeholder="{{localize 'phonenumber'}}">
+        </div>
+        <div class="pure-control-group">
+            <label for="department">{{localize 'department'}}*</label>
+            <select required name="department" class="pure-u-20-24" id="department">
+                <option value="development"
+                        {{#compare department '===' 'development'}}
+                        selected
+                        {{/compare}}>
+                    {{localize 'development'}}
+                </option>
+                <option value="qualityassurance"
+                        {{#compare department '===' 'qualityassurance'}}
+                        selected
+                        {{/compare}}>
+                    {{localize 'qualityassurance'}}
+                </option>
+                <option value="operations"
+                        {{#compare department '===' 'operations'}}
+                        selected
+                        {{/compare}}>
+                    {{localize 'operations'}}
+                </option>
+            </select>
         </div>
         <div class="pure-controls">
             <button class="pure-button pure-button-primary" type="submit">{{localize 'save'}}</button>

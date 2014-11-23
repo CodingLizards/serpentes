@@ -71,6 +71,12 @@
     "worker": "Mitarbeiter",
     "saved worker successfully": "Der Mitarbeiter wurde erfolgreich gespeichert",
     "create another worker": "Noch einen Mitarbeiter hinzufügen",
+    "department": "Abteilung",
+    "worker details": "Mitarbeiterdetails",
+    "edit worker": "Mitarbeiter bearbeiten",
+    "development": "Entwicklung",
+    "qualityassurance": "Qualitätssicherung",
+    "operations": "Operations",
 
     "releases": "Releases",
     "release date": "Releasedatum",
@@ -110,8 +116,5 @@
     "submit comment": "Kommentar abschicken",
     "content": "Inhalt",
     "from": "von",
-    "release": "Release",
-
-    "worker details": "Mitarbeiterdetails",
-    "edit worker": "Mitarbeiter bearbeiten"
+    "release": "Release"
 }

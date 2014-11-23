@@ -300,7 +300,7 @@ exports.setup = function () {
                 all: {
                     map: function (doc) {
                         if (doc.type == 'worker') {
-                            emit(doc.id, doc)
+                            emit([doc.department, 0], doc)
                         }
                     }
                 }
