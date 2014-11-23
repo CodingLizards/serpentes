@@ -18,7 +18,7 @@ exports.addPost = function (req, res) {
             req.body.title = req.localize('add client')
             res.render('clients/add', req.body)
         } else {
-            res.render('clients/addsuccess', { title: req.localize('successfully saved client') })
+            res.render('clients/addsuccess', { title: req.localize('saved client successfully') })
         }
     })
 }
