@@ -1,0 +1,16 @@
+﻿<table class="pure-table pure-table-horizontal pure-table-striped pure-table-fullsize">
+    <thead>
+        <tr>
+            <th style="width: 100px">#</th>
+            <th>{{localize 'name'}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each data}}
+        <tr>
+            <td><a href="/application/details/{{_id}}"><code>{{truncate _id 6 ''}}</code></a></td>
+            <td>{{name}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

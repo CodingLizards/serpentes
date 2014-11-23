@@ -15,6 +15,17 @@ ApplicationProvider.prototype.save = function (application, callback) {
         }
     })
 }
+ApplicationProvider.prototype.update = function (id, application, callback) {
+    this.db.merge(id, application, function (err, res) {
+        if (err) {
+            console.error(err)
+            callback(err, null)
+        } else {
+            console.log(res)
+            callback(null, res)
+        }
+    })
+}
 ApplicationProvider.prototype.all = function (callback) {
     this.db.view('applications/all', function (error, result) {
         if (error) {
@@ -28,4 +39,14 @@ ApplicationProvider.prototype.all = function (callback) {
         }
     })
 }
+ApplicationProvider.prototype.byId = function (id, callback) {
+    this.db.get(id, function (error, res) {
+        if (error) {
+            callback(error)
+        } else {
+            callback(null, res)
+        }
+    })
+}
+
 exports.ApplicationProvider = ApplicationProvider

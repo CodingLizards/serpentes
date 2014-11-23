@@ -44,6 +44,8 @@
     "applications": "Anwendungen",
     "saved application successfully": "Die Anwendung wurde erfolgreich gespeichert",
     "create another application": "Noch eine Anwendung hinzufügen",
+    "application details": "Anwendungsdetails",
+    "edit application": "Anwendung bearbeiten",
 
     "clients": "Mandanten",
     "saved client successfully": "Der Mandant wurde erfolgreich gespeichert",
