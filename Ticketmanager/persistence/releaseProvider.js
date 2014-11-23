@@ -15,6 +15,17 @@ ReleaseProvider.prototype.save = function (release, callback) {
         }
     })
 }
+ReleaseProvider.prototype.update = function (id, release, callback) {
+    this.db.merge(id, release, function (err, res) {
+        if (err) {
+            console.error(err)
+            callback(err, null)
+        } else {
+            console.log(res)
+            callback(null, res)
+        }
+    })
+}
 ReleaseProvider.prototype.all = function (callback) {
     this.db.view('release/all', function (error, result) {
         if (error) {
@@ -28,4 +39,14 @@ ReleaseProvider.prototype.all = function (callback) {
         }
     })
 }
+ReleaseProvider.prototype.byId = function (id, callback) {
+    this.db.get(id, function (error, res) {
+        if (error) {
+            callback(error)
+        } else {
+            callback(null, res)
+        }
+    })
+}
+
 exports.ReleaseProvider = ReleaseProvider

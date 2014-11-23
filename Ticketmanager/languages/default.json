@@ -88,6 +88,8 @@
     "release date": "Releasedatum",
     "saved release successfully": "Das Release wurde erfolgreich gespeichert",
     "create another release": "Noch ein Release hinzufügen",
+    "release details": "Releasedetails",
+    "edit release": "Release bearbeiten",
 
     "invalid value": "Einige Werte sind ungültig oder fehlen",
     "you need to give the application a name": "Die Anwendung muss benannt werden",

@@ -45,8 +45,11 @@ exports.setup = function (app) {
     app.post('/client/add', client.addPost)
     app.post('/client/update/:id', client.update)
     
+    app.get('/release', release.index)
+    app.get('/release/details/:id', release.details)
     app.get('/release/add', release.add)
     app.post('/release/add', release.addPost)
+    app.post('/release/update/:id', release.update)
     
     app.get('/admin/settings/language', settings.language)
     app.get('/admin/settings/language/reload', settings.reloadLanguage)
