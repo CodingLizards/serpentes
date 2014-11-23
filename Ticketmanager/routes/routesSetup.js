@@ -30,8 +30,11 @@ exports.setup = function (app) {
     app.get('/application/add', application.add)
     app.post('/application/add', application.addPost)
     
+    app.get('/department', department.index)
+    app.get('/department/details/:id', department.details)
     app.get('/department/add', department.add)
     app.post('/department/add', department.addPost)
+    app.post('/department/update/:id', department.update)
     
     app.get('/client/add', client.add)
     app.post('/client/add', client.addPost)

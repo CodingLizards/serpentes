@@ -86,6 +86,8 @@ EDGE_CS_DEBUG=1</Environment>
     <Content Include="views\clients\addsuccess.hbs" />
     <Content Include="views\departments\add.hbs" />
     <Content Include="views\departments\addsuccess.hbs" />
+    <Content Include="views\departments\details.hbs" />
+    <Content Include="views\departments\index.hbs" />
     <Content Include="views\index.hbs">
       <SubType>Code</SubType>
     </Content>
