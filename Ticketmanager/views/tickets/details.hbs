@@ -6,6 +6,7 @@
         <li><a href="#more" data-toggle="tabs">{{localize 'more details'}}</a></li>
         <li><a href="#comments" data-toggle="tabs">{{localize 'comments'}}</a></li>
         <li><a href="#edit" data-toggle="tabs">{{localize 'edit ticket'}}</a></li>
+        <li><a href="#actions" data-toggle="tabs">{{localize 'actions'}}</a></li>
     </ul>
 </div>
 <div class="pure-form">
@@ -19,7 +20,11 @@
         {{/if}}
         {{#if assignee}}
         <h4>{{localize 'assignee'}}</h4>
+        {{#and assignee.firstname assignee.lastname}}
+        <p>{{assignee.firstname}} {{assignee.lastname}}</p>
+        {{else}}
         <p>{{assignee}}</p>
+        {{/and}}
         {{/if}}
         <h4>{{localize 'description'}}</h4>
         <article>{{description}}</article>
@@ -223,6 +228,15 @@
                 </div>
             </div>
         </form>
+    </fieldset>
+    <fieldset id="actions" class="pure-menu-page">
+        <legend>{{localize 'actions'}}</legend>
+        {{#unless assignee}}
+        <p>{{localize 'you can assign a ticket to yourself, so it is locked and you can work on it'}}</p>
+        <form action="/ticket/assign/{{_id}}/{{loggedonuser}}" method="post">
+            <button class="pure-button pure-button-primary" type="submit">{{localize 'assign to me'}}</button>
+        </form>
+        {{/unless}}
     </fieldset>
 </div>
 {{/with}}

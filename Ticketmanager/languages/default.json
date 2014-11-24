@@ -83,6 +83,9 @@
     "edit ticket": "Ticket bearbeiten",
     "assignee": "Besitzer",
     "last comment": "Letzter Kommentar",
+    "actions": "Weitere Aktionen",
+    "you can assign a ticket to yourself, so it is locked and you can work on it": "Du kannst dir ein Ticket zuweisen, so kannst du es bearbeteiten und jeder weiß, dass es aktuell bei dir liegt",
+    "assign to me": "Mir zuweisen",
 
     "worker": "Mitarbeiter",
     "saved worker successfully": "Der Mitarbeiter wurde erfolgreich gespeichert",
