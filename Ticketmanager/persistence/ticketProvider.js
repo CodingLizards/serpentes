@@ -9,6 +9,26 @@ var sort = function (data) {
 TicketProvider = function () {
     this.db = require('./databaseSetup.js').getDatabase()
 }
+TicketProvider.prototype.allByState = function (state, callback) {
+    var provider = new TicketProvider()
+    switch (state) {
+        case 'active':
+            provider.allActive(callback)
+            break
+        case 'free':
+            provider.allFree(callback)
+            break
+        case 'archived':
+            provider.allArchived(callback)
+            break
+        case 'unprioritized':
+            provider.allUnprioritized(callback)
+            break
+        default:
+            provider.all(callback)
+            break
+    }
+}
 TicketProvider.prototype.save = function (ticket, callback) {
     ticket['type'] = 'ticket'
     var ticketnumber = ticket.ticketnumber
@@ -44,8 +64,8 @@ TicketProvider.prototype.addComment = function (id, comment, callback) {
     })
 }
 
-TicketProvider.prototype.findAllFree = function (callback) {
-    this.db.view('tickets/free', new { include_docs: true }, function (error, result) {
+TicketProvider.prototype.all = function (callback) {
+    this.db.view('tickets/all', new { include_docs: true }, function (error, result) {
         if (error) {
             callback(error)
         } else {
@@ -57,8 +77,8 @@ TicketProvider.prototype.findAllFree = function (callback) {
         }
     })
 }
-TicketProvider.prototype.findAllUnprioritised = function (callback) {
-    this.db.view('tickets/unprioritised', function (error, result) {
+TicketProvider.prototype.allFree = function (callback) {
+    this.db.view('tickets/free', new { include_docs: true}, function (error, result) {
         if (error) {
             callback(error)
         } else {
@@ -70,7 +90,20 @@ TicketProvider.prototype.findAllUnprioritised = function (callback) {
         }
     })
 }
-TicketProvider.prototype.findAllArchived = function (callback) {
+TicketProvider.prototype.allUnprioritized = function (callback) {
+    this.db.view('tickets/unprioritized', function (error, result) {
+        if (error) {
+            callback(error)
+        } else {
+            var docs = []
+            result.forEach(function (row) {
+                docs.push(row)
+            })
+            callback(null, sort(docs))
+        }
+    })
+}
+TicketProvider.prototype.allArchived = function (callback) {
     this.db.view('tickets/archived', function (error, result) {
         if (error) {
             callback(error)
@@ -83,7 +116,7 @@ TicketProvider.prototype.findAllArchived = function (callback) {
         }
     })
 }
-TicketProvider.prototype.findAllActive = function (callback) {
+TicketProvider.prototype.allActive = function (callback) {
     this.db.view('tickets/active', function (error, result) {
         if (error) {
             callback(error)

@@ -68,6 +68,52 @@ exports.setup = function () {
                         }
                     }
                 },
+                all: {
+                    map: function (doc) {
+                        if (doc.type == 'ticket') {
+                            if (!doc.archived) {
+                                emit([doc.applications, doc.clients, doc.release, doc.departments, 0], doc)
+                            }
+                        } else if (doc.type == 'application') {
+                            emit([doc._id, 1], doc)
+                        } else if (doc.type == 'client') {
+                            emit([doc._id, 2], doc)
+                        } else if (doc.type == 'release') {
+                            emit([doc._id, 3], doc)
+                        } else if (doc.type == 'department') {
+                            emit([doc._id, 4], doc)
+                        }
+                    }, 
+                    reduce: function (keys, values, rereduce) {
+                        var result = null
+                        var applications = []
+                        var clients = []
+                        var release = []
+                        var departments = []
+                        for (var i = 0; i < values.length; i++) {
+                            if (values[i]) {
+                                if (values[i].type == 'ticket') {
+                                    result = values[i]
+                                } else if (values[i].type == 'application') {
+                                    applications.push(values[i])
+                                } else if (values[i].type == 'client') {
+                                    clients.push(values[i])
+                                } else if (values[i].type == 'release') {
+                                    release.push(values[i])
+                                } else if (values[i].type == 'department') {
+                                    departments.push(values[i])
+                                }
+                            }
+                        }
+                        if (result != null) {
+                            result.applications = applications
+                            result.clients = clients
+                            result.release = release
+                            result.departments = departments
+                            return result
+                        }
+                    }
+                },
                 free: {
                     map: function (doc) {
                         if (doc.type == 'ticket') {
@@ -114,7 +160,7 @@ exports.setup = function () {
                         }
                     }
                 },
-                unprioritised: {
+                unprioritized: {
                     map: function (doc) {
                         if (doc.type == 'ticket') {
                             if (!doc.priority && !doc.archived) {

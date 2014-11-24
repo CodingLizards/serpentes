@@ -73,6 +73,14 @@
     "order volume in €": "Finanzieller Schade pro Auftrag (in €)",
     "impact description": "Schadensbeschreibung",
     "more details": "Weitere Details",
+    "my tickets": "Meine Tickets",
+    "ticket details": "Ticketdetails",
+    "comments": "Kommentare",
+    "submit comment": "Kommentar abschicken",
+    "content": "Inhalt",
+    "from": "von",
+    "release": "Release",
+    "edit ticket": "Ticket bearbeiten",
 
     "worker": "Mitarbeiter",
     "saved worker successfully": "Der Mitarbeiter wurde erfolgreich gespeichert",
@@ -116,13 +124,5 @@
     "error reloading language files": "Fehler beim neu einlesen der Sprachdateien",
     "reloading language files worked fine": "Neu einlesen der Sprachdateien wurde erfolgreich abgeschlossen",
     "design": "Design",
-    "configure colors": "Farben anpassen",
-
-    "my tickets": "Meine Tickets",
-    "ticket details": "Ticketdetails",
-    "comments": "Kommentare",
-    "submit comment": "Kommentar abschicken",
-    "content": "Inhalt",
-    "from": "von",
-    "release": "Release"
+    "configure colors": "Farben anpassen"
 }

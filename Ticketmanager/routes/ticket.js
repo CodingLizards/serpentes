@@ -83,3 +83,36 @@ exports.comment = function (req, res) {
         res.redirect('ticket/details/' + req.param('id') + '#comments')
     })
 }
+
+/*
+ * GET ticket/:state
+ */
+exports.index = function (req, res) {
+    ticketprovider.allByState(req.param('state'), function (err, result) {
+        if (err) {
+            console.log(err)
+        }
+        var data = {
+            data: result
+        }
+        
+        switch (req.param('state')) {
+            case 'active':
+                data.title = req.localize('active tickets')
+                break
+            case 'free':
+                data.title = req.localize('free tickets')
+                break
+            case 'archived':
+                data.title = req.localize('archived tickets')
+                break
+            case 'unprioritized':
+                data.title = req.localize('unprioritized tickets')
+                break
+            default:
+                data.title = req.localize('show tickets')
+                break
+        }
+        res.render('tickets/index')
+    })
+}
