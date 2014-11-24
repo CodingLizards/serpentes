@@ -60,6 +60,9 @@ app.use(function (req, res, next) {
         else
             return opts.inverse(this)
     }
+    hbs.helpers.loggedonuser = function () {
+        return req.session['username']
+    }
     hbs.helpers.currentusername = function () {
         if (req.session['fullname'])
             return req.session['fullname']

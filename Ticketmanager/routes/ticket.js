@@ -3,12 +3,14 @@ var ApplicationProvider = require('../persistence/applicationProvider.js').Appli
 var ClientProvider = require('../persistence/clientProvider.js').ClientProvider
 var DepartmentProvider = require('../persistence/departmentProvider.js').DepartmentProvider
 var ReleaseProvider = require('../persistence/releaseProvider.js').ReleaseProvider
+var WorkerProvider = require('../persistence/workerProvider.js').WorkerProvider
 
 var ticketprovider = new TicketProvider()
 var applicationprovider = new ApplicationProvider()
 var clientprovider = new ClientProvider()
 var departmentprovider = new DepartmentProvider()
 var releaseprovider = new ReleaseProvider()
+var workerprovider = new WorkerProvider()
 
 /*
  * GET ticket/add
@@ -153,5 +155,19 @@ exports.update = function (req, res) {
     }
     ticketprovider.update(req.param('id'), data, function (err, result) {
         res.redirect('ticket/details/' + req.param('id'))
+    })
+}
+
+/*
+ * POST ticket/assign/:id/:username
+ */
+exports.assign = function (req, res) {
+    workerprovider.byId(req.param('username'), function (err, user) {
+        var data = {
+            assignee: err ? req.param('username') : user
+        }
+        ticketprovider.update(req.param('id'), data, function (err, result) {
+            res.redirect('ticket/details/' + req.param('id'))
+        })
     })
 }
