@@ -81,6 +81,8 @@
     "from": "von",
     "release": "Release",
     "edit ticket": "Ticket bearbeiten",
+    "assignee": "Besitzer",
+    "last comment": "Letzter Kommentar",
 
     "worker": "Mitarbeiter",
     "saved worker successfully": "Der Mitarbeiter wurde erfolgreich gespeichert",

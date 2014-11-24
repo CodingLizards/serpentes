@@ -71,6 +71,7 @@ exports.setup = function () {
                 all: {
                     map: function (doc) {
                         if (doc.type == 'ticket') {
+                            log('ticket with id ' + doc._id)
                             if (!doc.archived) {
                                 emit([doc.applications, doc.clients, doc.release, doc.departments, 0], doc)
                             }

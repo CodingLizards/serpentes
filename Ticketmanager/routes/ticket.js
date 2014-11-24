@@ -93,7 +93,7 @@ exports.index = function (req, res) {
             console.log(err)
         }
         var data = {
-            data: result
+            tickets: result
         }
         
         switch (req.param('state')) {
@@ -113,6 +113,6 @@ exports.index = function (req, res) {
                 data.title = req.localize('show tickets')
                 break
         }
-        res.render('tickets/index')
+        res.render('tickets/index', data)
     })
 }

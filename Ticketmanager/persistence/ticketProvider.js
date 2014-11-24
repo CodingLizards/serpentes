@@ -2,8 +2,17 @@
 
 var sort = function (data) {
     return data.sort(function (a, b) {
-        return a.value.priority - b.value.priority;
+        return a.priority - b.priority;
     })
+}
+
+var formatResult = function (data) {
+    var docs = []
+    data.forEach(function (row) {
+        if (row && row.type == 'ticket')
+            docs.push(row)
+    })
+    return sort(docs)
 }
 
 TicketProvider = function () {
@@ -65,67 +74,47 @@ TicketProvider.prototype.addComment = function (id, comment, callback) {
 }
 
 TicketProvider.prototype.all = function (callback) {
-    this.db.view('tickets/all', new { include_docs: true }, function (error, result) {
+    this.db.view('tickets/all', { group: true }, function (error, result) {
         if (error) {
             callback(error)
         } else {
-            var docs = []
-            result.forEach(function (row) {
-                docs.push(row)
-            })
-            callback(null, sort(docs))
+            callback(null, formatResult(result))
         }
     })
 }
 TicketProvider.prototype.allFree = function (callback) {
-    this.db.view('tickets/free', new { include_docs: true}, function (error, result) {
+    this.db.view('tickets/free', { group: true }, function (error, result) {
         if (error) {
             callback(error)
         } else {
-            var docs = []
-            result.forEach(function (row) {
-                docs.push(row)
-            })
-            callback(null, sort(docs))
+            callback(null, formatResult(result))
         }
     })
 }
 TicketProvider.prototype.allUnprioritized = function (callback) {
-    this.db.view('tickets/unprioritized', function (error, result) {
+    this.db.view('tickets/unprioritized', { group: true }, function (error, result) {
         if (error) {
             callback(error)
         } else {
-            var docs = []
-            result.forEach(function (row) {
-                docs.push(row)
-            })
-            callback(null, sort(docs))
+            callback(null, formatResult(result))
         }
     })
 }
 TicketProvider.prototype.allArchived = function (callback) {
-    this.db.view('tickets/archived', function (error, result) {
+    this.db.view('tickets/archived', { group: true }, function (error, result) {
         if (error) {
             callback(error)
         } else {
-            var docs = []
-            result.forEach(function (row) {
-                docs.push(row)
-            })
-            callback(null, sort(docs))
+            callback(null, formatResult(result))
         }
     })
 }
 TicketProvider.prototype.allActive = function (callback) {
-    this.db.view('tickets/active', function (error, result) {
+    this.db.view('tickets/active', { group: true }, function (error, result) {
         if (error) {
             callback(error)
         } else {
-            var docs = []
-            result.forEach(function (row) {
-                docs.push(row)
-            })
-            callback(null, docs);
+            callback(null, formatResult(result))
         }
     })
 }
@@ -141,9 +130,7 @@ TicketProvider.prototype.byCurrentWorker = function (workerid, callback) {
 TicketProvider.prototype.byId = function (id, callback) {
     var opts = {
         startkey: [id],
-        endkey: [id, {}],
-        reduce: true,
-        json: true
+        endkey: [id, {}]
     }
     this.db.view('tickets/byId/', opts, function (error, result) {
         if (error) {
