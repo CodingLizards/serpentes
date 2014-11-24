@@ -78,8 +78,20 @@ app.use(function (req, res, next) {
         return array.reverse()[0]
     }
     hbs.helpers.withLastElement = function (array, opts) {
-        if(array)
+        if (array)
             return opts.fn(array.reverse()[0])
+        else
+            return opts.inverse(this)
+    }
+    hbs.helpers.inArrayId = function (array, id, opts) {
+        var lookup = {}
+        if (array) {
+            for (var i = 0; i < array.length; i++) {
+                lookup[array[i]._id] = array[i]
+            }
+        }
+        if (lookup[id])
+            return opts.fn(this)
         else
             return opts.inverse(this)
     }

@@ -66,7 +66,23 @@ exports.addPost = function (req, res) {
  */
 exports.details = function (req, res) {
     ticketprovider.byId(req.param('id'), function (error, result) {
-        res.render('tickets/details', { title: req.localize('ticket details'), details: result })
+        applicationprovider.all(function (err, apps) {
+            if (err)
+                console.warn(err)
+            clientprovider.all(function (err, clients) {
+                if (err)
+                    console.warn(err)
+                departmentprovider.all(function (err, departments) {
+                    if (err)
+                        console.warn(err)
+                    releaseprovider.all(function (err, releases) {
+                        if (err)
+                            console.warn(err)
+                        res.render('tickets/details', { title: req.localize('ticket details'), details: result, Applications: apps, Clients: clients, Departments: departments, Releases: releases })
+                    })
+                })
+            })
+        })
     })
 }
 
@@ -114,5 +130,28 @@ exports.index = function (req, res) {
                 break
         }
         res.render('tickets/index', data)
+    })
+}
+
+/*
+ * POST ticket/update/:id
+ */
+exports.update = function (req, res) {
+    var data = {
+        priority: req.param('priority'),
+        description: req.param('description'),
+        deadline: req.param('deadline'),
+        emergency: req.param('emergency'),
+        brandharming: req.param('brandharming'),
+        minutesperweek: req.param('minutesperweek'),
+        ordervolume: req.param('ordervolume'),
+        impactdescription: req.param('impactdescription'),
+        applications: req.param('applications'),
+        departments: req.param('departments'),
+        clients: req.param('clients'),
+        release: req.param('release')
+    }
+    ticketprovider.update(req.param('id'), data, function (err, result) {
+        res.redirect('ticket/details/' + req.param('id'))
     })
 }

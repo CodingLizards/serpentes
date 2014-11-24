@@ -22,6 +22,7 @@ exports.setup = function (app) {
     app.get('/ticket/:state', ticket.index)
     app.post('/ticket/add', ticket.addPost)
     app.post('/ticket/comments/:id', ticket.comment)
+    app.post('/ticket/update/:id', ticket.update)
     
     app.get('/worker', worker.index)
     app.get('/worker/details/:id', worker.details)

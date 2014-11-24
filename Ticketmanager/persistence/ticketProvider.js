@@ -53,6 +53,17 @@ TicketProvider.prototype.save = function (ticket, callback) {
         }
     })
 }
+TicketProvider.prototype.update = function (ticketnumber, ticket, callback) {
+    this.db.merge(ticketnumber, ticket, function (err, res) {
+        if (err) {
+            console.error(err)
+            callback(err, null)
+        } else {
+            console.log(res)
+            callback(null, res)
+        }
+    })
+}
 TicketProvider.prototype.addComment = function (id, comment, callback) {
     var provider = new TicketProvider()
     provider.byId(id, function (error, ticket) {
@@ -130,17 +141,19 @@ TicketProvider.prototype.byCurrentWorker = function (workerid, callback) {
 TicketProvider.prototype.byId = function (id, callback) {
     var opts = {
         startkey: [id],
-        endkey: [id, {}]
+        endkey: [{}, {}, {}, {}, id]
     }
     this.db.view('tickets/byId/', opts, function (error, result) {
         if (error) {
             callback(error)
         } else {
-            var docs = []
+            var doc = {}
             result.forEach(function (row) {
-                docs.push(row)
+                if (row._id == id) {
+                    doc = row
+                }
             })
-            callback(null, docs[0]);
+            callback(null, doc);
         }
     })
 }

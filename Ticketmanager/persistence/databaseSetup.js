@@ -29,13 +29,13 @@ exports.setup = function () {
                         if (doc.type == 'ticket') {
                             emit([doc._id, doc.applications, doc.clients, doc.release, doc.departments], doc)
                         } else if (doc.type == 'application') {
-                            emit([doc._id, 1], doc)
+                            emit([doc._id, 0], doc)
                         } else if (doc.type == 'client') {
-                            emit([doc._id, 2], doc)
+                            emit([doc._id, 1], doc)
                         } else if (doc.type == 'release') {
-                            emit([doc._id, 3], doc)
+                            emit([doc._id, 2], doc)
                         } else if (doc.type == 'department') {
-                            emit([doc._id, 4], doc)
+                            emit([doc._id, 3], doc)
                         }
                     }, 
                     reduce: function (keys, values, rereduce) {
@@ -60,10 +60,34 @@ exports.setup = function () {
                             }
                         }
                         if (result != null) {
-                            result.applications = applications
-                            result.clients = clients
+                            var apps = []
+                            var cls = []
+                            var deps = []
+                            if (result.applications) {
+                                for (var i = 0; i < applications.length; i++) {
+                                    if (result.applications.indexOf(applications[i]._id) > -1) {
+                                        apps.push(applications[i])
+                                    }
+                                }
+                            }
+                            if (result.clients) {
+                                for (var i = 0; i < clients.length; i++) {
+                                    if (result.clients.indexOf(clients[i]._id) > -1) {
+                                        cls.push(clients[i])
+                                    }
+                                }
+                            }
+                            if (result.departments) {
+                                for (var i = 0; i < departments.length; i++) {
+                                    if (result.departments.indexOf(departments[i]._id) > -1) {
+                                        deps.push(departments[i])
+                                    }
+                                }
+                            }
+                            result.applications = apps
+                            result.clients = cls
+                            result.departments = deps
                             result.release = release
-                            result.departments = departments
                             return result
                         }
                     }
@@ -71,7 +95,6 @@ exports.setup = function () {
                 all: {
                     map: function (doc) {
                         if (doc.type == 'ticket') {
-                            log('ticket with id ' + doc._id)
                             if (!doc.archived) {
                                 emit([doc.applications, doc.clients, doc.release, doc.departments, 0], doc)
                             }
@@ -107,10 +130,34 @@ exports.setup = function () {
                             }
                         }
                         if (result != null) {
-                            result.applications = applications
-                            result.clients = clients
+                            var apps = []
+                            var cls = []
+                            var deps = []
+                            if (result.applications) {
+                                for (var i = 0; i < applications.length; i++) {
+                                    if (result.applications.indexOf(applications[i]._id) > -1) {
+                                        apps.push(applications[i])
+                                    }
+                                }
+                            }
+                            if (result.clients) {
+                                for (var i = 0; i < clients.length; i++) {
+                                    if (result.clients.indexOf(clients[i]._id) > -1) {
+                                        cls.push(clients[i])
+                                    }
+                                }
+                            }
+                            if (result.departments) {
+                                for (var i = 0; i < departments.length; i++) {
+                                    if (result.departments.indexOf(departments[i]._id) > -1) {
+                                        deps.push(departments[i])
+                                    }
+                                }
+                            }
+                            result.applications = apps
+                            result.clients = cls
+                            result.departments = deps
                             result.release = release
-                            result.departments = departments
                             return result
                         }
                     }
@@ -153,10 +200,34 @@ exports.setup = function () {
                             }
                         }
                         if (result != null) {
-                            result.applications = applications
-                            result.clients = clients
+                            var apps = []
+                            var cls = []
+                            var deps = []
+                            if (result.applications) {
+                                for (var i = 0; i < applications.length; i++) {
+                                    if (result.applications.indexOf(applications[i]._id) > -1) {
+                                        apps.push(applications[i])
+                                    }
+                                }
+                            }
+                            if (result.clients) {
+                                for (var i = 0; i < clients.length; i++) {
+                                    if (result.clients.indexOf(clients[i]._id) > -1) {
+                                        cls.push(clients[i])
+                                    }
+                                }
+                            }
+                            if (result.departments) {
+                                for (var i = 0; i < departments.length; i++) {
+                                    if (result.departments.indexOf(departments[i]._id) > -1) {
+                                        deps.push(departments[i])
+                                    }
+                                }
+                            }
+                            result.applications = apps
+                            result.clients = cls
+                            result.departments = deps
                             result.release = release
-                            result.departments = departments
                             return result
                         }
                     }
@@ -199,10 +270,34 @@ exports.setup = function () {
                             }
                         }
                         if (result != null) {
-                            result.applications = applications
-                            result.clients = clients
+                            var apps = []
+                            var cls = []
+                            var deps = []
+                            if (result.applications) {
+                                for (var i = 0; i < applications.length; i++) {
+                                    if (result.applications.indexOf(applications[i]._id) > -1) {
+                                        apps.push(applications[i])
+                                    }
+                                }
+                            }
+                            if (result.clients) {
+                                for (var i = 0; i < clients.length; i++) {
+                                    if (result.clients.indexOf(clients[i]._id) > -1) {
+                                        cls.push(clients[i])
+                                    }
+                                }
+                            }
+                            if (result.departments) {
+                                for (var i = 0; i < departments.length; i++) {
+                                    if (result.departments.indexOf(departments[i]._id) > -1) {
+                                        deps.push(departments[i])
+                                    }
+                                }
+                            }
+                            result.applications = apps
+                            result.clients = cls
+                            result.departments = deps
                             result.release = release
-                            result.departments = departments
                             return result
                         }
                     }
@@ -245,10 +340,34 @@ exports.setup = function () {
                             }
                         }
                         if (result != null) {
-                            result.applications = applications
-                            result.clients = clients
+                            var apps = []
+                            var cls = []
+                            var deps = []
+                            if (result.applications) {
+                                for (var i = 0; i < applications.length; i++) {
+                                    if (result.applications.indexOf(applications[i]._id) > -1) {
+                                        apps.push(applications[i])
+                                    }
+                                }
+                            }
+                            if (result.clients) {
+                                for (var i = 0; i < clients.length; i++) {
+                                    if (result.clients.indexOf(clients[i]._id) > -1) {
+                                        cls.push(clients[i])
+                                    }
+                                }
+                            }
+                            if (result.departments) {
+                                for (var i = 0; i < departments.length; i++) {
+                                    if (result.departments.indexOf(departments[i]._id) > -1) {
+                                        deps.push(departments[i])
+                                    }
+                                }
+                            }
+                            result.applications = apps
+                            result.clients = cls
+                            result.departments = deps
                             result.release = release
-                            result.departments = departments
                             return result
                         }
                     }
@@ -291,10 +410,34 @@ exports.setup = function () {
                             }
                         }
                         if (result != null) {
-                            result.applications = applications
-                            result.clients = clients
+                            var apps = []
+                            var cls = []
+                            var deps = []
+                            if (result.applications) {
+                                for (var i = 0; i < applications.length; i++) {
+                                    if (result.applications.indexOf(applications[i]._id) > -1) {
+                                        apps.push(applications[i])
+                                    }
+                                }
+                            }
+                            if (result.clients) {
+                                for (var i = 0; i < clients.length; i++) {
+                                    if (result.clients.indexOf(clients[i]._id) > -1) {
+                                        cls.push(clients[i])
+                                    }
+                                }
+                            }
+                            if (result.departments) {
+                                for (var i = 0; i < departments.length; i++) {
+                                    if (result.departments.indexOf(departments[i]._id) > -1) {
+                                        deps.push(departments[i])
+                                    }
+                                }
+                            }
+                            result.applications = apps
+                            result.clients = cls
+                            result.departments = deps
                             result.release = release
-                            result.departments = departments
                             return result
                         }
                     }
