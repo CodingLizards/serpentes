@@ -1,11 +1,9 @@
 # Ticketmanager
-
 The Ticketmanager is a very simple ticket system and also useful to prioritize tickets.
 
 You can use it, fork it, improve it as much as you want. It is one of our first node.js projects, so we would appreciate help :)
 
 # What are the features?
-
 The Ticketmanager offers you a good amount of options here is a list with all the features, for details refer to our wiki please :)
 
 ## Worker management
@@ -45,27 +43,30 @@ With the help of [edge.js](https://github.com/tjanczuk/edge) it is possible to u
 
 # What is ready, what is in planning?
 - [ ] Ticket management
-- [ ] Worker management
-- [ ] Department management
-- [ ] Application management
-- [ ] Client management
-- [ ] Release management
-- [ ] Customization
+    - [ ] Assign tickets to users
+- [x] Worker management
+    - [ ] Filter tickets by worker
+- [x] Department management
+    - [ ] Filter tickets by departments
+- [x] Application management
+    - [ ] Filter tickets by applications
+- [x] Client management
+    - [ ] Filter tickets by clients
+- [x] Release management
+    - [ ] Filter tickets by releases
+- [x] Customization
 - [ ] Localization
-- [ ] Windows authentication
-- [ ] Assign tickets to users
+- [x] Windows authentication
 
 # What do we need?
-
 - [ ] It would be great, if someone could improve the file [databaseSetup.js](https://github.com/CodingLizards/ticketmanager/blob/develop/Ticketmanager/persistence/databaseSetup.js). Mostly the `reduce` functions are horrible messy but it is hard to clean them up (very little experience)
 
 - [ ] Someone who could translate the `languages/default.json` file would be great, together we just speak German and English :)
 
 # Licence
-
 The MIT License (MIT)
 
-Copyright (c) 2014 Coding Lizards - Imanuel Ulbricht und Reemt Rühmkorf GbR
+Copyright (c) 2014 Coding Lizards - Imanuel Ulbricht und Reemt RÃ¼hmkorf GbR
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
