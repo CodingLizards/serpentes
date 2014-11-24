@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/CodingLizards/ticketmanager.svg)](https://travis-ci.org/CodingLizards/ticketmanager)
-
 # Ticketmanager
 The Ticketmanager is a very simple ticket system and also useful to prioritize tickets.
 
