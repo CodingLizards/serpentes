@@ -5,9 +5,10 @@
         <li><a href="#impact" data-toggle="tabs">{{localize 'impact'}}</a></li>
         <li><a href="#more" data-toggle="tabs">{{localize 'more details'}}</a></li>
         <li><a href="#comments" data-toggle="tabs">{{localize 'comments'}}</a></li>
+        <li><a href="#edit" data-toggle="tabs">{{localize 'edit ticket'}}</a></li>
     </ul>
 </div>
-<div class="pure-form pure-form-stacked">
+<div class="pure-form">
     <fieldset class="pure-menu-page pure-menu-selected" id="general">
         <legend>{{localize 'general'}}</legend>
         <h4>{{localize 'ticketnumber'}}</h4>
@@ -15,6 +16,10 @@
         {{#if priority}}
         <h4>{{localize 'priority'}}</h4>
         <p>{{priority}}</p>
+        {{/if}}
+        {{#if assignee}}
+        <h4>{{localize 'assignee'}}</h4>
+        <p>{{assignee}}</p>
         {{/if}}
         <h4>{{localize 'description'}}</h4>
         <article>{{description}}</article>
@@ -54,7 +59,7 @@
             {{#if applications}}
             <div class="pure-u-1">
                 <h4>{{localize 'applications'}}</h4>
-                {{#ul applications}}
+                {{#ul applications class="list-unstyled"}}
                 {{name}}
                 {{/ul}}
             </div>
@@ -62,7 +67,7 @@
             {{#if departments}}
             <div class="pure-u-1">
                 <h4>{{localize 'departments'}}</h4>
-                {{#ul departments}}
+                {{#ul departments class="list-unstyled"}}
                 {{name}}
                 {{/ul}}
             </div>
@@ -70,7 +75,7 @@
             {{#if clients}}
             <div class="pure-u-1">
                 <h4>{{localize 'clients'}}</h4>
-                {{#ul clients}}
+                {{#ul clients class="list-unstyled"}}
                 {{name}}
                 {{/ul}}
             </div>
@@ -110,7 +115,117 @@
             </div>
         </form>
     </fieldset>
+    <fieldset id="edit" class="pure-menu-page">
+        <legend>{{localize 'edit ticket'}}</legend>
+        <form action="/ticket/update/{{_id}}" method="post" class="pure-form pure-form-aligned" id="wizard">
+            <div class="pure-wizard-page">
+                <h3>{{localize 'general'}}</h3>
+                <div class="pure-control-group">
+                    <label for="priority">{{localize 'priority'}}</label>
+                    <input id="priority" placeholder="{{localize 'priority'}}" name="priority" type="number" class="pure-u-20-24" value="{{priority}}" />
+                </div>
+                <div class="pure-control-group">
+                    <label for="description">{{localize 'description'}}*</label>
+                    <textarea required id="description" placeholder="{{localize 'description'}}" name="description" cols="10" rows="10" class="pure-u-20-24">{{description}}</textarea>
+                </div>
+                <div class="pure-controls">
+                    <button type="button" class="pure-button pure-button-wizard-next">{{localize 'next'}}</button>
+                </div>
+            </div>
+            <div class="pure-wizard-page">
+                <h3>{{localize 'impact'}}</h3>
+                <div class="pure-control-group">
+                    <label for="deadline">{{localize 'deadline'}}</label>
+                    <input name="deadline" id="deadline" placeholder="{{localize 'deadline'}}" type="date" class="pure-u-20-24" value="{{deadline}}" />
+                </div>
+                <div class="pure-controls">
+                    <label for="emergency" class="pure-checkbox">
+                        <input id="emergency" name="emergency" type="checkbox" {{bindAttr checked="emergency"}} /> {{localize 'emergency'}}
+                    </label>
+                    <label for="brandharming" class="pure-checkbox">
+                        <input id="brandharming" name="brandharming" type="checkbox" {{bindAttr checked="brandharming"}} /> {{localize 'brand harming'}}
+                    </label>
+                </div>
+                <div class="pure-control-group">
+                    <label for="minutesperweek">{{localize 'minutes per week'}}*</label>
+                    <input required id="minutesperweek" placeholder="{{localize 'minutes per week'}}" name="minutesperweek" type="number" class="pure-u-20-24" value="{{minutesperweek}}" />
+                </div>
+                <div class="pure-control-group">
+                    <label for="ordervolume">{{localize 'order volume in €'}}*</label>
+                    <input required id="ordervolume" placeholder="{{localize 'order volume in €'}}" name="ordervolume" type="number" class="pure-u-20-24" value="{{ordervolume}}" />
+                </div>
+                <div class="pure-control-group">
+                    <label for="impactdescription">{{localize 'impact description'}}</label>
+                    <textarea required id="impactdescription" placeholder="{{localize 'impact description'}}" name="impactdescription" cols="10" rows="10" class="pure-u-20-24">{{impactdescription}}</textarea>
+                </div>
+                <div class="pure-controls">
+                    <button type="button" class="pure-button pure-button-wizard-prev">{{localize 'back'}}</button>
+                    <button type="button" class="pure-button pure-button-wizard-next">{{localize 'next'}}</button>
+                </div>
+            </div>
+            <div class="pure-wizard-page">
+                <h3>{{localize 'more details'}}</h3>
+                <div class="pure-control-group">
+                    <label for="applications">{{localize 'applications'}}</label>
+                    <select class="pure-u-20-24" multiple id="applications" name="applications">
+                        {{#each ../Applications}}
+                        <option value="{{_id}}"
+                                {{#inArrayId ../applications _id}}
+                                selected
+                                {{/inArrayId}}>
+                            {{name}}
+                        </option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="pure-control-group">
+                    <label for="departments">{{localize 'departments'}}</label>
+                    <select class="pure-u-20-24" multiple id="departments" name="departments">
+                        {{#each ../Departments}}
+                        <option value="{{_id}}"
+                                {{#inArrayId ../departments _id}}
+                                selected
+                                {{/inArrayId}}>
+                            {{name}}
+                        </option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="pure-control-group">
+                    <label for="clients">{{localize 'clients'}}</label>
+                    <select class="pure-u-20-24" multiple id="clients" name="clients">
+                        {{#each ../Clients}}
+                        <option value="{{_id}}"
+                                {{#inArrayId ../clients _id}}
+                                selected
+                                {{/inArrayId}}>
+                            {{name}}
+                        </option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="pure-control-group">
+                    <label for="release">{{localize 'releases'}}</label>
+                    <select class="pure-u-20-24" id="release" name="release">
+                        {{#each ../Releases}}
+                        <option value="{{_id}}"
+                                {{#compare _id '===' ../../release}}
+                                selected
+                                {{/compare}}>
+                            {{name}}
+                        </option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="pure-controls">
+                    <button type="button" class="pure-button pure-button-wizard-prev">{{localize 'back'}}</button>
+                    <button type="submit" class="pure-button pure-button-primary pure-button-wizard-next-primary">{{localize 'save'}}</button>
+                </div>
+            </div>
+        </form>
+    </fieldset>
 </div>
 {{/with}}
 <script>
+    $('#wizard').wizard()
 </script>

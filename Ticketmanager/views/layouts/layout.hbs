@@ -27,12 +27,12 @@
                         </li>
                         {{/if}}
                         <li>
-                            <a class="gn-icon fa-ticket">{{localize 'tickets'}}</a>
+                            <a class="gn-icon fa-ticket" href="/ticket">{{localize 'tickets'}}</a>
                             <ul class="gn-submenu">
-                                <li><a class="gn-icon fa-wrench">{{localize 'active tickets'}}</a></li>
-                                <li><a class="gn-icon fa-eye">{{localize 'free tickets'}}</a></li>
-                                <li><a class="gn-icon fa-certificate">{{localize 'unprioritized tickets'}}</a></li>
-                                <li><a class="gn-icon fa-archive">{{localize 'archived tickets'}}</a></li>
+                                <li><a href="/ticket/active" class="gn-icon fa-wrench">{{localize 'active tickets'}}</a></li>
+                                <li><a href="/ticket/free" class="gn-icon fa-eye">{{localize 'free tickets'}}</a></li>
+                                <li><a href="/ticket/unprioritized" class="gn-icon fa-certificate">{{localize 'unprioritized tickets'}}</a></li>
+                                <li><a href="/ticket/archived" class="gn-icon fa-archive">{{localize 'archived tickets'}}</a></li>
                                 <li><a class="gn-icon fa-plus" href="/ticket/add">{{localize 'add'}}</a></li>
                             </ul>
                         </li>

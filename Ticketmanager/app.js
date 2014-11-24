@@ -74,6 +74,27 @@ app.use(function (req, res, next) {
     hbs.helpers.uriencode = function (item) {
         return encodeURIComponent(item)
     }
+    hbs.helpers.lastElement = function (array) {
+        return array.reverse()[0]
+    }
+    hbs.helpers.withLastElement = function (array, opts) {
+        if (array)
+            return opts.fn(array.reverse()[0])
+        else
+            return opts.inverse(this)
+    }
+    hbs.helpers.inArrayId = function (array, id, opts) {
+        var lookup = {}
+        if (array) {
+            for (var i = 0; i < array.length; i++) {
+                lookup[array[i]._id] = array[i]
+            }
+        }
+        if (lookup[id])
+            return opts.fn(this)
+        else
+            return opts.inverse(this)
+    }
     req.localize = function (key) { return __localize(key, req) }
     next()
 })

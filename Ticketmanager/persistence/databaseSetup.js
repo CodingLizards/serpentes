@@ -29,6 +29,76 @@ exports.setup = function () {
                         if (doc.type == 'ticket') {
                             emit([doc._id, doc.applications, doc.clients, doc.release, doc.departments], doc)
                         } else if (doc.type == 'application') {
+                            emit([doc._id, 0], doc)
+                        } else if (doc.type == 'client') {
+                            emit([doc._id, 1], doc)
+                        } else if (doc.type == 'release') {
+                            emit([doc._id, 2], doc)
+                        } else if (doc.type == 'department') {
+                            emit([doc._id, 3], doc)
+                        }
+                    }, 
+                    reduce: function (keys, values, rereduce) {
+                        var result = null
+                        var applications = []
+                        var clients = []
+                        var release = []
+                        var departments = []
+                        for (var i = 0; i < values.length; i++) {
+                            if (values[i]) {
+                                if (values[i].type == 'ticket') {
+                                    result = values[i]
+                                } else if (values[i].type == 'application') {
+                                    applications.push(values[i])
+                                } else if (values[i].type == 'client') {
+                                    clients.push(values[i])
+                                } else if (values[i].type == 'release') {
+                                    release.push(values[i])
+                                } else if (values[i].type == 'department') {
+                                    departments.push(values[i])
+                                }
+                            }
+                        }
+                        if (result != null) {
+                            var apps = []
+                            var cls = []
+                            var deps = []
+                            if (result.applications) {
+                                for (var i = 0; i < applications.length; i++) {
+                                    if (result.applications.indexOf(applications[i]._id) > -1) {
+                                        apps.push(applications[i])
+                                    }
+                                }
+                            }
+                            if (result.clients) {
+                                for (var i = 0; i < clients.length; i++) {
+                                    if (result.clients.indexOf(clients[i]._id) > -1) {
+                                        cls.push(clients[i])
+                                    }
+                                }
+                            }
+                            if (result.departments) {
+                                for (var i = 0; i < departments.length; i++) {
+                                    if (result.departments.indexOf(departments[i]._id) > -1) {
+                                        deps.push(departments[i])
+                                    }
+                                }
+                            }
+                            result.applications = apps
+                            result.clients = cls
+                            result.departments = deps
+                            result.release = release
+                            return result
+                        }
+                    }
+                },
+                all: {
+                    map: function (doc) {
+                        if (doc.type == 'ticket') {
+                            if (!doc.archived) {
+                                emit([doc.applications, doc.clients, doc.release, doc.departments, 0], doc)
+                            }
+                        } else if (doc.type == 'application') {
                             emit([doc._id, 1], doc)
                         } else if (doc.type == 'client') {
                             emit([doc._id, 2], doc)
@@ -60,10 +130,34 @@ exports.setup = function () {
                             }
                         }
                         if (result != null) {
-                            result.applications = applications
-                            result.clients = clients
+                            var apps = []
+                            var cls = []
+                            var deps = []
+                            if (result.applications) {
+                                for (var i = 0; i < applications.length; i++) {
+                                    if (result.applications.indexOf(applications[i]._id) > -1) {
+                                        apps.push(applications[i])
+                                    }
+                                }
+                            }
+                            if (result.clients) {
+                                for (var i = 0; i < clients.length; i++) {
+                                    if (result.clients.indexOf(clients[i]._id) > -1) {
+                                        cls.push(clients[i])
+                                    }
+                                }
+                            }
+                            if (result.departments) {
+                                for (var i = 0; i < departments.length; i++) {
+                                    if (result.departments.indexOf(departments[i]._id) > -1) {
+                                        deps.push(departments[i])
+                                    }
+                                }
+                            }
+                            result.applications = apps
+                            result.clients = cls
+                            result.departments = deps
                             result.release = release
-                            result.departments = departments
                             return result
                         }
                     }
@@ -106,15 +200,39 @@ exports.setup = function () {
                             }
                         }
                         if (result != null) {
-                            result.applications = applications
-                            result.clients = clients
+                            var apps = []
+                            var cls = []
+                            var deps = []
+                            if (result.applications) {
+                                for (var i = 0; i < applications.length; i++) {
+                                    if (result.applications.indexOf(applications[i]._id) > -1) {
+                                        apps.push(applications[i])
+                                    }
+                                }
+                            }
+                            if (result.clients) {
+                                for (var i = 0; i < clients.length; i++) {
+                                    if (result.clients.indexOf(clients[i]._id) > -1) {
+                                        cls.push(clients[i])
+                                    }
+                                }
+                            }
+                            if (result.departments) {
+                                for (var i = 0; i < departments.length; i++) {
+                                    if (result.departments.indexOf(departments[i]._id) > -1) {
+                                        deps.push(departments[i])
+                                    }
+                                }
+                            }
+                            result.applications = apps
+                            result.clients = cls
+                            result.departments = deps
                             result.release = release
-                            result.departments = departments
                             return result
                         }
                     }
                 },
-                unprioritised: {
+                unprioritized: {
                     map: function (doc) {
                         if (doc.type == 'ticket') {
                             if (!doc.priority && !doc.archived) {
@@ -152,10 +270,34 @@ exports.setup = function () {
                             }
                         }
                         if (result != null) {
-                            result.applications = applications
-                            result.clients = clients
+                            var apps = []
+                            var cls = []
+                            var deps = []
+                            if (result.applications) {
+                                for (var i = 0; i < applications.length; i++) {
+                                    if (result.applications.indexOf(applications[i]._id) > -1) {
+                                        apps.push(applications[i])
+                                    }
+                                }
+                            }
+                            if (result.clients) {
+                                for (var i = 0; i < clients.length; i++) {
+                                    if (result.clients.indexOf(clients[i]._id) > -1) {
+                                        cls.push(clients[i])
+                                    }
+                                }
+                            }
+                            if (result.departments) {
+                                for (var i = 0; i < departments.length; i++) {
+                                    if (result.departments.indexOf(departments[i]._id) > -1) {
+                                        deps.push(departments[i])
+                                    }
+                                }
+                            }
+                            result.applications = apps
+                            result.clients = cls
+                            result.departments = deps
                             result.release = release
-                            result.departments = departments
                             return result
                         }
                     }
@@ -198,10 +340,34 @@ exports.setup = function () {
                             }
                         }
                         if (result != null) {
-                            result.applications = applications
-                            result.clients = clients
+                            var apps = []
+                            var cls = []
+                            var deps = []
+                            if (result.applications) {
+                                for (var i = 0; i < applications.length; i++) {
+                                    if (result.applications.indexOf(applications[i]._id) > -1) {
+                                        apps.push(applications[i])
+                                    }
+                                }
+                            }
+                            if (result.clients) {
+                                for (var i = 0; i < clients.length; i++) {
+                                    if (result.clients.indexOf(clients[i]._id) > -1) {
+                                        cls.push(clients[i])
+                                    }
+                                }
+                            }
+                            if (result.departments) {
+                                for (var i = 0; i < departments.length; i++) {
+                                    if (result.departments.indexOf(departments[i]._id) > -1) {
+                                        deps.push(departments[i])
+                                    }
+                                }
+                            }
+                            result.applications = apps
+                            result.clients = cls
+                            result.departments = deps
                             result.release = release
-                            result.departments = departments
                             return result
                         }
                     }
@@ -244,10 +410,34 @@ exports.setup = function () {
                             }
                         }
                         if (result != null) {
-                            result.applications = applications
-                            result.clients = clients
+                            var apps = []
+                            var cls = []
+                            var deps = []
+                            if (result.applications) {
+                                for (var i = 0; i < applications.length; i++) {
+                                    if (result.applications.indexOf(applications[i]._id) > -1) {
+                                        apps.push(applications[i])
+                                    }
+                                }
+                            }
+                            if (result.clients) {
+                                for (var i = 0; i < clients.length; i++) {
+                                    if (result.clients.indexOf(clients[i]._id) > -1) {
+                                        cls.push(clients[i])
+                                    }
+                                }
+                            }
+                            if (result.departments) {
+                                for (var i = 0; i < departments.length; i++) {
+                                    if (result.departments.indexOf(departments[i]._id) > -1) {
+                                        deps.push(departments[i])
+                                    }
+                                }
+                            }
+                            result.applications = apps
+                            result.clients = cls
+                            result.departments = deps
                             result.release = release
-                            result.departments = departments
                             return result
                         }
                     }
