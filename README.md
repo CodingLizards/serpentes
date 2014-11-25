@@ -1,13 +1,13 @@
-# Ticketmanager
-The Ticketmanager is a very simple ticket system and also useful to prioritize tickets.
+# Serpentes
+Serpentes is a very simple ticket system and also useful to prioritize tickets.
 
 You can use it, fork it, improve it as much as you want. It is one of our first node.js projects, so we would appreciate help :)
 
 # What are the features?
-The Ticketmanager offers you a good amount of options here is a list with all the features, for details refer to our wiki please :)
+Serpentes offers you a good amount of options here is a list with all the features, for details refer to our wiki please :)
 
 ## Worker management
-Workers are your users and developer/testers/operation specialists as well, that gives you an easy way, to integrate your existing company structure in the Ticketmanager.
+Workers are your users and developer/testers/operation specialists as well, that gives you an easy way, to integrate your existing company structure in Serpentes.
 
 ## Ticket management
 You can filter your tickets by different states
@@ -36,7 +36,7 @@ Releases give you the possibility to sort your tickets by release. So you can se
 You can easily change the colours to match your own CI. For that we have an extra section in the settings part.
 
 ## Localization
-With the Ticketmanager it is super easy, to add new languages. You just need to translate the file `languages/default.json` to lets say, russian and your russian employees can use the software in their native language.
+With Serpentes it is super easy, to add new languages. You just need to translate the file `languages/default.json` to lets say, russian and your russian employees can use the software in their native language.
 
 ## Windows authentication
 With the help of [edge.js](https://github.com/tjanczuk/edge) it is possible to use Windows authentication for your employees. This makes the work for people easy, cause they don't need to remember a new password.
@@ -59,7 +59,7 @@ With the help of [edge.js](https://github.com/tjanczuk/edge) it is possible to u
 - [x] Windows authentication
 
 # What do we need?
-- [ ] It would be great, if someone could improve the file [databaseSetup.js](https://github.com/CodingLizards/ticketmanager/blob/develop/Ticketmanager/persistence/databaseSetup.js). Mostly the `reduce` functions are horrible messy but it is hard to clean them up (very little experience)
+- [ ] It would be great, if someone could improve the file [databaseSetup.js](https://github.com/CodingLizards/serpentes/blob/develop/Serpentes/persistence/databaseSetup.js). Mostly the `reduce` functions are horrible messy but it is hard to clean them up (very little experience)
 
 - [ ] Someone who could translate the `languages/default.json` file would be great, together we just speak German and English :)
 
