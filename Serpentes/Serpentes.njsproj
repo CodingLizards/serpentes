@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>Serpentes</Name>
+    <RootNamespace>ExpressApp7</RootNamespace>
+    <LaunchUrl>https://localhost:1337/</LaunchUrl>
+    <Environment>COUCHDBSERVERHOST=localhost
+COUCHDBSERVERPORT=5984
+COUCHDBSERVERUSERNAME=admin
+COUCHDBSERVERPASSWORD=admin
+EDGE_CS_DEBUG=1</Environment>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>83aac9f6-1094-40fc-8ce9-2ca0fe8ccbac</ProjectGuid>
+    <ProjectHome>
+    </ProjectHome>
+    <StartupFile>app.js</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <ProjectView>ProjectFiles</ProjectView>
+    <NodejsPort>1337</NodejsPort>
+    <StartWebBrowser>False</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="app.js" />
+    <Compile Include="localizer.js" />
+    <Compile Include="persistence\applicationProvider.js" />
+    <Compile Include="persistence\clientProvider.js" />
+    <Compile Include="persistence\databaseSetup.js" />
+    <Compile Include="persistence\departmentProvider.js" />
+    <Compile Include="persistence\releaseProvider.js" />
+    <Compile Include="persistence\settingsProvider.js" />
+    <Compile Include="persistence\ticketProvider.js" />
+    <Compile Include="persistence\workerProvider.js" />
+    <Compile Include="public\javascripts\classie.js" />
+    <Compile Include="public\javascripts\gnmenu.js" />
+    <Compile Include="public\javascripts\jquery-2.1.1.min.js" />
+    <Compile Include="public\javascripts\modernizr.custom.js" />
+    <Compile Include="public\javascripts\pure-menu.js" />
+    <Compile Include="public\javascripts\wizard.js" />
+    <Compile Include="routes\account.js" />
+    <Compile Include="routes\application.js" />
+    <Compile Include="routes\client.js" />
+    <Compile Include="routes\department.js" />
+    <Compile Include="routes\index.js" />
+    <Compile Include="routes\release.js" />
+    <Compile Include="routes\routesSetup.js" />
+    <Compile Include="routes\settings.js" />
+    <Compile Include="routes\ticket.js" />
+    <Compile Include="routes\user.js" />
+    <Compile Include="routes\worker.js" />
+    <Content Include="languages\de_DE.json" />
+    <Content Include="languages\de.json" />
+    <Content Include="languages\default.json" />
+    <Content Include="package.json" />
+    <Content Include="public\fonts\fontawesome-webfont.eot" />
+    <Content Include="public\fonts\fontawesome-webfont.svg" />
+    <Content Include="public\fonts\fontawesome-webfont.ttf" />
+    <Content Include="public\fonts\fontawesome-webfont.woff" />
+    <Content Include="public\fonts\FontAwesome.otf" />
+    <Content Include="public\stylesheets\font-awesome.min.css" />
+    <Content Include="public\stylesheets\grids-responsive-min.css" />
+    <Content Include="public\stylesheets\menu.less" />
+    <Content Include="public\stylesheets\pure-custom.less" />
+    <Content Include="public\stylesheets\pure.css" />
+    <Content Include="public\stylesheets\variables.less" />
+    <Content Include="start.bat" />
+    <Content Include="views\account\adddetails.hbs" />
+    <Content Include="views\account\login.hbs" />
+    <Content Include="views\admin\settings\configuredesign.hbs" />
+    <Content Include="views\admin\settings\language.hbs" />
+    <Content Include="views\applications\add.hbs" />
+    <Content Include="views\applications\addsuccess.hbs" />
+    <Content Include="views\applications\details.hbs" />
+    <Content Include="views\applications\index.hbs" />
+    <Content Include="views\clients\add.hbs" />
+    <Content Include="views\clients\addsuccess.hbs" />
+    <Content Include="views\clients\details.hbs" />
+    <Content Include="views\clients\index.hbs" />
+    <Content Include="views\departments\add.hbs" />
+    <Content Include="views\departments\addsuccess.hbs" />
+    <Content Include="views\departments\details.hbs" />
+    <Content Include="views\departments\index.hbs" />
+    <Content Include="views\index.hbs">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\layouts\layout.hbs" />
+    <Content Include="views\layouts\login.hbs" />
+    <Content Include="views\partials\error.hbs" />
+    <Content Include="views\releases\add.hbs" />
+    <Content Include="views\releases\addsuccess.hbs" />
+    <Content Include="views\releases\details.hbs" />
+    <Content Include="views\releases\index.hbs" />
+    <Content Include="views\tickets\addsuccess.hbs" />
+    <Content Include="views\tickets\add.hbs" />
+    <Content Include="views\tickets\details.hbs" />
+    <Content Include="views\tickets\index.hbs" />
+    <Content Include="views\admin\users\details.hbs" />
+    <Content Include="views\workers\add.hbs" />
+    <Content Include="views\workers\addsuccess.hbs" />
+    <Content Include="views\admin\users\index.hbs" />
+    <Content Include="views\workers\details.hbs" />
+    <Content Include="views\workers\index.hbs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="languages\" />
+    <Folder Include="persistence\" />
+    <Folder Include="public\" />
+    <Folder Include="public\fonts\" />
+    <Folder Include="public\images\" />
+    <Folder Include="public\javascripts\" />
+    <Folder Include="public\stylesheets\" />
+    <Folder Include="routes\" />
+    <Folder Include="views\" />
+    <Folder Include="views\admin\" />
+    <Folder Include="views\admin\users\" />
+    <Folder Include="views\admin\settings\" />
+    <Folder Include="views\clients\" />
+    <Folder Include="views\departments\" />
+    <Folder Include="views\layouts\" />
+    <Folder Include="views\account\" />
+    <Folder Include="views\applications\" />
+    <Folder Include="views\partials\" />
+    <Folder Include="views\workers\" />
+    <Folder Include="views\releases\" />
+    <Folder Include="views\tickets\" />
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

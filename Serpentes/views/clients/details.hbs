@@ -1,0 +1,29 @@
+﻿{{#with data}}
+<div class="pure-menu pure-menu-open pure-menu-horizontal">
+    <ul>
+        <li class="pure-menu-selected"><a href="#details" data-toggle="tabs">{{localize 'client details'}}</a></li>
+        <li><a href="#edit" data-toggle="tabs">{{localize 'edit client'}}</a></li>
+    </ul>
+</div>
+<div class="pure-form pure-menu-page pure-menu-selected" id="details">
+    <fieldset>
+        <legend>{{localize 'client details'}}</legend>
+        <h4>#</h4>
+        <p>{{_id}}</p>
+        <h4>{{localize 'name'}}</h4>
+        <p>{{name}}</p>
+    </fieldset>
+</div>
+<form action="/client/update/{{_id}}" method="post" class="pure-form pure-form-aligned pure-menu-page" id="edit">
+    <fieldset>
+        <legend>{{localize 'general'}}</legend>
+        <div class="pure-control-group">
+            <label for="name">{{localize 'name'}}*</label>
+            <input id="name" required name="name" type="text" class="pure-u-20-24" value="{{name}}" placeholder="{{localize 'name'}}" />
+        </div>
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">{{localize 'save'}}</button>
+        </div>
+    </fieldset>
+</form>
+{{/with}}

@@ -1,0 +1,12 @@
+﻿<form action="/department/add" method="post" class="pure-form pure-form-aligned">
+    <fieldset>
+        <legend>{{localize 'general'}}</legend>
+        <div class="pure-control-group">
+            <label for="name">{{localize 'name'}}*</label>
+            <input id="name" required name="name" type="text" class="pure-u-20-24" value="{{name}}" placeholder="{{localize 'name'}}" />
+        </div>
+        <div class="pure-controls">
+            <button type="submit" class="pure-button pure-button-primary">{{localize 'save'}}</button>
+        </div>
+    </fieldset>
+</form>

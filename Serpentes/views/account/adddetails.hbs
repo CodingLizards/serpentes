@@ -1,0 +1,34 @@
+﻿<h2>{{localize 'we are missing some data, would you add them please?'}}</h2>
+{{#if error}}
+<div class="alert alert-danger">
+    <h4>{{error.reason.error}}</h4>
+    {{#ul error.reason.reason class="list-unstyled"}}
+    {{.}}
+    {{/ul}}
+</div>
+{{/if}}
+<form class="pure-form pure-form-aligned" action="/login/details?target={{target}}" method="post">
+    <input type="hidden" name="username" value="{{username}}" />
+    <fieldset>
+        <legend>{{localize 'my data'}}</legend>
+        <div class="pure-control-group">
+            <label for="firstname">{{localize 'firstname'}}*</label>
+            <input required name="firstname" class="pure-u-20-24" id="firstname" type="text" value="{{firstname}}" placeholder="{{localize 'firstname'}}">
+        </div>
+        <div class="pure-control-group">
+            <label for="lastname">{{localize 'lastname'}}*</label>
+            <input required name="lastname" class="pure-u-20-24" id="lastname" type="text" value="{{lastname}}" placeholder="{{localize 'lastname'}}">
+        </div>
+        <div class="pure-control-group">
+            <label for="emailaddress">{{localize 'emailaddress'}}*</label>
+            <input required name="emailaddress" class="pure-u-20-24" id="emailaddress" type="email" value="{{emailaddress}}" placeholder="{{localize 'emailaddress'}}">
+        </div>
+        <div class="pure-control-group">
+            <label for="phonenumber">{{localize 'phonenumber'}}*</label>
+            <input required name="phonenumber" class="pure-u-20-24" id="phonenumber" type="tel" value="{{phonenumber}}" placeholder="{{localize 'phonenumber'}}">
+        </div>
+        <div class="pure-controls">
+            <button class="pure-button pure-button-primary" type="submit">{{localize 'save'}}</button>
+        </div>
+    </fieldset>
+</form>
