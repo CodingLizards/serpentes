@@ -1,0 +1,32 @@
+﻿<table class="pure-table pure-table-horizontal pure-table-striped pure-table-fullsize">
+    <thead>
+        <tr>
+            <th>{{localize 'username'}}</th>
+            <th>{{localize 'is admin'}}</th>
+            <th>{{localize 'firstname'}}</th>
+            <th>{{localize 'lastname'}}</th>
+            <th>{{localize 'emailaddress'}}</th>
+            <th>{{localize 'phonenumber'}}</th>
+            <th>{{localize 'department'}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each data}}
+        <tr>
+            <td><a href="/admin/users/details/{{uriencode _id}}">{{_id}}</a></td>
+            <td>
+                {{#if isadmin}}
+                <i class="fa fa-toggle-on"></i>
+                {{else}}
+                <i class="fa fa-toggle-off"></i>
+                {{/if}}
+            </td>
+            <td>{{firstname}}</td>
+            <td>{{lastname}}</td>
+            <td>{{emailaddress}}</td>
+            <td>{{phonenumber}}</td>
+            <td>{{localize department}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

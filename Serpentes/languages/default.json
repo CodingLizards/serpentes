@@ -44,6 +44,7 @@
     "lastname": "Nachname",
     "emailaddress": "Emailadresse",
     "phonenumber": "Telefonnummer",
+    "is admin": "Ist Administrator",
 
     "applications": "Anwendungen",
     "saved application successfully": "Die Anwendung wurde erfolgreich gespeichert",

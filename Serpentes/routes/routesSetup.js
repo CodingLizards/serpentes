@@ -7,6 +7,7 @@ var client = require('./client.js')
 var release = require('./release.js')
 var worker = require('./worker.js')
 var settings = require('./settings.js')
+var user = require('./user.js')
 
 exports.setup = function (app) {
     app.get('/', routes.index)
@@ -62,4 +63,7 @@ exports.setup = function (app) {
     app.get('/admin/settings/language/reload', settings.reloadLanguage)
     app.get('/admin/settings/design', settings.design)
     app.post('/admin/settings/design', settings.configuredesign)
+    app.get('/admin/users', user.index)
+    app.get('/admin/users/details/:id', user.details)
+    app.post('/admin/users/update/:id', user.update)
 }
