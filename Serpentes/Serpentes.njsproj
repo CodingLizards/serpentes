@@ -67,6 +67,7 @@ EDGE_CS_DEBUG=1</Environment>
     <Content Include="languages\de_DE.json" />
     <Content Include="languages\de.json" />
     <Content Include="languages\default.json" />
+    <Content Include="nodemon.json" />
     <Content Include="package.json" />
     <Content Include="public\fonts\fontawesome-webfont.eot" />
     <Content Include="public\fonts\fontawesome-webfont.svg" />
