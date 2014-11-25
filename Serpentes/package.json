@@ -1,47 +1,48 @@
 {
-    "name": "Serpentes",
-    "description": "A ticketmanager to prioritize tickets and give some nice options :)",
-    "version": "v1.0.0-Alpha",
-    "keywords": [
-        "ticket",
-        "serpentes",
-        "coding",
-        "lizards"
-    ],
-    "maintainers": [
-        {
-            "name": "Imanuel Ulbricht",
-            "email": "i.ulbricht@codinglizards.de",
-            "web": "http://codinglizards.de/"
-        }
-    ],
-    "bugs": {
-        "url": "https://github.com/CodingLizards/serpentes/issues"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/CodingLizards/serpentes.git"
-    },
-    "licenses": [
-        {
-            "name": "MIT Licence",
-            "url": "https://github.com/CodingLizards/serpentes/blob/master/licence"
-        }
-    ],
-    "readme": "https://github.com/CodingLizards/serpentes/blob/master/README.md",
-    "homepage": "https://github.com/CodingLizards/serpentes",
-    "dependencies": {
-        "cradle": "^0.6.7",
-        "edge": "*",
-        "express": "3.4.4",
-        "express-handlebars": "^1.0.3",
-        "express-session": "^1.8.1",
-        "grunt": "^0.4.5",
-        "handle": "^1.0.0",
-        "handlebars-helpers": "^0.5.8",
-        "less-middleware": "^1.0.4",
-        "locale": "*",
-        "nodemon": "^1.2.1",
-        "pem": "^1.4.1"
+  "name": "Serpentes",
+  "description": "A ticketmanager to prioritize tickets and give some nice options :)",
+  "version": "v1.0.0-Alpha",
+  "keywords": [
+    "ticket",
+    "serpentes",
+    "coding",
+    "lizards"
+  ],
+  "maintainers": [
+    {
+      "name": "Imanuel Ulbricht",
+      "email": "i.ulbricht@codinglizards.de",
+      "web": "http://codinglizards.de/"
     }
+  ],
+  "bugs": {
+    "url": "https://github.com/CodingLizards/serpentes/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodingLizards/serpentes.git"
+  },
+  "licenses": [
+    {
+      "name": "MIT Licence",
+      "url": "https://github.com/CodingLizards/serpentes/blob/master/licence"
+    }
+  ],
+  "readme": "https://github.com/CodingLizards/serpentes/blob/master/README.md",
+  "homepage": "https://github.com/CodingLizards/serpentes",
+  "dependencies": {
+    "cradle": "^0.6.7",
+    "edge": "*",
+    "express": "3.4.4",
+    "express-handlebars": "^1.0.3",
+    "express-session": "^1.8.1",
+    "grunt": "^0.4.5",
+    "handle": "^1.0.0",
+    "handlebars-helpers": "^0.5.8",
+    "less-middleware": "^1.0.4",
+    "locale": "*",
+    "nodemon": "^1.2.1",
+    "pem": "^1.4.1",
+    "socket.io": "^1.2.1"
+  }
 }

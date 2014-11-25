@@ -8,6 +8,7 @@ var release = require('./release.js')
 var worker = require('./worker.js')
 var settings = require('./settings.js')
 var user = require('./user.js')
+var admin = require('./admin.js')
 
 exports.setup = function (app) {
     app.get('/', routes.index)
@@ -66,4 +67,6 @@ exports.setup = function (app) {
     app.get('/admin/users', user.index)
     app.get('/admin/users/details/:id', user.details)
     app.post('/admin/users/update/:id', user.update)
+    app.get('/admin/update', admin.update)
+    app.post('/admin/update/', admin.updatePost)
 }

@@ -1,0 +1,12 @@
+﻿<h3>{{title}}</h3>
+<div id="log">
+
+</div>
+<script>
+    $(function () {
+        var socket = io('http://{{server}}:23400/')
+        socket.on('log', function (data) {
+            $('#log').append('<p>' + data.message + '</p>')
+        })
+    })
+</script>
