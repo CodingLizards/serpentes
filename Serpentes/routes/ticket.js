@@ -80,7 +80,11 @@ exports.details = function (req, res) {
                     releaseprovider.all(function (err, releases) {
                         if (err)
                             console.warn(err)
-                        res.render('tickets/details', { title: req.localize('ticket details'), details: result, Applications: apps, Clients: clients, Departments: departments, Releases: releases })
+                        workerprovider.all(function (err, workers) {
+                            if (err)
+                                console.warn(err)
+                            res.render('tickets/details', { title: req.localize('ticket details'), details: result, Applications: apps, Clients: clients, Departments: departments, Releases: releases, Workers: workers })
+                        })
                     })
                 })
             })
@@ -168,7 +172,7 @@ exports.assign = function (req, res) {
         var data = {
             assignee: err ? req.param('username') : user
         }
-        ticketprovider.update(req.param('id'), data, function (err, result) {
+        ticketprovider.assign(req.param('id'), data, function (err, result) {
             workerprovider.byId(req.session['username'], function (err, user) {
                 var comment = {
                     commentvalue: req.param('assigncomment'), 
@@ -177,6 +181,48 @@ exports.assign = function (req, res) {
                 }
                 ticketprovider.addComment(req.param('id'), comment, function (err, result) {
                     res.redirect('ticket/details/' + req.param('id'))
+                })
+            })
+        })
+    })
+}
+
+/*
+ * POST ticket/reviewed/:id
+ */
+exports.reviewed = function (req, res) {
+    workerprovider.byId(req.session['username'], function (err, user) {
+        ticketprovider.byId(req.param('id'), function (err, ticket) {
+            ticket.reviewed = true
+            if (!ticket.reviewcomment)
+                ticket.reviewcomment = []
+            ticket.reviewcomment.push({
+                commentvalue: req.param('reviewcomment'), 
+                creator: user,
+                created: new Date(Date.now())
+            })
+            ticketprovider.update(req.param('id'), ticket, function (err, result) {
+                res.redirect('ticket/details/' + req.param('id'))
+            })
+        })
+    })
+}
+
+/*
+ * POST ticket/archive/:id
+ */
+exports.archive = function (req, res) {
+    ticketprovider.byId(req.param('id'), function (err, ticket) {
+        ticket.archived = true
+        ticketprovider.update(req.param('id'), ticket, function (err, result) {
+            workerprovider.byId(req.session['username'], function (err, user) {
+                var comment = {
+                    commentvalue: req.param('comment'), 
+                    creator: user,
+                    created: new Date(Date.now())
+                }
+                ticketprovider.addComment(req.param('id'), comment, function (err, result) {
+                    res.redirect('ticket/')
                 })
             })
         })

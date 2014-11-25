@@ -98,6 +98,33 @@ app.use(function (req, res, next) {
         else
             return opts.inverse(this)
     }
+    hbs.helpers.formatWorker = function (worker) {
+        if (worker) {
+            if (worker.firstname && worker.lastname) {
+                return worker.firstname + '\u00A0' + worker.lastname
+            } else {
+                return worker
+            }
+        }
+    }
+    hbs.helpers.workerIsNotAssigneeOption = function (worker, assignee, opts) {
+        var res = ''
+        if (assignee && worker != assignee && worker._id != assignee._id) {
+            res = '<option value="' + worker._id + '">' + worker.firstname + ' ' + worker.lastname + ' (' + req.localize(worker.department) + ')' + '</option>'
+        }
+        return new hbs.handlebars.SafeString(res)
+
+    }
+    hbs.helpers.commentList = function (input) {
+        var res = '<ul class="list-unstyled">'
+        for (item in input) {
+            res +=
+            '<li><blockquote>' + input[item].commentvalue + 
+                '<footer>' + hbs.helpers.formatWorker(input[item].creator) + ' &mdash; ' + hbs.handlebars.helpers.formatDate(input[item].created, '%d.%m.%y %H:%M') + '</footer></blockquote></li>'
+        }
+        res += '</ul>'
+        return new hbs.handlebars.SafeString(res)
+    }
     req.localize = function (key) { return __localize(key, req) }
     next()
 })

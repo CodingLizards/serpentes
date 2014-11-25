@@ -23,6 +23,9 @@ exports.setup = function (app) {
     app.post('/ticket/add', ticket.addPost)
     app.post('/ticket/comments/:id', ticket.comment)
     app.post('/ticket/assign/:id/:username', ticket.assign)
+    app.post('/ticket/assign/:id', ticket.assign)
+    app.post('/ticket/reviewed/:id', ticket.reviewed)
+    app.post('/ticket/archive/:id', ticket.archive)
     app.post('/ticket/update/:id', ticket.update)
     
     app.get('/worker', worker.index)

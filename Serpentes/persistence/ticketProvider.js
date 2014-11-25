@@ -64,6 +64,31 @@ TicketProvider.prototype.update = function (ticketnumber, ticket, callback) {
         }
     })
 }
+TicketProvider.prototype.assign = function (id, data, callback) {
+    var provider = new TicketProvider()
+    provider.byId(id, function (error, ticket) {
+        if (!ticket.assigneehistory) {
+            ticket.assigneehistory = []
+        }
+        if (ticket.assignee) {
+            ticket.assigneehistory.push(ticket.assignee)
+        }
+        ticket.assigneehistory.push(data.assignee)
+        var assignment = {
+            assignee: data.assignee,
+            assigneehistory: ticket.assigneehistory
+        }
+        provider.db.merge(id, assignment, function (err, res) {
+            if (err) {
+                console.error(err)
+                callback(err, null)
+            } else {
+                console.log(res)
+                callback(null, res)
+            }
+        })
+    })
+}
 TicketProvider.prototype.addComment = function (id, comment, callback) {
     var provider = new TicketProvider()
     provider.byId(id, function (error, ticket) {

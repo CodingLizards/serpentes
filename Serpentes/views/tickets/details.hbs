@@ -5,8 +5,10 @@
         <li><a href="#impact" data-toggle="tabs">{{localize 'impact'}}</a></li>
         <li><a href="#more" data-toggle="tabs">{{localize 'more details'}}</a></li>
         <li><a href="#comments" data-toggle="tabs">{{localize 'comments'}}</a></li>
+        {{#unless archived}}
         <li><a href="#edit" data-toggle="tabs">{{localize 'edit ticket'}}</a></li>
         <li><a href="#actions" data-toggle="tabs">{{localize 'actions'}}</a></li>
+        {{/unless}}
     </ul>
 </div>
 <div class="pure-form">
@@ -20,11 +22,7 @@
         {{/if}}
         {{#if assignee}}
         <h4>{{localize 'assignee'}}</h4>
-        {{#and assignee.firstname assignee.lastname}}
-        <p>{{assignee.firstname}} {{assignee.lastname}}</p>
-        {{else}}
-        <p>{{assignee}}</p>
-        {{/and}}
+        <p>{{formatWorker assignee}}</p>
         {{/if}}
         <h4>{{localize 'description'}}</h4>
         <article>{{description}}</article>
@@ -96,23 +94,23 @@
                 </dl>
             </div>
             {{/if}}
+            {{#if reviewed}}
+            <div class="pure-u-1">
+                <h4>{{localize 'review state'}}</h4>
+                {{#if reviewed}}
+                <i class="fa fa-toggle-on fa-2x"></i>
+                {{else}}
+                <i class="fa fa-toggle-off fa-2x"></i>
+                {{/if}}
+                {{commentList reviewcomment}}
+            </div>
+            {{/if}}
         </div>
     </fieldset>
     <fieldset id="comments" class="pure-menu-page">
         <legend>{{localize 'comments'}}</legend>
         {{#if comments}}
-        {{#ul comments class="list-unstyled"}}
-        <blockquote>
-            {{commentvalue}}
-            <footer>
-                {{#and creator.firstname creator.lastname}}
-                {{creator.firstname}} {{creator.lastname}}
-                {{else}}
-                {{creator}}
-                {{/and}} &mdash; {{formatDate created '%d.%m.%y %H:%M'}}
-            </footer>
-        </blockquote>
-        {{/ul}}
+        {{commentList comments}}
         {{/if}}
         <form action="/ticket/comments/{{_id}}" method="post" class="pure-form pure-form-stacked">
             <div class="pure-g">
@@ -126,6 +124,7 @@
             </div>
         </form>
     </fieldset>
+    {{#unless archived}}
     <fieldset id="edit" class="pure-menu-page">
         <legend>{{localize 'edit ticket'}}</legend>
         <form action="/ticket/update/{{_id}}" method="post" class="pure-form pure-form-aligned" id="wizard">
@@ -237,22 +236,45 @@
     </fieldset>
     <fieldset id="actions" class="pure-menu-page">
         <legend>{{localize 'actions'}}</legend>
+        {{#if assignee.username}}
+        {{#compare assignee.username '!=' loggedonuser}}
         <p>{{localize 'you can assign a ticket to yourself, so it is locked and you can work on it'}}</p>
         <form action="/ticket/assign/{{_id}}/{{loggedonuser}}" method="post" class="pure-form">
-            <input required name="assigncomment" id="assigncomment" placeholder="{{localize 'comment'}}" value="{{assigncomment}}" class="pure-u-20-24" />
+            <input required name="assigncomment" id="assigncomment" placeholder="{{localize 'comment'}}" class="pure-u-20-24" />
             <button class="pure-button pure-button-primary" type="submit">{{localize 'assign to me'}}</button>
         </form>
+        {{/compare}}
+        {{else}}
+        {{#compare assignee '!=' loggedonuser}}
+        <p>{{localize 'you can assign a ticket to yourself, so it is locked and you can work on it'}}</p>
+        <form action="/ticket/assign/{{_id}}/{{loggedonuser}}" method="post" class="pure-form">
+            <input required name="assigncomment" id="assigncomment" placeholder="{{localize 'comment'}}" class="pure-u-20-24" />
+            <button class="pure-button pure-button-primary pure-u-3-24" type="submit">{{localize 'assign to me'}}</button>
+        </form>
+        {{/compare}}
+        {{/if}}
         <p>{{localize 'you can give a ticket to another person, so they can see, that they should work on it'}}</p>
         <form action="/ticket/assign/{{_id}}" method="post" class="pure-form">
-            <select class="pure-u-6-24">
-                {{#each Workers}}
-                <option value="{{_id}}">{{firstname}} {{lastname}}</option>
+            <select name="username" class="pure-u-6-24">
+                {{#each ../Workers}}
+                {{workerIsNotAssigneeOption . ../assignee}}
                 {{/each}}
             </select>
-            <input required name="assigncomment" id="assigncomment" placeholder="{{localize 'comment'}}" value="{{assigncomment}}" class="pure-u-14-24" />
-            <button class="pure-button pure-button-primary" type="submit">{{localize 'assign to me'}}</button>
+            <input required name="assigncomment" id="assigncomment" placeholder="{{localize 'comment'}}" class="pure-u-14-24" />
+            <button class="pure-button pure-button-primary pure-u-3-24" type="submit">{{localize 'assign'}}</button>
+        </form>
+        <p>{{localize 'you can set a ticket as reviewed, please write a comment, what you would change'}}</p>
+        <form action="/ticket/reviewed/{{_id}}" method="post" class="pure-form">
+            <input name="reviewcomment" id="reviewcomment" placeholder="{{localize 'comment'}}" class="pure-u-20-24" required />
+            <button class="pure-button pure-button-primary pure-u-3-24" type="submit">{{localize 'reviewed'}}</button>
+        </form>
+        <p>{{localize 'you can move a ticket in the archive, that means it is closed and not longer in progress'}}</p>
+        <form action="/ticket/archive/{{_id}}" method="post" class="pure-form">
+            <input required name="comment" placeholder="{{localize 'comment'}}" class="pure-u-20-24" />
+            <button class="pure-button pure-button-primary pure-u-3-24" type="submit">{{localize 'archive'}}</button>
         </form>
     </fieldset>
+    {{/unless}}
 </div>
 {{/with}}
 <script>
