@@ -70,9 +70,6 @@ TicketProvider.prototype.assign = function (id, data, callback) {
         if (!ticket.assigneehistory) {
             ticket.assigneehistory = []
         }
-        if (ticket.assignee) {
-            ticket.assigneehistory.push(ticket.assignee)
-        }
         ticket.assigneehistory.push(data.assignee)
         var assignment = {
             assignee: data.assignee,
@@ -98,6 +95,25 @@ TicketProvider.prototype.addComment = function (id, comment, callback) {
         ticket.comments.push(comment)
         var data = { comments: ticket.comments }
         provider.db.merge(id, data, function (err, res) {
+            if (err) {
+                console.error(err)
+                callback(err, null)
+            } else {
+                console.log(res)
+                callback(null, res)
+            }
+        })
+    })
+}
+TicketProvider.prototype.review = function (id, data, callback) {
+    var provider = new TicketProvider()
+    provider.byId(id, function (error, ticket) {
+        if (!ticket.reviewcomment) {
+            ticket.reviewcomment = []
+        }
+        ticket.reviewcomment.push(data)
+        var review = { reviewcomment: ticket.reviewcomment, reviewed: true }
+        provider.db.merge(id, review, function (err, res) {
             if (err) {
                 console.error(err)
                 callback(err, null)

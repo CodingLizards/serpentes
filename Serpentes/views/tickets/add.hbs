@@ -14,7 +14,7 @@
             <textarea required id="description" placeholder="{{localize 'description'}}" name="description" cols="10" rows="10" class="pure-u-20-24">{{description}}</textarea>
         </div>
         <div class="pure-controls">
-            <button type="button" class="pure-button pure-button-wizard-next">{{localize 'next'}}</button>
+            <button type="button" class="pure-button pure-button-wizard-next">{{localize 'next'}} <i class="fa fa-angle-right"></i></button>
         </div>
     </fieldset>
     <fieldset class="pure-wizard-page">
@@ -44,8 +44,8 @@
             <textarea required id="impactdescription" placeholder="{{localize 'impact description'}}" name="impactdescription" cols="10" rows="10" class="pure-u-20-24">{{impactdescription}}</textarea>
         </div>
         <div class="pure-controls">
-            <button type="button" class="pure-button pure-button-wizard-prev">{{localize 'back'}}</button>
-            <button type="button" class="pure-button pure-button-wizard-next">{{localize 'next'}}</button>
+            <button type="button" class="pure-button pure-button-wizard-prev"><i class="fa fa-angle-left"></i> {{localize 'back'}}</button>
+            <button type="button" class="pure-button pure-button-wizard-next">{{localize 'next'}} <i class="fa fa-angle-right"></i></button>
         </div>
     </fieldset>
     <fieldset class="pure-wizard-page">
@@ -83,8 +83,8 @@
             </select>
         </div>
         <div class="pure-controls">
-            <button type="button" class="pure-button pure-button-wizard-prev">{{localize 'back'}}</button>
-            <button type="submit" class="pure-button pure-button-primary pure-button-wizard-next-primary">{{localize 'save'}}</button>
+            <button type="button" class="pure-button pure-button-wizard-prev"><i class="fa fa-angle-left"></i> {{localize 'back'}}</button>
+            <button type="submit" class="pure-button pure-button-primary pure-button-wizard-next-primary"><i class="fa fa-save"></i> {{localize 'save'}}</button>
         </div>
     </fieldset>
 </form>

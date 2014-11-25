@@ -94,6 +94,7 @@
     "you can set a ticket as reviewed, please write a comment, what you would change": "Du kannst das Ticket als gereviewed makieren, damit gibst du an andere weiter, dass der Code und die Qualität stimmig sind",
     "review state": "Review Status",
     "you can move a ticket in the archive, that means it is closed and not longer in progress": "Du kannst ein Ticket ins Archive legen, dadurch wird gezeigt, dass die Arbeit eingestellt ist",
+    "assignee history": "Bearbeiterhistorie",
 
     "worker": "Mitarbeiter",
     "saved worker successfully": "Der Mitarbeiter wurde erfolgreich gespeichert",

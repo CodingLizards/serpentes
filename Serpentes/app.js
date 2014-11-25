@@ -108,9 +108,11 @@ app.use(function (req, res, next) {
         }
     }
     hbs.helpers.workerIsNotAssigneeOption = function (worker, assignee, opts) {
-        var res = ''
-        if (assignee && worker != assignee && worker._id != assignee._id) {
-            res = '<option value="' + worker._id + '">' + worker.firstname + ' ' + worker.lastname + ' (' + req.localize(worker.department) + ')' + '</option>'
+        var res = '<option value="' + worker._id + '">' + worker.firstname + ' ' + worker.lastname + (worker.department ? ' (' + req.localize(worker.department) + ')' : '') + '</option>'
+        if (assignee) {
+            if (!(worker != assignee && worker._id != assignee._id)) {
+                res = ''
+            }
         }
         return new hbs.handlebars.SafeString(res)
 
@@ -124,6 +126,13 @@ app.use(function (req, res, next) {
         }
         res += '</ul>'
         return new hbs.handlebars.SafeString(res)
+    }
+    hbs.helpers.currentUserIsAssignee = function (assignee, opts) {
+        if (assignee && (assignee == req.session['username'] || assignee._id && assignee._id == req.session['username'])) {
+            return opts.inverse(this)
+        } else {
+            return opts.fn(this)
+        }
     }
     req.localize = function (key) { return __localize(key, req) }
     next()

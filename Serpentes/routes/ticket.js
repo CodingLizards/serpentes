@@ -12,6 +12,29 @@ var departmentprovider = new DepartmentProvider()
 var releaseprovider = new ReleaseProvider()
 var workerprovider = new WorkerProvider()
 
+var minifyUser = function (user) {
+    var result = {
+        firstname: user.firstname,
+        lastname: user.lastname,
+        emailaddress: user.emailaddress,
+        phonenumber: user.phonenumber
+    }
+    return result
+}
+
+var postComment = function (req, callback) {
+    workerprovider.byId(req.session['username'], function (err, user) {
+        var data = {
+            commentvalue: req.param('commentvalue'), 
+            creator: err ? req.session['username'] : minifyUser(user),
+            created: new Date(Date.now())
+        }
+        ticketprovider.addComment(req.param('id'), data, function (error, result) {
+            callback(error, result)
+        })
+    })
+}
+
 /*
  * GET ticket/add
  */
@@ -96,15 +119,8 @@ exports.details = function (req, res) {
  * POST ticket/comments/:id
  */
 exports.comment = function (req, res) {
-    workerprovider.byId(req.session['username'], function (err, user) {
-        var data = {
-            commentvalue: req.param('commentvalue'), 
-            creator: err ? req.sessing['username'] : user,
-            created: new Date(Date.now())
-        }
-        ticketprovider.addComment(req.param('id'), data, function (error, result) {
-            res.redirect('ticket/details/' + req.param('id') + '#comments')
-        })
+    postComment(req, function (error, result) {
+        res.redirect('ticket/details/' + req.param('id') + '#comments')
     })
 }
 
@@ -170,18 +186,11 @@ exports.update = function (req, res) {
 exports.assign = function (req, res) {
     workerprovider.byId(req.param('username'), function (err, user) {
         var data = {
-            assignee: err ? req.param('username') : user
+            assignee: err ? req.param('username') : minifyUser(user)
         }
         ticketprovider.assign(req.param('id'), data, function (err, result) {
-            workerprovider.byId(req.session['username'], function (err, user) {
-                var comment = {
-                    commentvalue: req.param('assigncomment'), 
-                    creator: user,
-                    created: new Date(Date.now())
-                }
-                ticketprovider.addComment(req.param('id'), comment, function (err, result) {
-                    res.redirect('ticket/details/' + req.param('id'))
-                })
+            postComment(req, function (err, result) {
+                res.redirect('ticket/details/' + req.param('id'))
             })
         })
     })
@@ -192,18 +201,13 @@ exports.assign = function (req, res) {
  */
 exports.reviewed = function (req, res) {
     workerprovider.byId(req.session['username'], function (err, user) {
-        ticketprovider.byId(req.param('id'), function (err, ticket) {
-            ticket.reviewed = true
-            if (!ticket.reviewcomment)
-                ticket.reviewcomment = []
-            ticket.reviewcomment.push({
-                commentvalue: req.param('reviewcomment'), 
-                creator: user,
-                created: new Date(Date.now())
-            })
-            ticketprovider.update(req.param('id'), ticket, function (err, result) {
-                res.redirect('ticket/details/' + req.param('id'))
-            })
+        var data = {
+            commentvalue: req.param('reviewcomment'), 
+            creator: err ? req.session['username'] : minifyUser(user),
+            created: new Date(Date.now())
+        }
+        ticketprovider.review(req.param('id'), data, function (err, result) {
+            res.redirect('ticket/details/' + req.param('id'))
         })
     })
 }
@@ -212,18 +216,10 @@ exports.reviewed = function (req, res) {
  * POST ticket/archive/:id
  */
 exports.archive = function (req, res) {
-    ticketprovider.byId(req.param('id'), function (err, ticket) {
-        ticket.archived = true
-        ticketprovider.update(req.param('id'), ticket, function (err, result) {
-            workerprovider.byId(req.session['username'], function (err, user) {
-                var comment = {
-                    commentvalue: req.param('comment'), 
-                    creator: user,
-                    created: new Date(Date.now())
-                }
-                ticketprovider.addComment(req.param('id'), comment, function (err, result) {
-                    res.redirect('ticket/')
-                })
+    ticketprovider.update(req.param('id'), { archived: true }, function (err, result) {
+        workerprovider.byId(req.session['username'], function (err, user) {
+            postComment(req, function (err, result) {
+                res.redirect('ticket/details/' + req.param('id'))
             })
         })
     })
