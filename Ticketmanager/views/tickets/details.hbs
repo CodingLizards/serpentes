@@ -104,7 +104,13 @@
         {{#ul comments class="list-unstyled"}}
         <blockquote>
             {{commentvalue}}
-            <footer>{{localize 'from'}} {{creator}} - {{formatDate created '%d.%m.%y %H:%M'}}</footer>
+            <footer>
+                {{#and creator.firstname creator.lastname}}
+                {{creator.firstname}} {{creator.lastname}}
+                {{else}}
+                {{creator}}
+                {{/and}} &mdash; {{formatDate created '%d.%m.%y %H:%M'}}
+            </footer>
         </blockquote>
         {{/ul}}
         {{/if}}
@@ -231,12 +237,21 @@
     </fieldset>
     <fieldset id="actions" class="pure-menu-page">
         <legend>{{localize 'actions'}}</legend>
-        {{#unless assignee}}
         <p>{{localize 'you can assign a ticket to yourself, so it is locked and you can work on it'}}</p>
-        <form action="/ticket/assign/{{_id}}/{{loggedonuser}}" method="post">
+        <form action="/ticket/assign/{{_id}}/{{loggedonuser}}" method="post" class="pure-form">
+            <input required name="assigncomment" id="assigncomment" placeholder="{{localize 'comment'}}" value="{{assigncomment}}" class="pure-u-20-24" />
             <button class="pure-button pure-button-primary" type="submit">{{localize 'assign to me'}}</button>
         </form>
-        {{/unless}}
+        <p>{{localize 'you can give a ticket to another person, so they can see, that they should work on it'}}</p>
+        <form action="/ticket/assign/{{_id}}" method="post" class="pure-form">
+            <select class="pure-u-6-24">
+                {{#each Workers}}
+                <option value="{{_id}}">{{firstname}} {{lastname}}</option>
+                {{/each}}
+            </select>
+            <input required name="assigncomment" id="assigncomment" placeholder="{{localize 'comment'}}" value="{{assigncomment}}" class="pure-u-14-24" />
+            <button class="pure-button pure-button-primary" type="submit">{{localize 'assign to me'}}</button>
+        </form>
     </fieldset>
 </div>
 {{/with}}

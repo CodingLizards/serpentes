@@ -10,6 +10,7 @@
     "view": "Anzeigen",
     "edit": "Bearbeiten",
     "delete": "Löschen",
+    "comment": "Kommentar",
 
     "add application": "Anwendung hinzufügen",
     "add worker": "Mitarbeiter hinzufügen",

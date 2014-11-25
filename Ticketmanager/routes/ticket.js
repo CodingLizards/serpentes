@@ -92,13 +92,15 @@ exports.details = function (req, res) {
  * POST ticket/comments/:id
  */
 exports.comment = function (req, res) {
-    var data = {
-        commentvalue: req.param('commentvalue'), 
-        creator: req.session['username'],
-        created: new Date(Date.now())
-    }
-    ticketprovider.addComment(req.param('id'), data, function (error, result) {
-        res.redirect('ticket/details/' + req.param('id') + '#comments')
+    workerprovider.byId(req.session['username'], function (err, user) {
+        var data = {
+            commentvalue: req.param('commentvalue'), 
+            creator: err ? req.sessing['username'] : user,
+            created: new Date(Date.now())
+        }
+        ticketprovider.addComment(req.param('id'), data, function (error, result) {
+            res.redirect('ticket/details/' + req.param('id') + '#comments')
+        })
     })
 }
 
@@ -167,7 +169,16 @@ exports.assign = function (req, res) {
             assignee: err ? req.param('username') : user
         }
         ticketprovider.update(req.param('id'), data, function (err, result) {
-            res.redirect('ticket/details/' + req.param('id'))
+            workerprovider.byId(req.session['username'], function (err, user) {
+                var comment = {
+                    commentvalue: req.param('assigncomment'), 
+                    creator: user,
+                    created: new Date(Date.now())
+                }
+                ticketprovider.addComment(req.param('id'), comment, function (err, result) {
+                    res.redirect('ticket/details/' + req.param('id'))
+                })
+            })
         })
     })
 }
