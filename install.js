@@ -38,4 +38,5 @@ var server = http.createServer(function (req, res) {
         })
     }
 })
+console.log('start server on ' + process.env.PORT)
 server.listen(process.env.PORT)
