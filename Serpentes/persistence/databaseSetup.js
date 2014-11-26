@@ -2,7 +2,7 @@
 
 getDatabase = function () {
     var connection = new (cradle.Connection)(process.env.COUCHDBSERVERHOST, process.env.COUCHDBSERVERPORT, {
-        cache: true,
+        cache: false,
         raw: false,
         auth: {
             username: process.env.COUCHDBSERVERUSERNAME, 
