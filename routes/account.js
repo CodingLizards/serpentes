@@ -57,7 +57,7 @@ exports.loginPost = function (req, res) {
                     res.render('account/adddetails', { layout: 'login', title: req.localize('my data'), username: req.session['username'], target: encodeURIComponent(req.param('target')), username: req.session['username'] })
                 } else {
                     req.session['fullname'] = result.firstname + ' ' + result.lastname
-                    req.session['isAdmin'] = result.isAdmin
+                    req.session['isAdmin'] = result.isadmin
                     if (req.param('target'))
                         res.redirect(req.param('target'))
                     else

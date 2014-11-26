@@ -3,10 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Serpentes", "Serpentes\Serpentes.njsproj", "{83AAC9F6-1094-40FC-8CE9-2CA0FE8CCBAC}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Serpentes", "Serpentes.njsproj", "{83AAC9F6-1094-40FC-8CE9-2CA0FE8CCBAC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{480E7C14-8CD7-4F03-8E62-8F01F9B25D54}"
 	ProjectSection(SolutionItems) = preProject
+		install.bat = install.bat
+		install.html = install.html
+		install.js = install.js
+		installsuccess.html = installsuccess.html
 		licence = licence
 		README.md = README.md
 	EndProjectSection
