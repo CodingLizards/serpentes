@@ -82,7 +82,6 @@ EDGE_CS_DEBUG=1</Environment>
     <Content Include="public\stylesheets\pure-custom.less" />
     <Content Include="public\stylesheets\pure.css" />
     <Content Include="public\stylesheets\variables.less" />
-    <Content Include="start.bat" />
     <Content Include="views\account\adddetails.hbs" />
     <Content Include="views\account\login.hbs" />
     <Content Include="views\admin\settings\configuredesign.hbs" />
