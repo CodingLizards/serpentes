@@ -9,5 +9,4 @@ call npm install -g nodemon
 start http://localhost:1337/
 set PORT=1337
 node install.js
-call createcert.bat
 call start.bat
