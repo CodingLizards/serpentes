@@ -61,7 +61,7 @@
     </style>
 </head>
 <body>
-    <form action="/" method="post">
+    <form action="/" method="post" enctype="multipart/form-data">
         <fieldset>
             <legend>Database information</legend>
             <div>
@@ -90,6 +90,10 @@
             <div>
                 <label for="DEFAULTDOMAIN">Default domain for Windows authentication</label>
                 <input required id="DEFAULTDOMAIN" type="text" value="" name="DEFAULTDOMAIN" />
+            </div>
+            <div>
+                <label for="certificate">SSL Certificate</label>
+                <input required id="certificate" accept="application/x-pkcs12" type="file" value="" name="certificate" />
             </div>
         </fieldset>
         <div>
