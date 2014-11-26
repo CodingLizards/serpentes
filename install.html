@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Serpentes Setup</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        form {
+            width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        label {
+            width: 320px;
+            display: inline-block;
+            text-align: right;
+        }
+
+        input {
+            width: 200px;
+            padding: 5px;
+            display: inline-block;
+            font-size: 100%;
+            border: solid #177 2px;
+            border-radius: 5px;
+        }
+
+            input:invalid {
+                border: solid #d83c3c;
+            }
+
+        fieldset {
+            border: none;
+        }
+
+            fieldset legend {
+                font-size: 150%;
+                font-weight: bold;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        button {
+            font-size: 100%;
+            margin-left: 340px;
+            padding: 10px 15px;
+            color: white;
+            border: none;
+            background-color: #177;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        div {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <form action="/" method="post">
+        <fieldset>
+            <legend>Database information</legend>
+            <div>
+                <label for="COUCHDBSERVERHOST">CouchDB Serverhost</label>
+                <input required id="COUCHDBSERVERHOST" type="text" value="" name="COUCHDBSERVERHOST" />
+            </div>
+            <div>
+                <label for="COUCHDBSERVERPORT">CouchDB Serverport</label>
+                <input required id="COUCHDBSERVERPORT" type="text" value="" name="COUCHDBSERVERPORT" />
+            </div>
+            <div>
+                <label for="COUCHDBSERVERUSERNAME">CouchDB Serverusername</label>
+                <input required id="COUCHDBSERVERUSERNAME" type="text" value="" name="COUCHDBSERVERUSERNAME" />
+            </div>
+            <div>
+                <label for="COUCHDBSERVERPASSWORD">CouchDB Serverpassword</label>
+                <input required id="COUCHDBSERVERPASSWORD" type="password" value="" name="COUCHDBSERVERPASSWORD" />
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>General information</legend>
+            <div>
+                <label for="PORT">Application Port</label>
+                <input required id="PORT" type="text" value="80" name="PORT" />
+            </div>
+            <div>
+                <label for="DEFAULTDOMAIN">Default domain for Windows authentication</label>
+                <input required id="DEFAULTDOMAIN" type="text" value="" name="DEFAULTDOMAIN" />
+            </div>
+        </fieldset>
+        <div>
+            <button type="submit">Save</button>
+        </div>
+    </form>
+</body>
+</html>
