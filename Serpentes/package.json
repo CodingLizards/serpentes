@@ -1,12 +1,35 @@
 {
   "name": "Serpentes",
-  "version": "0.1.0",
-  "description": "Serpentes",
-  "main": "app.js",
-  "author": {
-    "name": "Imanuel Ulbricht",
-    "email": "imanuel.ulbricht@arvato.com"
+  "description": "A ticketmanager to prioritize tickets and give some nice options :)",
+  "version": "v1.0.0-Alpha",
+  "keywords": [
+    "ticket",
+    "serpentes",
+    "coding",
+    "lizards"
+  ],
+  "maintainers": [
+    {
+      "name": "Imanuel Ulbricht",
+      "email": "i.ulbricht@codinglizards.de",
+      "web": "http://codinglizards.de/"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/CodingLizards/serpentes/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CodingLizards/serpentes.git"
+  },
+  "licenses": [
+    {
+      "name": "MIT Licence",
+      "url": "https://github.com/CodingLizards/serpentes/blob/master/licence"
+    }
+  ],
+  "readme": "https://github.com/CodingLizards/serpentes/blob/master/README.md",
+  "homepage": "https://github.com/CodingLizards/serpentes",
   "dependencies": {
     "cradle": "^0.6.7",
     "edge": "*",
@@ -18,6 +41,8 @@
     "handlebars-helpers": "^0.5.8",
     "less-middleware": "^1.0.4",
     "locale": "*",
-    "pem": "^1.4.1"
+    "nodemon": "^1.2.1",
+    "pem": "^1.4.1",
+    "socket.io": "^1.2.1"
   }
 }

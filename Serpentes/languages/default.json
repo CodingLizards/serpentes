@@ -34,6 +34,7 @@
     "help": "Hilfe",
     "add": "Hinzufügen",
     "show": "Anzeigen",
+    "update": "Updates",
 
     "login": "Anmelden",
     "username": "Benutzername",
@@ -139,5 +140,7 @@
     "error reloading language files": "Fehler beim neu einlesen der Sprachdateien",
     "reloading language files worked fine": "Neu einlesen der Sprachdateien wurde erfolgreich abgeschlossen",
     "design": "Design",
-    "configure colors": "Farben anpassen"
+    "configure colors": "Farben anpassen",
+    "update serpentes": "Serpentes aktualisieren",
+    "updating serpentes": "Serpentes wird aktualisiert"
 }
