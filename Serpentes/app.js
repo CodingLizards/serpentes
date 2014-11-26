@@ -140,7 +140,7 @@ app.use(function (req, res, next) {
         socket.on('start', function (data) {
             if (req.session['isAdmin']) {
                 socket.emit('log', { message: req.localize('updating serpentes') })
-                var process = childprocess.spawn('git' , ['pull', 'origin', 'feature/i-like-updates'])
+                var process = childprocess.spawn('git' , ['pull', 'origin', 'feature/master'])
                 process.stdout.on('data', function (data) {
                     console.log(data.toString())
                     socket.emit('log', { message: data.toString('UTF-8') });
