@@ -2,6 +2,25 @@ var http = require('http')
 var fs = require('fs')
 var path = require('path')
 
+var parseForm = function (data) {
+    var reg = /-----------------------------.{12}(\r\n|\r|\n)Content-Disposition: form-data; name="/
+    var sections = data.split(reg)
+    var result = {}
+    for (sec in sections) {
+        var values = sections[sec].split(/\b"(\r\n|\r|\n)(\r\n|\r|\n)/)
+        if (/certificate"; filename/.test(values[0])) {
+            var key = values[0].replace(/"; filename=".*/i, '')
+            var value = values[3].replace(/Content-Type: application\/x-pkcs12(\r\n|\n|\r)+/i, '').replace(/-----------------------------.{12}--(\r\n|\r|\n)/, '')
+            result[key] = new Buffer(value).toString('base64')
+        } else if (values[3]) {
+            var key = values[0]
+            var value = values[3].replace(/(\r\n|\r|\n)/, '')
+            result[key] = value
+        }
+    }
+    return result
+}
+
 var server = http.createServer(function (req, res) {
     console.log(req.method)
     if (req.method == 'GET') {
@@ -16,11 +35,18 @@ var server = http.createServer(function (req, res) {
             if (data) {
                 body += data
             }
-            var parameter = body.split('&')
+            var parameter = parseForm(body)
             var startbat = ''
-            console.log(parameter)
+            
             for (var p in parameter) {
-                startbat += 'set ' + parameter[p] + '\r\n'
+                if (p == 'certificate') {
+                    fs.writeFile(path.join(__dirname, 'server.p12'), parameter[p], function (err) {
+                        console.error(err)
+                        console.error('please copy the file to "' + __dirname + '" and name it server.p12')
+                    })
+                } else {
+                    startbat += 'set ' + p + '=' + parameter[p] + '\r\n'
+                }
             }
             startbat += 'nodemon app.js'
             fs.writeFile(path.join(__dirname, 'start.bat'), startbat, function (err) {
@@ -38,4 +64,5 @@ var server = http.createServer(function (req, res) {
         })
     }
 })
+console.log('start server on ' + process.env.PORT)
 server.listen(process.env.PORT)
