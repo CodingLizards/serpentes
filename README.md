@@ -42,24 +42,26 @@ With Serpentes it is super easy, to add new languages. You just need to translat
 With the help of [edge.js](https://github.com/tjanczuk/edge) it is possible to use Windows authentication for your employees. This makes the work for people easy, cause they don't need to remember a new password.
 
 # What is ready, what is in planning?
-- [ ] Ticket management
-    - [ ] Assign tickets to users
+- [x] Ticket management
+    - [x] Assign tickets to users
 - [x] Worker management
-    - [ ] Filter tickets by worker
+    - [x] Filter tickets by worker
 - [x] Department management
-    - [ ] Filter tickets by departments
+    - [x] Filter tickets by departments
 - [x] Application management
-    - [ ] Filter tickets by applications
+    - [x] Filter tickets by applications
 - [x] Client management
-    - [ ] Filter tickets by clients
+    - [x] Filter tickets by clients
 - [x] Release management
-    - [ ] Filter tickets by releases
+    - [x] Filter tickets by releases
 - [x] Customization
 - [ ] Localization
+	- [x] German
+	- [ ] English
 - [x] Windows authentication
 
 # What do we need?
-- [ ] It would be great, if someone could improve the file [databaseSetup.js](https://github.com/CodingLizards/serpentes/blob/develop/Serpentes/persistence/databaseSetup.js). Mostly the `reduce` functions are horrible messy but it is hard to clean them up (very little experience)
+- [ ] It would be great, if someone could improve the file [databaseSetup.js](https://github.com/CodingLizards/serpentes/blob/develop/Serpentes/persistence/databaseSetup.js). <strike>Mostly the `reduce` functions are horrible messy but it is hard to clean them up (very little experience)</strike> I figured out, that we (currently) don't need the reduce, just in `tickets/byId` so we are fine for now. But if someone would improve that one, it would be great :)
 
 - [ ] Someone who could translate the `languages/default.json` file would be great, together we just speak German and English :)
 
