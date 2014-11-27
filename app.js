@@ -191,7 +191,7 @@ if ('development' == app.get('env')) {
     app.use(express.errorHandler());
 }
 
-var options = { pfx: fs.readFileSync('localhost.p12') }
+var options = { pfx: fs.readFileSync('server.p12') }
 
 var server = https.createServer(options, app)
 var io = require('socket.io')(server)
