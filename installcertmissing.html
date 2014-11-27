@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Serpentes Setup</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        div {
+            width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        button {
+            font-size: 100%;
+            margin-left: 340px;
+            padding: 10px 15px;
+            color: white;
+            border: none;
+            background-color: #177;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3>Not quite ready</h3>
+        <p>Data successfully saved. Please copy your SSL certificate in the folder {{folder}} and name it <code>server.js</code>. Then click ready.</p>
+        <form action="/ready" method="post">
+            <button type="submit">Ready!</button>
+        </form>
+    </div>
+</body>
+</html>
