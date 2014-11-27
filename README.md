@@ -63,6 +63,8 @@ With the help of [edge.js](https://github.com/tjanczuk/edge) it is possible to u
 
 - [ ] Someone who could translate the `languages/default.json` file would be great, together we just speak German and English :)
 
+# [Installation](install.md)
+
 # Technologies we use
 For licence reasons and because we like to share and appreciate the work of others, here are all components we use with licence
 
