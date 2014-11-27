@@ -126,7 +126,7 @@ TicketProvider.prototype.review = function (id, data, callback) {
 }
 
 TicketProvider.prototype.all = function (callback) {
-    this.db.view('tickets/all', { group: true }, function (error, result) {
+    this.db.view('tickets/all', function (error, result) {
         if (error) {
             callback(error)
         } else {
@@ -135,7 +135,7 @@ TicketProvider.prototype.all = function (callback) {
     })
 }
 TicketProvider.prototype.allFree = function (callback) {
-    this.db.view('tickets/free', { group: true }, function (error, result) {
+    this.db.view('tickets/free', function (error, result) {
         if (error) {
             callback(error)
         } else {
@@ -144,7 +144,7 @@ TicketProvider.prototype.allFree = function (callback) {
     })
 }
 TicketProvider.prototype.allUnprioritized = function (callback) {
-    this.db.view('tickets/unprioritized', { group: true }, function (error, result) {
+    this.db.view('tickets/unprioritized', function (error, result) {
         if (error) {
             callback(error)
         } else {
@@ -153,7 +153,7 @@ TicketProvider.prototype.allUnprioritized = function (callback) {
     })
 }
 TicketProvider.prototype.allArchived = function (callback) {
-    this.db.view('tickets/archived', { group: true }, function (error, result) {
+    this.db.view('tickets/archived', function (error, result) {
         if (error) {
             callback(error)
         } else {
@@ -162,7 +162,7 @@ TicketProvider.prototype.allArchived = function (callback) {
     })
 }
 TicketProvider.prototype.allActive = function (callback) {
-    this.db.view('tickets/active', { group: true }, function (error, result) {
+    this.db.view('tickets/active', function (error, result) {
         if (error) {
             callback(error)
         } else {
@@ -170,8 +170,67 @@ TicketProvider.prototype.allActive = function (callback) {
         }
     })
 }
-TicketProvider.prototype.byCurrentWorker = function (workerid, callback) {
-    this.db.view('tickets/byCurrentWorker', { key: workerid }, function (error, result) {
+TicketProvider.prototype.byExternal = function (type, id, callback) {
+    var provider = new TicketProvider()
+    switch (type) {
+        case 'client':
+            provider.byClient(id, callback)
+            break
+        case 'worker':
+            provider.byWorker(id, callback)
+            break
+        case 'application':
+            provider.byApplication(id, callback)
+            break
+        case 'department':
+            provider.byDepartment(id, callback)
+            break
+        case 'release':
+            provider.byRelease(id, callback)
+            break
+        default:
+            provider.all(callback)
+            break
+    }
+}
+TicketProvider.prototype.byRelease = function (release, callback) {
+    this.db.view('tickets/byRelease', { key: release }, function (error, result) {
+        if (error) {
+            callback(error)
+        } else {
+            callback(null, sort(result))
+        }
+    })
+}
+TicketProvider.prototype.byWorker = function (worker, callback) {
+    this.db.view('tickets/byWorker', { key: worker }, function (error, result) {
+        if (error) {
+            callback(error)
+        } else {
+            callback(null, sort(result))
+        }
+    })
+}
+TicketProvider.prototype.byClient = function (client, callback) {
+    this.db.view('tickets/byClient', { key: client }, function (error, result) {
+        if (error) {
+            callback(error)
+        } else {
+            callback(null, sort(result))
+        }
+    })
+}
+TicketProvider.prototype.byApplication = function (application, callback) {
+    this.db.view('tickets/byApplication', { key: application }, function (error, result) {
+        if (error) {
+            callback(error)
+        } else {
+            callback(null, sort(result))
+        }
+    })
+}
+TicketProvider.prototype.byDepartment = function (department, callback) {
+    this.db.view('tickets/byDepartment', { key: department }, function (error, result) {
         if (error) {
             callback(error)
         } else {

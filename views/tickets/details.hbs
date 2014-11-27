@@ -85,6 +85,7 @@
                 {{/ul}}
             </div>
             {{/if}}
+            {{log clients}}
             {{#if clients}}
             <div class="pure-u-1">
                 <h4>{{localize 'clients'}}</h4>
@@ -179,7 +180,7 @@
                 <div class="pure-control-group">
                     <label for="applications">{{localize 'applications'}}</label>
                     <select class="pure-u-20-24" multiple id="applications" name="applications">
-                        {{#each ../Applications}}
+                        {{#each ../../Applications}}
                         <option value="{{_id}}"
                                 {{#inArrayId ../applications _id}}
                                 selected
@@ -192,7 +193,7 @@
                 <div class="pure-control-group">
                     <label for="departments">{{localize 'departments'}}</label>
                     <select class="pure-u-20-24" multiple id="departments" name="departments">
-                        {{#each ../Departments}}
+                        {{#each ../../Departments}}
                         <option value="{{_id}}"
                                 {{#inArrayId ../departments _id}}
                                 selected
@@ -205,7 +206,7 @@
                 <div class="pure-control-group">
                     <label for="clients">{{localize 'clients'}}</label>
                     <select class="pure-u-20-24" multiple id="clients" name="clients">
-                        {{#each ../Clients}}
+                        {{#each ../../Clients}}
                         <option value="{{_id}}"
                                 {{#inArrayId ../clients _id}}
                                 selected
@@ -218,7 +219,7 @@
                 <div class="pure-control-group">
                     <label for="release">{{localize 'releases'}}</label>
                     <select class="pure-u-20-24" id="release" name="release">
-                        {{#each ../Releases}}
+                        {{#each ../../Releases}}
                         <option value="{{_id}}"
                                 {{#compare _id '===' ../../release}}
                                 selected

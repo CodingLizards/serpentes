@@ -97,6 +97,11 @@
     "review state": "Review Status",
     "you can move a ticket in the archive, that means it is closed and not longer in progress": "Du kannst ein Ticket ins Archive legen, dadurch wird gezeigt, dass die Arbeit eingestellt ist",
     "assignee history": "Bearbeiterhistorie",
+    "tickets for client ": "Tickets für Mandant ",
+    "tickets for application ": "Tickets für Anwendung ",
+    "tickets for department ": "Tickets für Abteilung ",
+    "tickets for release ": "Tickets für Release ",
+    "tickets for worker ": "Tickets für den Mitarbeiter ",
 
     "worker": "Mitarbeiter",
     "saved worker successfully": "Der Mitarbeiter wurde erfolgreich gespeichert",

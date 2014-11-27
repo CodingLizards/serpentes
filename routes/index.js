@@ -7,7 +7,7 @@ var ticketProvider = new TicketProvider()
  */
 
 exports.index = function (req, res) {
-    ticketProvider.byCurrentWorker(req.session['username'], function (error, result) {
+    ticketProvider.byExternal('worker', req.session['username'], function (error, result) {
         res.render('index', { title: req.localize('my tickets'), tickets: result })
     })
 }

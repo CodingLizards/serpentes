@@ -14,6 +14,7 @@ var workerprovider = new WorkerProvider()
 
 var minifyUser = function (user) {
     var result = {
+        _id: user._id,
         firstname: user.firstname,
         lastname: user.lastname,
         emailaddress: user.emailaddress,
@@ -64,6 +65,15 @@ exports.add = function (req, res) {
  */
 exports.addPost = function (req, res) {
     if (req.body.ticketnumber) {
+        if (typeof req.body.applications == typeof "") {
+            req.body.applications = [req.param('applications')]
+        }
+        if (typeof req.body.departments == typeof "") {
+            data.departments = [req.param('departments')]
+        }
+        if (typeof req.body.clients == typeof "") {
+            req.body.clients = [req.param('clients')]
+        }
         ticketprovider.save(req.body, function (err, result) {
             if (err) {
                 req.body.error = err
@@ -128,33 +138,77 @@ exports.comment = function (req, res) {
  * GET ticket/:state
  */
 exports.index = function (req, res) {
-    ticketprovider.allByState(req.param('state'), function (err, result) {
-        if (err) {
-            console.log(err)
-        }
-        var data = {
-            tickets: result
-        }
-        
-        switch (req.param('state')) {
-            case 'active':
-                data.title = req.localize('active tickets')
-                break
-            case 'free':
-                data.title = req.localize('free tickets')
-                break
-            case 'archived':
-                data.title = req.localize('archived tickets')
-                break
-            case 'unprioritized':
-                data.title = req.localize('unprioritized tickets')
-                break
-            default:
-                data.title = req.localize('show tickets')
-                break
-        }
-        res.render('tickets/index', data)
-    })
+    if (/(client|application|department|worker)/.test(req.param('state'))) {
+        ticketprovider.byExternal(req.param('state'), req.param('id'), function (err, result) {
+            if (err) {
+                console.log(err)
+            }
+            var data = {
+                tickets: result
+            }
+            
+            switch (req.param('state')) {
+                case 'client':
+                    clientprovider.byId(req.param('id'), function (err, client) {
+                        data.title = req.localize('tickets for client ') + client.name
+                        res.render('tickets/index', data)
+                    })
+                    break
+                case 'application':
+                    applicationprovider.byId(req.param('id'), function (err, application) {
+                        data.title = req.localize('tickets for application ') + application.name
+                        res.render('tickets/index', data)
+                    })
+                    break
+                case 'departement':
+                    departementprovider.byId(req.param('id'), function (err, departement) {
+                        data.title = req.localize('tickets for departement ') + departement.name
+                        res.render('tickets/index', data)
+                    })
+                    break
+                case 'worker':
+                    workerprovider.byId(req.param('id'), function (err, worker) {
+                        data.title = req.localize('tickets for worker ') + worker.firstname + ' ' + worker.lastname
+                        res.render('tickets/index', data)
+                    })
+                    break
+                case 'release':
+                    releaseprovider.byId(req.param('id'), function (err, release) {
+                        data.title = req.localize('tickets for release ') + release.name
+                        res.render('tickets/index', data)
+                    })
+                    break
+            }
+        })
+    } else if (/(active|free|archived|unprioritized)/.test(req.param('state'))) {
+        ticketprovider.allByState(req.param('state'), function (err, result) {
+            if (err) {
+                console.log(err)
+            }
+            var data = {
+                tickets: result
+            }
+            
+            switch (req.param('state')) {
+                case 'active':
+                    data.title = req.localize('active tickets')
+                    break
+                case 'free':
+                    data.title = req.localize('free tickets')
+                    break
+                case 'archived':
+                    data.title = req.localize('archived tickets')
+                    break
+                case 'unprioritized':
+                    data.title = req.localize('unprioritized tickets')
+                    break
+                default:
+                    data.title = req.localize('show tickets')
+                    break
+            }
+            res.render('tickets/index', data)
+        })
+    }
 }
 
 /*
@@ -174,6 +228,15 @@ exports.update = function (req, res) {
         departments: req.param('departments'),
         clients: req.param('clients'),
         release: req.param('release')
+    }
+    if (typeof data.applications == typeof "") {
+        data.applications = [req.param('applications')]
+    }
+    if (typeof data.departments == typeof "") {
+        data.departments = [req.param('departments')]
+    }
+    if (typeof data.clients == typeof "") {
+        data.clients = [req.param('clients')]
     }
     ticketprovider.update(req.param('id'), data, function (err, result) {
         res.redirect('ticket/details/' + req.param('id'))

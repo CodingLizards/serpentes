@@ -4,6 +4,7 @@
             <th style="width: 100px">#</th>
             <th>{{localize 'name'}}</th>
             <th>{{localize 'release date'}}</th>
+            <th>{{localize 'actions'}}</th>
         </tr>
     </thead>
     <tbody>
@@ -12,6 +13,7 @@
             <td><a href="/release/details/{{_id}}"><code>{{truncate _id 6 ''}}</code></a></td>
             <td>{{name}}</td>
             <td>{{releasedate}}</td>
+            <td><a href="/ticket/release?id={{_id}}">{{localize 'tickets'}}</a></td>
         </tr>
         {{/each}}
     </tbody>

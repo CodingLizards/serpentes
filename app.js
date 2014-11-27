@@ -43,16 +43,16 @@ app.use(express.urlencoded())
 app.use(express.methodOverride())
 app.use(session({ secret: '{18165D59-08BB-40EF-BBA4-1220B623282B}' }))
 app.use(expless(__dirname + "/public", {
-        preprocess: {
-            less: function (src, req) {
-                var vars = ""
-                for (item in settings.designvalues) {
-                    vars += "@" + item + ":" + settings.designvalues[item] + ";"
-                }
-                return vars + src
+    preprocess: {
+        less: function (src, req) {
+            var vars = ""
+            for (item in settings.designvalues) {
+                vars += "@" + item + ":" + settings.designvalues[item] + ";"
             }
-        }, force: true
-    }, { compress: true }))
+            return vars + src
+        }
+    }, force: true
+}, { compress: true }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(locale(supported))
 app.use(function (req, res, next) {
@@ -134,6 +134,13 @@ app.use(function (req, res, next) {
             return opts.inverse(this)
         } else {
             return opts.fn(this)
+        }
+    }
+    hbs.helpers.withValue = function (data, opts) {
+        if (data.value) {
+            return opts.fn(data.value)
+        } else {
+            return opts.fn(data)
         }
     }
     io.on('connection', function (socket) {
