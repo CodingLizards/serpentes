@@ -18,6 +18,7 @@ var settings = require('./routes/settings.js')
 var dbsetup = require('./persistence/databaseSetup.js')
 var WorkerProvider = require('./persistence/workerProvider.js').WorkerProvider
 var routesetup = require('./routes/routesSetup.js')
+var handlebarssetup = require('./handlebarsSetup.js')
 
 var supported = ["de", "de_DE", "en"]
 
@@ -25,7 +26,7 @@ var app = express()
 var hbs = exphbs.create({
     defaultLayout: 'layout',
     extname: '.hbs',
-    helpers: {}
+    helpers: handlebarssetup.nonRequestHelper
 })
 var __localize = localizer.localize
 
@@ -56,93 +57,6 @@ app.use(expless(__dirname + "/public", {
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(locale(supported))
 app.use(function (req, res, next) {
-    hbs.helpers.isAdmin = function (opts) {
-        if (req.session['isAdmin'])
-            return opts.fn(this)
-        else
-            return opts.inverse(this)
-    }
-    hbs.helpers.loggedonuser = function () {
-        return req.session['username']
-    }
-    hbs.helpers.currentusername = function () {
-        if (req.session['fullname'])
-            return req.session['fullname']
-        return req.session['username']
-    }
-    hbs.helpers.jsonStringify = function (value) {
-        return JSON.stringify(value)
-    }
-    hbs.helpers.localize = function (key) {
-        return __localize(key, req)
-    }
-    hbs.helpers.uriencode = function (item) {
-        return encodeURIComponent(item)
-    }
-    hbs.helpers.lastElement = function (array) {
-        return array.reverse()[0]
-    }
-    hbs.helpers.withLastElement = function (array, opts) {
-        if (array)
-            return opts.fn(array.reverse()[0])
-        else
-            return opts.inverse(this)
-    }
-    hbs.helpers.inArrayId = function (array, id, opts) {
-        var lookup = {}
-        if (array) {
-            for (var i = 0; i < array.length; i++) {
-                lookup[array[i]._id] = array[i]
-            }
-        }
-        if (lookup[id])
-            return opts.fn(this)
-        else
-            return opts.inverse(this)
-    }
-    hbs.helpers.formatWorker = function (worker) {
-        if (worker) {
-            if (worker.firstname && worker.lastname) {
-                return worker.firstname + '\u00A0' + worker.lastname
-            } else {
-                return worker
-            }
-        }
-    }
-    hbs.helpers.workerIsNotAssigneeOption = function (worker, assignee, opts) {
-        var res = '<option value="' + worker._id + '">' + worker.firstname + ' ' + worker.lastname + (worker.department ? ' (' + req.localize(worker.department) + ')' : '') + '</option>'
-        if (assignee) {
-            if (!(worker != assignee && worker._id != assignee._id)) {
-                res = ''
-            }
-        }
-        return new hbs.handlebars.SafeString(res)
-
-    }
-    hbs.helpers.commentList = function (input) {
-        var res = '<ul class="list-unstyled">'
-        for (item in input) {
-            res +=
-            '<li><blockquote>' + input[item].commentvalue + 
-                '<footer>' + hbs.helpers.formatWorker(input[item].creator) + ' &mdash; ' + hbs.handlebars.helpers.formatDate(input[item].created, '%d.%m.%y %H:%M') + '</footer></blockquote></li>'
-        }
-        res += '</ul>'
-        return new hbs.handlebars.SafeString(res)
-    }
-    hbs.helpers.currentUserIsAssignee = function (assignee, opts) {
-        if (assignee && (assignee == req.session['username'] || assignee._id && assignee._id == req.session['username'])) {
-            return opts.inverse(this)
-        } else {
-            return opts.fn(this)
-        }
-    }
-    hbs.helpers.withValue = function (data, opts) {
-        if (data.value) {
-            return opts.fn(data.value)
-        } else {
-            return opts.fn(data)
-        }
-    }
     io.on('connection', function (socket) {
         socket.on('start', function (data) {
             if (req.session['isAdmin']) {
@@ -170,6 +84,7 @@ app.use(function (req, res, next) {
     req.localize = function (key) { return __localize(key, req) }
     next()
 })
+app.use(handlebarssetup.setup(hbs))
 if ('development' == app.get('env')) {
     app.use(function (req, res, next) {
         req.session['isAdmin'] = true
