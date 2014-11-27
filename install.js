@@ -3,15 +3,15 @@ var fs = require('fs')
 var path = require('path')
 
 var parseForm = function (data) {
-    var reg = /-----------------------------.{12}(\r\n|\r|\n)Content-Disposition: form-data; name="/
+    var reg = /-----------------------------.+(\r\n|\r|\n)Content-Disposition: form-data; name="/
     var sections = data.split(reg)
     var result = {}
     for (sec in sections) {
         var values = sections[sec].split(/\b"(\r\n|\r|\n)(\r\n|\r|\n)/)
         if (/certificate"; filename/.test(values[0])) {
             var key = values[0].replace(/"; filename=".*/i, '')
-            var value = values[3].replace(/Content-Type: application\/x-pkcs12(\r\n|\n|\r)+/i, '').replace(/-----------------------------.{12}--(\r\n|\r|\n)/, '')
-            result[key] = new Buffer(value).toString('base64')
+            var value = values[3].replace(/Content-Type: application\/x-pkcs12(\r\n|\n|\r)+/i, '').replace(/-----------------------------.+--(\r\n|\r|\n)/, '')
+            result[key] = new Buffer(value, 'ascii').toString()
         } else if (values[3]) {
             var key = values[0]
             var value = values[3].replace(/(\r\n|\r|\n)/, '')
@@ -27,6 +27,7 @@ var server = http.createServer(function (req, res) {
         res.writeHead(200, { "content-type": "text/html" })
         res.end(fs.readFileSync(path.join(__dirname, 'install.html')))
     } else if (req.method == 'POST') {
+        req.setEncoding('base64')
         var body = ''
         req.on('data', function (data) {
             body += data
@@ -35,7 +36,7 @@ var server = http.createServer(function (req, res) {
             if (data) {
                 body += data
             }
-            var parameter = parseForm(body)
+            var parameter = parseForm(new Buffer(body, 'base64').toString('ascii'))
             var startbat = ''
             
             for (var p in parameter) {
