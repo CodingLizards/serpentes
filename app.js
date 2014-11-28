@@ -72,5 +72,4 @@ server.listen(app.get('port'), function () {
 })
 
 dbsetup.setup()
-settings.initializedesign(function () { 
-})
+settings.initializedesign()

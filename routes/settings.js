@@ -81,7 +81,9 @@ exports.initializedesign = function (callback) {
                 if (result[item])
                     exports.designvalues[item] = result[item]
             }
-            callback()
+            if (callback) {
+                callback()
+            }
         }
     })
 }
