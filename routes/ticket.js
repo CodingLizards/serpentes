@@ -180,7 +180,7 @@ exports.index = function (req, res) {
                     break
             }
         })
-    } else if (/(active|free|archived|unprioritized)/.test(req.param('state'))) {
+    } else {
         ticketprovider.allByState(req.param('state'), function (err, result) {
             if (err) {
                 console.log(err)
