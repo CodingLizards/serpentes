@@ -9,9 +9,11 @@ var worker = require('./worker.js')
 var settings = require('./settings.js')
 var user = require('./user.js')
 var admin = require('./admin.js')
+var express = require('express')
 
 exports.setup = function (app) {
-    app.get('/', routes.index)
+    var router = new express.Router()
+    router.get('/', routes.index)
     
     app.get('/logout', account.logout)
     app.get('/login', account.login)
@@ -69,4 +71,5 @@ exports.setup = function (app) {
     app.post('/admin/users/update/:id', user.update)
     app.get('/admin/update', admin.update)
     app.post('/admin/update/', admin.updatePost)
+    app.use('/', router)
 }

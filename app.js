@@ -12,8 +12,9 @@ var locale = require('locale')
 var childprocess = require('child_process')
 var exphbs = require('express-handlebars')
 var hbshelper = require('handlebars-helpers')
+var favicon = require('serve-favicon')
 
-var localizer = require('./localizer.js')
+var __localize = require('./localizer.js').localize
 var settings = require('./routes/settings.js')
 var dbsetup = require('./persistence/databaseSetup.js')
 var WorkerProvider = require('./persistence/workerProvider.js').WorkerProvider
@@ -28,7 +29,6 @@ var hbs = exphbs.create({
     extname: '.hbs',
     helpers: handlebarssetup.nonRequestHelper
 })
-var __localize = localizer.localize
 
 hbshelper.register(hbs.handlebars, { marked: undefined })
 
@@ -37,11 +37,11 @@ app.engine('.hbs', hbs.engine)
 app.set('port', process.env.PORT || 3000)
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', '.hbs')
-app.use(express.favicon())
-app.use(express.logger('dev'))
-app.use(express.json())
-app.use(express.urlencoded())
-app.use(express.methodOverride())
+app.use(require('serve-favicon')(path.join(__dirname, 'favicon.ico')))
+app.use(require('morgan')('dev'))
+app.use(require('body-parser').json())
+app.use(require('body-parser').urlencoded())
+app.use(require('method-override')())
 app.use(session({ secret: '{18165D59-08BB-40EF-BBA4-1220B623282B}' }))
 app.use(expless(__dirname + "/public", {
     preprocess: {
@@ -80,7 +80,6 @@ app.use(function (req, res, next) {
             }
         })
     })
-    
     req.localize = function (key) { return __localize(key, req) }
     next()
 })
@@ -105,22 +104,21 @@ if ('development' == app.get('env')) {
         }
     })
 }
-app.use(app.router)
 routesetup.setup(app)
 
 // development only
 if ('development' == app.get('env')) {
-    app.use(express.errorHandler());
+    app.use(require('errorhandler')())
 }
 
 var options = { pfx: fs.readFileSync('server.p12') }
 
 var server = https.createServer(options, app)
 var io = require('socket.io')(server)
+
 server.listen(app.get('port'), function () {
-    console.log('Express server listening on port ' + app.get('port'));
+    console.log('Express server listening on port ' + app.get('port'))
 })
 
 dbsetup.setup()
 settings.initializedesign(function () { })
-var workerprovider = new WorkerProvider()

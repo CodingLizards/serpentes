@@ -67,6 +67,7 @@ EDGE_CS_DEBUG=1</Environment>
     <Compile Include="routes\ticket.js" />
     <Compile Include="routes\user.js" />
     <Compile Include="routes\worker.js" />
+    <Content Include="favicon.ico" />
     <Content Include="languages\de_DE.json" />
     <Content Include="languages\de.json" />
     <Content Include="languages\default.json" />
