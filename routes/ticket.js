@@ -130,7 +130,7 @@ exports.details = function (req, res) {
  */
 exports.comment = function (req, res) {
     postComment(req, function (error, result) {
-        res.redirect('ticket/details/' + req.param('id') + '#comments')
+        res.redirect('/ticket/details/' + req.param('id') + '#comments')
     })
 }
 
@@ -239,7 +239,7 @@ exports.update = function (req, res) {
         data.clients = [req.param('clients')]
     }
     ticketprovider.update(req.param('id'), data, function (err, result) {
-        res.redirect('ticket/details/' + req.param('id'))
+        res.redirect('/ticket/details/' + req.param('id'))
     })
 }
 
@@ -253,7 +253,7 @@ exports.assign = function (req, res) {
         }
         ticketprovider.assign(req.param('id'), data, function (err, result) {
             postComment(req, function (err, result) {
-                res.redirect('ticket/details/' + req.param('id'))
+                res.redirect('/ticket/details/' + req.param('id'))
             })
         })
     })
@@ -270,7 +270,7 @@ exports.reviewed = function (req, res) {
             created: new Date(Date.now())
         }
         ticketprovider.review(req.param('id'), data, function (err, result) {
-            res.redirect('ticket/details/' + req.param('id'))
+            res.redirect('/ticket/details/' + req.param('id'))
         })
     })
 }
@@ -282,7 +282,7 @@ exports.archive = function (req, res) {
     ticketprovider.update(req.param('id'), { archived: true }, function (err, result) {
         workerprovider.byId(req.session['username'], function (err, user) {
             postComment(req, function (err, result) {
-                res.redirect('ticket/details/' + req.param('id'))
+                res.redirect('/ticket/details/' + req.param('id'))
             })
         })
     })

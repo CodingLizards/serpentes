@@ -41,7 +41,7 @@ exports.update = function (req, res) {
             isadmin: req.param('isadmin')
         }
         workerprovider.update(req.param('id'), data, function (err, result) {
-            res.redirect('admin/users/details/' + req.param('id'))
+            res.redirect('/admin/users/details/' + req.param('id'))
         })
     } else {
         res.redirect('/')
