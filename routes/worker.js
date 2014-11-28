@@ -65,6 +65,6 @@ exports.update = function (req, res) {
         department: req.param('department')
     }
     workerprovider.update(req.param('id'), data, function (err, result) {
-        res.redirect('worker/details/' + req.param('id'))
+        res.redirect('/worker/details/' + req.param('id'))
     })
 }

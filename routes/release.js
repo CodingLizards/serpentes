@@ -50,6 +50,6 @@ exports.update = function (req, res) {
         releasedate: req.param('releasedate')
     }
     releaseprovider.update(req.param('id'), data, function (err, result) {
-        res.redirect('release/details/' + req.param('id'))
+        res.redirect('/release/details/' + req.param('id'))
     })
 }

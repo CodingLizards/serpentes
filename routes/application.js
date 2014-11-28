@@ -49,6 +49,6 @@ exports.update = function (req, res) {
         name: req.param('name')
     }
     applicationprovider.update(req.param('id'), data, function (err, result) {
-        res.redirect('application/details/' + req.param('id'))
+        res.redirect('/application/details/' + req.param('id'))
     })
 }
