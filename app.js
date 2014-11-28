@@ -1,12 +1,6 @@
-﻿/**
- * Module dependencies.
- */
-
-var express = require('express')
+﻿var express = require('express')
 var https = require('https')
 var path = require('path')
-var hbshelper = require('handlebars-helpers')
-var favicon = require('serve-favicon')
 var log4js = require('log4js')
 
 var settings = require('./routes/settings.js')
@@ -23,10 +17,9 @@ var hbs = require('express-handlebars').create({
     helpers: handlebarssetup.nonRequestHelper
 })
 
-hbshelper.register(hbs.handlebars, { marked: undefined })
+require('handlebars-helpers').register(hbs.handlebars, { marked: undefined })
 log4js.configure(path.join(__dirname, 'log4js.json'), {})
 
-// all environments
 app.engine('.hbs', hbs.engine)
 app.use(log4js.connectLogger(logger, {}))
 app.set('port', process.env.PORT || 3000)
