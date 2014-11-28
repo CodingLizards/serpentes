@@ -1,0 +1,21 @@
+{
+    "appenders": [
+        {
+            "type": "logLevelFilter",
+            "level": "WARN",
+            "appender": {
+                "type": "file",
+                "filename": "log/serpentes.log",
+                "alwaysIncludePattern": true
+            }
+        },
+        {
+            "type": "logLevelFilter",
+            "level": "DEBUG",
+            "appender": {
+                "type": "console"
+            }
+        }
+    ],
+    "replaceConsole": true
+}
