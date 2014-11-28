@@ -38,6 +38,7 @@ EDGE_CS_DEBUG=1</Environment>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="authentication.js" />
     <Compile Include="handlebarsSetup.js" />
     <Compile Include="localizer.js" />
     <Compile Include="persistence\applicationProvider.js" />
@@ -67,10 +68,12 @@ EDGE_CS_DEBUG=1</Environment>
     <Compile Include="routes\ticket.js" />
     <Compile Include="routes\user.js" />
     <Compile Include="routes\worker.js" />
+    <Compile Include="updates.js" />
     <Content Include="favicon.ico" />
     <Content Include="languages\de_DE.json" />
     <Content Include="languages\de.json" />
     <Content Include="languages\default.json" />
+    <Content Include="log4js.json" />
     <Content Include="nodemon.json" />
     <Content Include="package.json" />
     <Content Include="public\fonts\fontawesome-webfont.eot" />

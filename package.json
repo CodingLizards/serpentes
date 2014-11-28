@@ -43,6 +43,7 @@
     "handlebars-helpers": "^0.5.8",
     "less-middleware": "^1.0.4",
     "locale": "*",
+    "log4js": "^0.6.21",
     "method-override": "^2.3.0",
     "morgan": "^1.5.0",
     "nodemon": "^1.2.1",

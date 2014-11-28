@@ -3,47 +3,42 @@
  */
 
 var express = require('express')
-var session = require('express-session')
 var https = require('https')
 var path = require('path')
-var fs = require('fs')
-var expless = require('less-middleware')
-var locale = require('locale')
-var childprocess = require('child_process')
-var exphbs = require('express-handlebars')
 var hbshelper = require('handlebars-helpers')
 var favicon = require('serve-favicon')
+var log4js = require('log4js')
 
-var __localize = require('./localizer.js').localize
 var settings = require('./routes/settings.js')
 var dbsetup = require('./persistence/databaseSetup.js')
 var WorkerProvider = require('./persistence/workerProvider.js').WorkerProvider
 var routesetup = require('./routes/routesSetup.js')
 var handlebarssetup = require('./handlebarsSetup.js')
 
-var supported = ["de", "de_DE", "en"]
-
+var logger = log4js.getLogger('serpentes');
 var app = express()
-var hbs = exphbs.create({
+var hbs = require('express-handlebars').create({
     defaultLayout: 'layout',
     extname: '.hbs',
     helpers: handlebarssetup.nonRequestHelper
 })
 
 hbshelper.register(hbs.handlebars, { marked: undefined })
+log4js.configure(path.join(__dirname, 'log4js.json'), {})
 
 // all environments
 app.engine('.hbs', hbs.engine)
+app.use(log4js.connectLogger(logger, {}))
 app.set('port', process.env.PORT || 3000)
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', '.hbs')
 app.use(require('serve-favicon')(path.join(__dirname, 'favicon.ico')))
-app.use(require('morgan')('dev'))
+app.use(require('morgan')('tiny'))
 app.use(require('body-parser').json())
 app.use(require('body-parser').urlencoded())
 app.use(require('method-override')())
-app.use(session({ secret: '{18165D59-08BB-40EF-BBA4-1220B623282B}' }))
-app.use(expless(__dirname + "/public", {
+app.use(require('express-session')({ secret: '{18165D59-08BB-40EF-BBA4-1220B623282B}' }))
+app.use(require('less-middleware')(__dirname + "/public", {
     preprocess: {
         less: function (src, req) {
             var vars = ""
@@ -55,55 +50,10 @@ app.use(expless(__dirname + "/public", {
     }, force: true
 }, { compress: true }))
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(locale(supported))
-app.use(function (req, res, next) {
-    io.on('connection', function (socket) {
-        socket.on('start', function (data) {
-            if (req.session['isAdmin']) {
-                socket.emit('log', { message: req.localize('updating serpentes') })
-                var process = childprocess.spawn('git' , ['pull', 'origin', 'feature/master'])
-                process.stdout.on('data', function (data) {
-                    console.log(data.toString())
-                    socket.emit('log', { message: data.toString('UTF-8') });
-                })
-                process.stderr.on('data', function (data) {
-                    console.log(data.toString())
-                    socket.emit('log', { message: data.toString('UTF-8') });
-                })
-                process.on('exit', function (code, signal) {
-                    console.log('exited with code ' + code)
-                    socket.emit('log', { message: 'exit with code ' + code })
-                    process.kill()
-                })
-            } else {
-                socket.emit('log', req.localize('only admins can update'))
-            }
-        })
-    })
-    req.localize = function (key) { return __localize(key, req) }
-    next()
-})
-app.use(handlebarssetup.setup(hbs))
-if ('development' == app.get('env')) {
-    app.use(function (req, res, next) {
-        req.session['isAdmin'] = true
-        req.session['fullname'] = 'Theo Test'
-        req.session['username'] = 'theo'
-        next()
-    })
-} else {
-    app.use(function (req, res, next) {
-        if (req.path != '/login') {
-            if (req.session['authenticated'] == true) {
-                next()
-            } else {
-                res.redirect('/login?target=' + encodeURIComponent(req.originalUrl))
-            }
-        } else {
-            next()
-        }
-    })
-}
+app.use(require('locale')(["de", "de_DE", "en"]))
+app.use(require('./localizer.js').localize())
+app.use(require('./authentication.js').authentication(app.get('env')))
+app.use(handlebarssetup.requestHelpers(hbs))
 routesetup.setup(app)
 
 // development only
@@ -111,14 +61,16 @@ if ('development' == app.get('env')) {
     app.use(require('errorhandler')())
 }
 
-var options = { pfx: fs.readFileSync('server.p12') }
+var options = { pfx: require('fs').readFileSync('server.p12') }
 
 var server = https.createServer(options, app)
 var io = require('socket.io')(server)
+app.use(require('./updates.js').updateSocket(io))
 
 server.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'))
 })
 
 dbsetup.setup()
-settings.initializedesign(function () { })
+settings.initializedesign(function () { 
+})

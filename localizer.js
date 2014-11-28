@@ -18,17 +18,34 @@ function init() {
         languages[element.toLowerCase().replace('.json', '')] = JSON.parse(data.toString('utf-8', offset, data.length))
     }
 }
-exports.localize = function (key, req) {
-    var lang = req.locale
-    var result = undefined
-    if (languages[lang]) {
-        result = languages[lang][key]
-    } else if (languages['default']) {
-        result = languages['default'][key]
-    }
-    if (!result)
-        result = key
-    return result
-}
+//exports.localize = function (key, req) {
+//    var lang = req.locale
+//    var result = undefined
+//    if (languages[lang]) {
+//        result = languages[lang][key]
+//    } else if (languages['default']) {
+//        result = languages['default'][key]
+//    }
+//    if (!result)
+//        result = key
+//    return result
+//}
 exports.initialize = init
+exports.localize = function () {
+    return function (req, res, next) {
+        req.localize = function (key) {
+            var lang = req.locale
+            var result = undefined
+            if (languages[lang]) {
+                result = languages[lang][key]
+            } else if (languages['default']) {
+                result = languages['default'][key]
+            }
+            if (!result)
+                result = key
+            return result
+        }
+        next()
+    }
+}
 init()

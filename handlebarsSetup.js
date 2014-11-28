@@ -37,7 +37,7 @@
         }
     }
 }
-exports.setup = function (hbs) {
+exports.requestHelpers = function (hbs) {
     return function (req, res, next) {
         hbs.helpers.isAdmin = function (opts) {
             if (req.session['isAdmin'])
