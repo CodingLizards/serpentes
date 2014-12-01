@@ -110,6 +110,7 @@ EDGE_CS_DEBUG=1</Environment>
     <Content Include="views\layouts\layout.hbs" />
     <Content Include="views\layouts\login.hbs" />
     <Content Include="views\partials\error.hbs" />
+    <Content Include="views\partials\forkme.hbs" />
     <Content Include="views\releases\add.hbs" />
     <Content Include="views\releases\addsuccess.hbs" />
     <Content Include="views\releases\details.hbs" />
