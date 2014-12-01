@@ -2,7 +2,7 @@
 var settingsProvider = new SettingsProvider()
 
 var isAdmin = function (req, res, callback) {
-    if (req.session['isAdmin'] == true) {
+    if (req.session['isAdmin']) {
         callback()
     } else {
         res.redirect('/')

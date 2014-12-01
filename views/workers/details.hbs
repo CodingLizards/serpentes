@@ -44,6 +44,12 @@
         <div class="pure-control-group">
             <label for="department">{{localize 'department'}}*</label>
             <select required name="department" class="pure-u-20-24" id="department">
+                <option value="projectmanagement"
+                        {{#compare department '===' 'projectmanagement'}}
+                        selected
+                        {{/compare}}>
+                    {{localize 'project management'}}
+                </option>
                 <option value="development"
                         {{#compare department '===' 'development'}}
                         selected
