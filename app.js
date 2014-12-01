@@ -44,7 +44,7 @@ app.use(require('less-middleware')(__dirname + "/public", {
 }, { compress: true }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(require('locale')(["de", "de_DE", "en"]))
-app.use(require('./localizer.js').localize())
+app.use(require('codinglizards-localizer').localize())
 app.use(require('./authentication.js').authentication(app.get('env')))
 app.use(handlebarssetup.requestHelpers(hbs))
 routesetup.setup(app)
@@ -66,3 +66,4 @@ server.listen(app.get('port'), function () {
 
 dbsetup.setup()
 settings.initializedesign()
+require('codinglizards-localizer').initialize({ path: path.join(__dirname, 'languages') })

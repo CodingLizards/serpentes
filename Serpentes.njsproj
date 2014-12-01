@@ -40,7 +40,6 @@ EDGE_CS_DEBUG=1</Environment>
     <Compile Include="app.js" />
     <Compile Include="authentication.js" />
     <Compile Include="handlebarsSetup.js" />
-    <Compile Include="localizer.js" />
     <Compile Include="persistence\applicationProvider.js" />
     <Compile Include="persistence\clientProvider.js" />
     <Compile Include="persistence\databaseSetup.js" />

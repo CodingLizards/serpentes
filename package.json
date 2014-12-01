@@ -32,6 +32,7 @@
   "homepage": "https://github.com/CodingLizards/serpentes",
   "dependencies": {
     "body-parser": "^1.9.3",
+    "codinglizards-localizer": "^1.0.2",
     "cradle": "^0.6.7",
     "edge": "*",
     "errorhandler": "^1.3.0",

@@ -25,7 +25,7 @@ exports.reloadLanguage = function (req, res) {
     isAdmin(req, res, function () {
         var result
         try {
-            require('../localizer.js').initialize()
+            require('codinglizards-localizer').initialize()
             result = 'reloading language files worked fine'
         } catch (ex) {
             console.error(ex)
