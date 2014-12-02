@@ -24,8 +24,10 @@
                     <ul class="gn-menu">
                         {{#if search}}
                         <li class="gn-search-item">
-                            <input class="gn-search" type="search" placeholder="{{localize 'search'}}">
-                            <a class="gn-icon fa-search"><span>{{localize 'search'}}</span></a>
+                            <form action="{{search}}" method="get" data-type="searchform">
+                                <input class="gn-search" type="search" placeholder="{{localize 'search'}}">
+                                <a class="gn-icon fa-search"><span>{{localize 'search'}}</span></a>
+                            </form>
                         </li>
                         {{/if}}
                         <li>

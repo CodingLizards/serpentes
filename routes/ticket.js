@@ -138,14 +138,13 @@ exports.comment = function (req, res) {
  * GET ticket/:state
  */
 exports.index = function (req, res) {
+    var data = { search: "/ticket/search/" }
     if (/(client|application|department|worker)/.test(req.param('state'))) {
         ticketprovider.byExternal(req.param('state'), req.param('id'), function (err, result) {
             if (err) {
                 console.log(err)
             }
-            var data = {
-                tickets: result
-            }
+            data.tickets = result
             
             switch (req.param('state')) {
                 case 'client':
@@ -185,9 +184,7 @@ exports.index = function (req, res) {
             if (err) {
                 console.log(err)
             }
-            var data = {
-                tickets: result
-            }
+            data.tickets = result
             
             switch (req.param('state')) {
                 case 'active':
