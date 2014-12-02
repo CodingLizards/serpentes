@@ -12,7 +12,7 @@
     <script src="/javascripts/wizard.js"></script>
     <script src="/javascripts/pure-menu.js"></script>
     <script src="/javascripts/socket.io.js"></script>
-    <title>{{localize 'serpentes'}} - {{title}}</title>
+    <title>{{localize 'serpentes'}} - {{localize title}}</title>
 </head>
 <body class="pure-skin-custom">
     {{> forkme}}
@@ -25,7 +25,7 @@
                         {{#if search}}
                         <li class="gn-search-item">
                             <form action="{{search}}" method="get" data-type="searchform">
-                                <input class="gn-search" type="search" placeholder="{{localize 'search'}}">
+                                <input name="keyword" class="gn-search" type="search" value="{{keyword}}" placeholder="{{localize 'search'}}">
                                 <a class="gn-icon fa-search"><span>{{localize 'search'}}</span></a>
                             </form>
                         </li>

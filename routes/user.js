@@ -38,7 +38,7 @@ exports.update = function (req, res) {
             emailaddress: req.param('emailaddress'),
             phonenumber: req.param('phonenumber'),
             department: req.param('department'),
-            isadmin: req.param('isadmin')
+            isadmin: req.param('isadmin') ? true : false
         }
         workerprovider.update(req.param('id'), data, function (err, result) {
             res.redirect('/admin/users/details/' + req.param('id'))

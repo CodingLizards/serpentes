@@ -34,6 +34,7 @@ var ticketRouter = function () {
     router.get('/', ticket.index)
     router.get('/details/:id', ticket.details)
     router.get('/add', ticket.add)
+    router.get('/:state/search/', ticket.index)
     router.get('/:state', ticket.index)
     router.post('/add', ticket.addPost)
     router.post('/comments/:id', ticket.comment)
