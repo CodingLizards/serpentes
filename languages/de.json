@@ -35,6 +35,7 @@
     "add": "Hinzufügen",
     "show": "Anzeigen",
     "update": "Updates",
+    "add user": "Benutzer hinzufügen",
 
     "login": "Anmelden",
     "username": "Benutzername",
@@ -113,7 +114,8 @@
     "development": "Entwicklung",
     "qualityassurance": "Qualitätssicherung",
     "operations": "Operations",
-    "project managment": "Projektmanagement",
+    "project management": "Projektmanagement",
+    "projectmanagement": "Projektmanagement",
 
     "releases": "Releases",
     "release date": "Releasedatum",

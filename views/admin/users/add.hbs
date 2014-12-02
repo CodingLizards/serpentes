@@ -31,6 +31,9 @@
             </select>
         </div>
         <div class="pure-controls">
+            <label for="isadmin" class="pure-checkbox">
+                <input id="isadmin" type="checkbox" name="isadmin" {{bindAttr checked="isadmin"}} /> {{localize 'is admin'}}
+            </label>
             <button class="pure-button pure-button-primary" type="submit">{{localize 'save'}}</button>
         </div>
     </fieldset>

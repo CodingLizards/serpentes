@@ -86,13 +86,12 @@
         {{#isAdmin}}
         <li>
             <a href="/admin/users"><span><i class="fa fa-users"></i> {{localize 'manage user'}}</span></a>
-            <ul class="gn-menu">
+            <ul class="gn-main-sub-menu">
                 <li>
                     <a href="/admin/users/add"><span><i class="fa fa-user"></i> {{localize 'add user'}}</span></a>
                 </li>
             </ul>
         </li>
-        <li><a href="/admin/users/add"><span><i class="fa fa-plus"></i> {{localize 'add user'}}</span></a></li>
         <li><a href="/admin/update"><span><i class="fa fa-cloud-download"></i> {{localize 'updates'}}</span></a></li>
         {{/isAdmin}}
         <li><a href="/logout"><span><i class="fa fa-user"></i> Hallo {{currentusername}}</span></a></li>

@@ -35,6 +35,7 @@
     "add": "Hinzufügen",
     "show": "Anzeigen",
     "update": "Updates",
+    "add user": "Benutzer hinzufügen",
 
     "login": "Anmelden",
     "username": "Benutzername",
@@ -109,7 +110,6 @@
     "create another worker": "Noch einen Mitarbeiter hinzufügen",
     "department": "Abteilung",
     "worker details": "Mitarbeiterdetails",
-    "edit worker": "Mitarbeiter bearbeiten",
     "development": "Entwicklung",
     "qualityassurance": "Qualitätssicherung",
     "operations": "Operations",
@@ -150,5 +150,8 @@
     "design": "Design",
     "configure colors": "Farben anpassen",
     "update serpentes": "Serpentes aktualisieren",
-    "updating serpentes": "Serpentes wird aktualisiert"
+    "updating serpentes": "Serpentes wird aktualisiert",
+
+    "user details": "Benutzerdetails",
+    "edit user": "Benutzer bearbeiten"
 }
