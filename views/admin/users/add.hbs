@@ -1,6 +1,6 @@
-﻿<form class="pure-form pure-form-aligned" action="/worker/add" method="post">
+﻿<form class="pure-form pure-form-aligned" action="/admin/users/add" method="post">
     <fieldset>
-        <legend>{{localize 'add worker'}}</legend>
+        <legend>{{localize 'add user'}}</legend>
         <div class="pure-control-group">
             <label for="username">{{localize 'username'}}*</label>
             <input required name="username" class="pure-u-20-24" id="username" type="text" value="{{username}}" placeholder="{{localize 'username'}}">
@@ -31,6 +31,9 @@
             </select>
         </div>
         <div class="pure-controls">
+            <label for="isadmin" class="pure-checkbox">
+                <input id="isadmin" type="checkbox" name="isadmin" {{bindAttr checked="isadmin"}} /> {{localize 'is admin'}}
+            </label>
             <button class="pure-button pure-button-primary" type="submit">{{localize 'save'}}</button>
         </div>
     </fieldset>

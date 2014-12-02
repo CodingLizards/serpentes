@@ -136,46 +136,68 @@ exports.comment = function (req, res) {
 
 /*
  * GET ticket/:state
+ * GET ticket/:state/search
  */
 exports.index = function (req, res) {
+    var data = {
+        search: '/ticket/' + req.param('state') + '/search/'
+    }
+    var render = function () {
+        if (req.param('keyword')) {
+            data.title = 'search results'
+            data.keyword = req.param('keyword')
+            data.tickets = data.tickets.filter(function (element) {
+                if (element) {
+                    return JSON.stringify(element).indexOf(req.param('keyword')) > 0
+                } else {
+                    return false
+                }
+            })
+            res.render('tickets/index', data)
+        } else {
+            res.render('tickets/index', data)
+        }
+    }
+    if (!req.param('state')) {
+        data.search = '/ticket/search/'
+    }
     if (/(client|application|department|worker)/.test(req.param('state'))) {
         ticketprovider.byExternal(req.param('state'), req.param('id'), function (err, result) {
+            data.search += '?id=' + req.param('id')
             if (err) {
                 console.log(err)
             }
-            var data = {
-                tickets: result
-            }
+            data.tickets = result
             
             switch (req.param('state')) {
                 case 'client':
                     clientprovider.byId(req.param('id'), function (err, client) {
                         data.title = req.localize('tickets for client ') + client.name
-                        res.render('tickets/index', data)
+                        render()
                     })
                     break
                 case 'application':
                     applicationprovider.byId(req.param('id'), function (err, application) {
                         data.title = req.localize('tickets for application ') + application.name
-                        res.render('tickets/index', data)
+                        render()
                     })
                     break
-                case 'departement':
-                    departementprovider.byId(req.param('id'), function (err, departement) {
-                        data.title = req.localize('tickets for departement ') + departement.name
-                        res.render('tickets/index', data)
+                case 'department':
+                    departmentprovider.byId(req.param('id'), function (err, department) {
+                        data.title = req.localize('tickets for department ') + department.name
+                        render()
                     })
                     break
                 case 'worker':
                     workerprovider.byId(req.param('id'), function (err, worker) {
                         data.title = req.localize('tickets for worker ') + worker.firstname + ' ' + worker.lastname
-                        res.render('tickets/index', data)
+                        render()
                     })
                     break
                 case 'release':
                     releaseprovider.byId(req.param('id'), function (err, release) {
                         data.title = req.localize('tickets for release ') + release.name
-                        res.render('tickets/index', data)
+                        render()
                     })
                     break
             }
@@ -185,9 +207,7 @@ exports.index = function (req, res) {
             if (err) {
                 console.log(err)
             }
-            var data = {
-                tickets: result
-            }
+            data.tickets = result
             
             switch (req.param('state')) {
                 case 'active':
@@ -206,7 +226,7 @@ exports.index = function (req, res) {
                     data.title = req.localize('show tickets')
                     break
             }
-            res.render('tickets/index', data)
+            render()
         })
     }
 }

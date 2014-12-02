@@ -12,7 +12,7 @@
     <script src="/javascripts/wizard.js"></script>
     <script src="/javascripts/pure-menu.js"></script>
     <script src="/javascripts/socket.io.js"></script>
-    <title>{{localize 'serpentes'}} - {{title}}</title>
+    <title>{{localize 'serpentes'}} - {{localize title}}</title>
 </head>
 <body class="pure-skin-custom">
     {{> forkme}}
@@ -24,8 +24,10 @@
                     <ul class="gn-menu">
                         {{#if search}}
                         <li class="gn-search-item">
-                            <input class="gn-search" type="search" placeholder="{{localize 'search'}}">
-                            <a class="gn-icon fa-search"><span>{{localize 'search'}}</span></a>
+                            <form action="{{search}}" method="get" data-type="searchform">
+                                <input name="keyword" class="gn-search" type="search" value="{{keyword}}" placeholder="{{localize 'search'}}">
+                                <a class="gn-icon fa-search"><span>{{localize 'search'}}</span></a>
+                            </form>
                         </li>
                         {{/if}}
                         <li>
@@ -40,9 +42,6 @@
                         </li>
                         <li>
                             <a class="gn-icon fa-user" href="/worker">{{localize 'worker'}}</a>
-                            <ul class="gn-submenu">
-                                <li><a class="gn-icon fa-plus" href="/worker/add">{{localize 'add'}}</a></li>
-                            </ul>
                         </li>
                         <li>
                             <a class="gn-icon fa-bullhorn" href="/department">{{localize 'departments'}}</a>
@@ -85,7 +84,14 @@
         <li><a href="/"><i class="fa fa-home"></i> {{localize 'start'}}</a></li>
         <li><a href="/ticket"><span><i class="fa fa-ticket"></i> {{localize 'show tickets'}}</span></a></li>
         {{#isAdmin}}
-        <li><a href="/admin/users"><span><i class="fa fa-users"></i> {{localize 'manage user'}}</span></a></li>
+        <li>
+            <a href="/admin/users"><span><i class="fa fa-users"></i> {{localize 'manage user'}}</span></a>
+            <ul class="gn-main-sub-menu">
+                <li>
+                    <a href="/admin/users/add"><span><i class="fa fa-user"></i> {{localize 'add user'}}</span></a>
+                </li>
+            </ul>
+        </li>
         <li><a href="/admin/update"><span><i class="fa fa-cloud-download"></i> {{localize 'updates'}}</span></a></li>
         {{/isAdmin}}
         <li><a href="/logout"><span><i class="fa fa-user"></i> Hallo {{currentusername}}</span></a></li>

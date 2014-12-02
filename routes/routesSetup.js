@@ -29,11 +29,18 @@ var typeRouter = function (type) {
     router.post('/update/:id', type.update)
     return router
 }
+var workerRouter = function () {
+    var router = express.Router()
+    router.get('/', worker.index)
+    router.get('/details/:id', worker.details)
+    return router
+}
 var ticketRouter = function () {
     var router = express.Router()
     router.get('/', ticket.index)
     router.get('/details/:id', ticket.details)
     router.get('/add', ticket.add)
+    router.get('/:state/search/', ticket.index)
     router.get('/:state', ticket.index)
     router.post('/add', ticket.addPost)
     router.post('/comments/:id', ticket.comment)
@@ -46,12 +53,21 @@ var ticketRouter = function () {
 }
 var adminRouter = function () {
     var router = express.Router()
+    router.use(function(req, res, next) {
+        if (req.session['isAdmin']) {
+            next()
+        } else {
+            res.redirect('/')
+        }
+    })
     router.get('/settings/language', settings.language)
     router.get('/settings/language/reload', settings.reloadLanguage)
     router.get('/settings/design', settings.design)
     router.post('/settings/design', settings.configuredesign)
     router.get('/users', user.index)
+    router.get('/users/add', user.add)
     router.get('/users/details/:id', user.details)
+    router.post('/users/add', user.addPost)
     router.post('/users/update/:id', user.update)
     router.get('/update', admin.update)
     router.post('/update/', admin.updatePost)
@@ -63,7 +79,7 @@ exports.setup = function (app) {
     app.use('/application', typeRouter(application))
     app.use('/department', typeRouter(department))
     app.use('/client', typeRouter(client))
-    app.use('/worker', typeRouter(worker))
+    app.use('/worker', workerRouter())
     app.use('/release', typeRouter(release))
     app.use('/ticket', ticketRouter())
     app.use('/admin', adminRouter())

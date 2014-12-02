@@ -73,6 +73,39 @@
             letter-spacing: 1px;
             font-weight: bold;
         }
+
+        .gn-main-sub-menu {
+            height: 0;
+            display: none;
+            .gn-menu();
+        }
+
+        &:hover {
+            .gn-main-sub-menu {
+                height: 60px;
+                display: block;
+                font-size: 13px;
+                font-weight: 700;
+                border-left: 1px solid @brand-color-45;
+                border-right: 1px solid @brand-color-45;
+
+                li {
+                    overflow: hidden;
+                    .transition(height 0.3s);
+                    height: 100%;
+                    text-align: left;
+
+                    a {
+                        padding: 0 30px;
+                        display: block;
+                        height: 100%;
+                        text-transform: uppercase;
+                        text-decoration: none;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
     }
 
     li.gn-trigger {
