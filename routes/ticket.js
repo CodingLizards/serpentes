@@ -12,6 +12,8 @@ var departmentprovider = new DepartmentProvider()
 var releaseprovider = new ReleaseProvider()
 var workerprovider = new WorkerProvider()
 
+exports.api = {}
+
 var minifyUser = function (user) {
     var result = {
         _id: user._id,
@@ -305,5 +307,19 @@ exports.archive = function (req, res) {
                 res.redirect('/ticket/details/' + req.param('id'))
             })
         })
+    })
+}
+
+/*
+ * POST api/ticket/prioritize/:id
+ */
+exports.api.prioritize = function (req, res) {
+    ticketprovider.update(req.param('id'), { priority: req.param('priority') }, function (err, result) {
+        res.set('Content-Type', 'text/json')
+        if (err) {
+            res.send(false)
+        } else {
+            res.send(true)
+        }
     })
 }

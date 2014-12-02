@@ -11,6 +11,12 @@ var user = require('./user.js')
 var admin = require('./admin.js')
 var express = require('express')
 
+var apiRouter = function () {
+    var router = express.Router()
+    router.post('/ticket/prioritize/:id', ticket.api.prioritize)
+    return router
+}
+
 var homeRouter = function () {
     var router = express.Router()
     router.get('/', routes.index)
@@ -53,7 +59,7 @@ var ticketRouter = function () {
 }
 var adminRouter = function () {
     var router = express.Router()
-    router.use(function(req, res, next) {
+    router.use(function (req, res, next) {
         if (req.session['isAdmin']) {
             next()
         } else {
@@ -83,5 +89,6 @@ exports.setup = function (app) {
     app.use('/release', typeRouter(release))
     app.use('/ticket', ticketRouter())
     app.use('/admin', adminRouter())
+    app.use('/api', apiRouter())
     app.get('*', routes.index)
 }
