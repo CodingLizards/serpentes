@@ -42,9 +42,6 @@
                         </li>
                         <li>
                             <a class="gn-icon fa-user" href="/worker">{{localize 'worker'}}</a>
-                            <ul class="gn-submenu">
-                                <li><a class="gn-icon fa-plus" href="/worker/add">{{localize 'add'}}</a></li>
-                            </ul>
                         </li>
                         <li>
                             <a class="gn-icon fa-bullhorn" href="/department">{{localize 'departments'}}</a>
@@ -87,7 +84,15 @@
         <li><a href="/"><i class="fa fa-home"></i> {{localize 'start'}}</a></li>
         <li><a href="/ticket"><span><i class="fa fa-ticket"></i> {{localize 'show tickets'}}</span></a></li>
         {{#isAdmin}}
-        <li><a href="/admin/users"><span><i class="fa fa-users"></i> {{localize 'manage user'}}</span></a></li>
+        <li>
+            <a href="/admin/users"><span><i class="fa fa-users"></i> {{localize 'manage user'}}</span></a>
+            <ul class="gn-menu">
+                <li>
+                    <a href="/admin/users/add"><span><i class="fa fa-user"></i> {{localize 'add user'}}</span></a>
+                </li>
+            </ul>
+        </li>
+        <li><a href="/admin/users/add"><span><i class="fa fa-plus"></i> {{localize 'add user'}}</span></a></li>
         <li><a href="/admin/update"><span><i class="fa fa-cloud-download"></i> {{localize 'updates'}}</span></a></li>
         {{/isAdmin}}
         <li><a href="/logout"><span><i class="fa fa-user"></i> Hallo {{currentusername}}</span></a></li>
