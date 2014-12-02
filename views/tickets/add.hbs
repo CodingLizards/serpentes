@@ -24,12 +24,14 @@
             <input name="deadline" id="deadline" placeholder="{{localize 'deadline'}}" type="date" class="pure-u-20-24" value="{{deadline}}" />
         </div>
         <div class="pure-controls">
-            <label for="emergency" class="pure-checkbox">
-                <input id="emergency" name="emergency" type="checkbox" {{bindAttr checked="emergency"}} /> {{localize 'emergency'}}
-            </label>
-            <label for="brandharming" class="pure-checkbox">
-                <input id="brandharming" name="brandharming" type="checkbox" {{bindAttr checked="brandharming"}} /> {{localize 'brand harming'}}
-            </label>
+            <div class="pure-checkbox">
+                <input id="emergency" name="emergency" type="checkbox" {{bindAttr checked="emergency"}} />
+                <label for="emergency">{{localize 'emergency'}}</label>
+            </div>
+            <div class="pure-checkbox">
+                <input id="brandharming" name="brandharming" type="checkbox" {{bindAttr checked="brandharming"}} />
+                <label for="brandharming">{{localize 'brand harming'}}</label>
+            </div>
         </div>
         <div class="pure-control-group">
             <label for="minutesperweek">{{localize 'minutes per week'}}*</label>

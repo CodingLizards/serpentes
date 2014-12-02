@@ -532,3 +532,47 @@ pre {
     -o-transform: rotate(315deg);
     transform: rotate(315deg);
 }
+
+
+input[type=radio],
+input[type='checkbox'] {
+    display: none;
+}
+
+input[type=radio] + label {
+    display: block;
+}
+
+input[type='checkbox'] + label:before,
+input[type='radio'] + label:before {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    padding-right: 8px;
+    font-size: 1.5em;
+    width: 1.5em;
+}
+
+input[type=radio] + label:before {
+    content: "\f10c"; /* Radio Unchecked */
+}
+
+input[type=radio]:checked + label:before {
+    content: "\f05d"; /* Radio Checked */
+}
+
+input[type="checkbox"] + label:before {
+    content: "\f204"; /* Checkbox Unchecked */
+}
+
+input[type="checkbox"]:checked + label:before {
+    content: "\f205"; /* Checkbox Checked */
+}
+
+.radio label,
+.checkbox label {
+    padding-left: 0;
+}
