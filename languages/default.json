@@ -113,6 +113,8 @@
     "development": "Entwicklung",
     "qualityassurance": "Qualitätssicherung",
     "operations": "Operations",
+    "project management": "Projektmanagement",
+    "projectmanagement": "Projektmanagement",
 
     "releases": "Releases",
     "release date": "Releasedatum",
