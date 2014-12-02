@@ -67,7 +67,7 @@ var adminRouter = function () {
     router.get('/users', user.index)
     router.get('/users/add', user.add)
     router.get('/users/details/:id', user.details)
-    router.post('/users', user.addPost)
+    router.post('/users/add', user.addPost)
     router.post('/users/update/:id', user.update)
     router.get('/update', admin.update)
     router.post('/update/', admin.updatePost)
