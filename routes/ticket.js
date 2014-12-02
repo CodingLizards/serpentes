@@ -182,9 +182,9 @@ exports.index = function (req, res) {
                         render()
                     })
                     break
-                case 'departement':
-                    departementprovider.byId(req.param('id'), function (err, departement) {
-                        data.title = req.localize('tickets for departement ') + departement.name
+                case 'department':
+                    departmentprovider.byId(req.param('id'), function (err, department) {
+                        data.title = req.localize('tickets for department ') + department.name
                         render()
                     })
                     break
