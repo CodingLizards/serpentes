@@ -1,3 +1,10 @@
-﻿<pre>{{error}}</pre>
-<a class="pure-button pure-button-primary" href="/admin/export/active">{{localize 'export active tickets'}}</a>
-<a class="pure-button pure-button-primary" href="/admin/export/archived">{{localize 'export archived tickets'}}</a>
+﻿{{#if error}}
+<pre>{{error}}</pre>
+{{/if}}
+<p>
+    <label for="fields" class="pure-u-1-24">{{localize 'fields'}}</label><input id="fields" type="text" name="fields" value="" class="pure-u-20-24" />
+</p>
+<p>
+    <a class="pure-button pure-button-primary" href="/admin/export/active">{{localize 'export active tickets'}}</a>
+    <a class="pure-button pure-button-primary" href="/admin/export/archived">{{localize 'export archived tickets'}}</a>
+</p>

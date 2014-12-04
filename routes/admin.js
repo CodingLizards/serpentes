@@ -1,18 +1,42 @@
 ﻿var TicketProvider = require('../persistence/ticketprovider.js').TicketProvider
-var ticketprovider = new TicketProvider()
+var ApplicationProvider = require('../persistence/applicationProvider.js').ApplicationProvider
+var ClientProvider = require('../persistence/clientProvider.js').ClientProvider
+var DepartmentProvider = require('../persistence/departmentProvider.js').DepartmentProvider
+var ReleaseProvider = require('../persistence/releaseProvider.js').ReleaseProvider
+var WorkerProvider = require('../persistence/workerProvider.js').WorkerProvider
 
-var exportCSV = function (tickets, callback) {
-    var array = typeof tickets != 'object' ? JSON.parse(tickets) : tickets;
-    var str = '';
-    for (var i = 0; i < array.length; i++) {
-        var line = '';
-        for (var index in array[i]) {
-            line += '"' + array[i][index] + '";';
-        }
-        line.slice(0, line.Length - 1);
-        str += line + '\r\n';
-    }
-    callback(str)
+var ticketprovider = new TicketProvider()
+var applicationprovider = new ApplicationProvider()
+var clientprovider = new ClientProvider()
+var departmentprovider = new DepartmentProvider()
+var releaseprovider = new ReleaseProvider()
+var workerprovider = new WorkerProvider()
+
+var exportCSV = function (localize, fields, tickets, callback) {
+    applicationprovider.all(function (err, apps) {
+        departmentprovider.all(function (err, departments) {
+            releaseprovider.all(function (err, releases) {
+                clientprovider.all(function (err, clients) {
+                    var array = typeof tickets != 'object' ? JSON.parse(tickets) : tickets;
+                    var str = '';
+                    for (var k in array[0]) {
+                        str += '"' + localize(k) + '";'
+                    }
+                    str.slice(0, str.Length - 1)
+                    str += '\r\n'
+                    for (var i = 0; i < array.length; i++) {
+                        var line = ''
+                        for (var index in array[i]) {
+                            line += '"' + array[i][index] + '";'
+                        }
+                        line.slice(0, line.Length - 1)
+                        str += line + '\r\n'
+                    }
+                    callback(str)
+                })
+            })
+        })
+    })
 }
 
 /*
@@ -67,7 +91,7 @@ exports.exportActive = function (req, res) {
         } else {
             res.attachment('archivedtickets.csv')
             res.setHeader('Content-Type', 'text/csv')
-            exportCSV(tickets, function (data) {
+            exportCSV(req.localize, req.param('fields'), tickets, function (data) {
                 res.end(data, 'ascii')
             })
         }
@@ -84,7 +108,7 @@ exports.exportArchived = function (req, res) {
         } else {
             res.attachment('archivedtickets.csv')
             res.setHeader('Content-Type', 'text/csv')
-            exportCSV(tickets, function (data) {
+            exportCSV(req.localize, req.param('fields'), tickets, function (data) {
                 res.end(data, 'ascii')
             })
         }
