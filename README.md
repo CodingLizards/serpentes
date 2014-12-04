@@ -58,6 +58,10 @@ With the help of [edge.js](https://github.com/tjanczuk/edge) it is possible to u
 - [ ] Localization
 	- [x] German
 	- [ ] English
+- [ ] Special tickets
+	- [ ] Deadline
+	- [ ] Emergency
+	- [ ] other?
 - [x] Windows authentication
 - [ ] Azure authentication
 
