@@ -14,6 +14,10 @@
     "assign": "Zuweisen",
     "reviewed": "Gereviewed",
     "archive": "Archivieren",
+    "export": "Exportieren",
+    "export tickets": "Tickets exportieren",
+    "export active tickets": "Aktive Tickets exportieren",
+    "export archived tickets": "Archived Tickets exportieren",
 
     "add application": "Anwendung hinzufügen",
     "add ticket": "Ticket hinzufügen",
