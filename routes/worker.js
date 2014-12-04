@@ -18,3 +18,19 @@ exports.details = function (req, res) {
         res.render('workers/details', { title: req.localize('worker details'), data: result })
     })
 }
+
+/*
+ * POST worker/update/:id
+ */
+exports.update = function (req, res) {
+    var data = {
+        firstname: req.param('firstname'),
+        lastname: req.param('lastname'),
+        emailaddress: req.param('emailaddress'),
+        phonenumber: req.param('phonenumber'),
+        department: req.param('department')
+    }
+    workerprovider.update(req.param('id'), data, function (err, result) {
+        res.redirect('/worker/details/' + req.param('id'))
+    })
+}
