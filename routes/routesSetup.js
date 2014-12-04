@@ -20,6 +20,7 @@ var apiRouter = function () {
 var homeRouter = function () {
     var router = express.Router()
     router.get('/', routes.index)
+    router.get('/about', routes.about)
     router.get('/logout', account.logout)
     router.get('/login', account.login)
     router.post('/login', account.loginPost)
