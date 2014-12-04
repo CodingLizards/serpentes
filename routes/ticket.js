@@ -71,7 +71,7 @@ exports.addPost = function (req, res) {
             req.body.applications = [req.param('applications')]
         }
         if (typeof req.body.departments == typeof "") {
-            data.departments = [req.param('departments')]
+            req.body.departments = [req.param('departments')]
         }
         if (typeof req.body.clients == typeof "") {
             req.body.clients = [req.param('clients')]

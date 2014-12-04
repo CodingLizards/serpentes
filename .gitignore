@@ -241,3 +241,5 @@ $RECYCLE.BIN/
 *.dat
 *.p12
 start.bat
+public/stylesheets/menu.css
+public/stylesheets/pure-custom.css
