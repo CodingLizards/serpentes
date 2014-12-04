@@ -59,6 +59,7 @@ With the help of [edge.js](https://github.com/tjanczuk/edge) it is possible to u
 	- [x] German
 	- [ ] English
 - [x] Windows authentication
+- [ ] Azure authentication
 
 # What do we need?
 - [ ] It would be great, if someone could improve the file [databaseSetup.js](https://github.com/CodingLizards/serpentes/blob/develop/Serpentes/persistence/databaseSetup.js). <strike>Mostly the `reduce` functions are horrible messy but it is hard to clean them up (very little experience)</strike> I figured out, that we (currently) don't need the reduce, just in `tickets/byId` so we are fine for now. But if someone would improve that one, it would be great :)
