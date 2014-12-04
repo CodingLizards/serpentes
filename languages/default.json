@@ -4,7 +4,7 @@
     "save": "Speichern",
     "general": "Allgemein",
     "name": "Name",
-    "made by Imanuel Ulbricht": "Geschrieben von Imanuel Ulbricht",
+    "made by Coding Lizards GbR": "Made by the Coding Lizards",
     "next": "Weiter",
     "back": "Zurück",
     "view": "Anzeigen",
@@ -16,7 +16,6 @@
     "archive": "Archivieren",
 
     "add application": "Anwendung hinzufügen",
-    "add worker": "Mitarbeiter hinzufügen",
     "add ticket": "Ticket hinzufügen",
     "add department": "Abteilung hinzufügen",
     "add client": "Mandant hinzufügen",
@@ -97,16 +96,22 @@
     "review state": "Review Status",
     "you can move a ticket in the archive, that means it is closed and not longer in progress": "Du kannst ein Ticket ins Archive legen, dadurch wird gezeigt, dass die Arbeit eingestellt ist",
     "assignee history": "Bearbeiterhistorie",
+    "tickets for client ": "Tickets für Mandant ",
+    "tickets for application ": "Tickets für Anwendung ",
+    "tickets for department ": "Tickets für Abteilung ",
+    "tickets for release ": "Tickets für Release ",
+    "tickets for worker ": "Tickets für den Mitarbeiter ",
+    "search results": "Suchergebnisse",
+    "please try again": "Bitte versuche es erneut",
 
     "worker": "Mitarbeiter",
-    "saved worker successfully": "Der Mitarbeiter wurde erfolgreich gespeichert",
-    "create another worker": "Noch einen Mitarbeiter hinzufügen",
     "department": "Abteilung",
     "worker details": "Mitarbeiterdetails",
-    "edit worker": "Mitarbeiter bearbeiten",
     "development": "Entwicklung",
     "qualityassurance": "Qualitätssicherung",
     "operations": "Operations",
+    "project management": "Projektmanagement",
+    "projectmanagement": "Projektmanagement",
 
     "releases": "Releases",
     "release date": "Releasedatum",
@@ -142,5 +147,11 @@
     "design": "Design",
     "configure colors": "Farben anpassen",
     "update serpentes": "Serpentes aktualisieren",
-    "updating serpentes": "Serpentes wird aktualisiert"
+    "updating serpentes": "Serpentes wird aktualisiert",
+
+    "user details": "Benutzerdetails",
+    "edit user": "Benutzer bearbeiten",
+    "add user": "Benutzer hinzufügen",
+    "saved user successfully": "Der Benutzer wurde erfolgreich gespeichert",
+    "create another user": "Noch einen Benutzer hinzufügen"
 }

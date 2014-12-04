@@ -3,7 +3,8 @@
     "ignore": [
         ".git",
         "node_modules/**/node_modules",
-        "public/stylesheets/*.css"
+        "public/stylesheets/*.css",
+        "*.log"
     ],
     "verbose": true,
     "env": {

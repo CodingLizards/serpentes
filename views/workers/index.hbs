@@ -7,6 +7,7 @@
             <th>{{localize 'emailaddress'}}</th>
             <th>{{localize 'phonenumber'}}</th>
             <th>{{localize 'department'}}</th>
+            <th>{{localize 'actions'}}</th>
         </tr>
     </thead>
     <tbody>
@@ -18,6 +19,7 @@
             <td>{{emailaddress}}</td>
             <td>{{phonenumber}}</td>
             <td>{{localize department}}</td>
+            <td><a href="/ticket/worker?id={{_id}}">{{localize 'tickets'}}</a></td>
         </tr>
         {{/each}}
     </tbody>

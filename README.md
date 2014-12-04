@@ -42,26 +42,31 @@ With Serpentes it is super easy, to add new languages. You just need to translat
 With the help of [edge.js](https://github.com/tjanczuk/edge) it is possible to use Windows authentication for your employees. This makes the work for people easy, cause they don't need to remember a new password.
 
 # What is ready, what is in planning?
-- [ ] Ticket management
-    - [ ] Assign tickets to users
+- [x] Ticket management
+    - [x] Assign tickets to users
 - [x] Worker management
-    - [ ] Filter tickets by worker
+    - [x] Filter tickets by worker
 - [x] Department management
-    - [ ] Filter tickets by departments
+    - [x] Filter tickets by departments
 - [x] Application management
-    - [ ] Filter tickets by applications
+    - [x] Filter tickets by applications
 - [x] Client management
-    - [ ] Filter tickets by clients
+    - [x] Filter tickets by clients
 - [x] Release management
-    - [ ] Filter tickets by releases
+    - [x] Filter tickets by releases
 - [x] Customization
 - [ ] Localization
+	- [x] German
+	- [ ] English
 - [x] Windows authentication
+- [ ] Azure authentication
 
 # What do we need?
-- [ ] It would be great, if someone could improve the file [databaseSetup.js](https://github.com/CodingLizards/serpentes/blob/develop/Serpentes/persistence/databaseSetup.js). Mostly the `reduce` functions are horrible messy but it is hard to clean them up (very little experience)
+- [ ] It would be great, if someone could improve the file [databaseSetup.js](https://github.com/CodingLizards/serpentes/blob/develop/Serpentes/persistence/databaseSetup.js). <strike>Mostly the `reduce` functions are horrible messy but it is hard to clean them up (very little experience)</strike> I figured out, that we (currently) don't need the reduce, just in `tickets/byId` so we are fine for now. But if someone would improve that one, it would be great :)
 
 - [ ] Someone who could translate the `languages/default.json` file would be great, together we just speak German and English :)
+
+# [Installation](install.md)
 
 # Technologies we use
 For licence reasons and because we like to share and appreciate the work of others, here are all components we use with licence
@@ -77,6 +82,7 @@ For licence reasons and because we like to share and appreciate the work of othe
 - [less-middleware](https://github.com/emberfeather/less.js-middleware)
 - [locale](https://github.com/jed/locale)
 - [pem](https://github.com/andris9/pem)
+- [socket.io](https://github.com/Automattic/socket.io)
 
 #### cradle
 Copyright (c) 2009 cloudhead
@@ -311,6 +317,29 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+#### socket.io
+(The MIT License)
+
+Copyright (c) 2014 Automattic <dev@cloudup.com>
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # Licence
 The MIT License (MIT)

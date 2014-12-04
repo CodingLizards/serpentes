@@ -150,12 +150,14 @@
                     <input name="deadline" id="deadline" placeholder="{{localize 'deadline'}}" type="date" class="pure-u-20-24" value="{{deadline}}" />
                 </div>
                 <div class="pure-controls">
-                    <label for="emergency" class="pure-checkbox">
-                        <input id="emergency" name="emergency" type="checkbox" {{bindAttr checked="emergency"}} /> {{localize 'emergency'}}
-                    </label>
-                    <label for="brandharming" class="pure-checkbox">
-                        <input id="brandharming" name="brandharming" type="checkbox" {{bindAttr checked="brandharming"}} /> {{localize 'brand harming'}}
-                    </label>
+                    <div class="pure-checkbox">
+                        <input id="emergency" name="emergency" type="checkbox" {{bindAttr checked="emergency"}} />
+                        <label for="emergency">{{localize 'emergency'}}</label>
+                    </div>
+                    <div class="pure-checkbox">
+                        <input id="brandharming" name="brandharming" type="checkbox" {{bindAttr checked="brandharming"}} />
+                        <label for="brandharming">{{localize 'brand harming'}}</label>
+                    </div>
                 </div>
                 <div class="pure-control-group">
                     <label for="minutesperweek">{{localize 'minutes per week'}}*</label>
@@ -179,7 +181,7 @@
                 <div class="pure-control-group">
                     <label for="applications">{{localize 'applications'}}</label>
                     <select class="pure-u-20-24" multiple id="applications" name="applications">
-                        {{#each ../Applications}}
+                        {{#each ../../Applications}}
                         <option value="{{_id}}"
                                 {{#inArrayId ../applications _id}}
                                 selected
@@ -192,7 +194,7 @@
                 <div class="pure-control-group">
                     <label for="departments">{{localize 'departments'}}</label>
                     <select class="pure-u-20-24" multiple id="departments" name="departments">
-                        {{#each ../Departments}}
+                        {{#each ../../Departments}}
                         <option value="{{_id}}"
                                 {{#inArrayId ../departments _id}}
                                 selected
@@ -205,7 +207,7 @@
                 <div class="pure-control-group">
                     <label for="clients">{{localize 'clients'}}</label>
                     <select class="pure-u-20-24" multiple id="clients" name="clients">
-                        {{#each ../Clients}}
+                        {{#each ../../Clients}}
                         <option value="{{_id}}"
                                 {{#inArrayId ../clients _id}}
                                 selected
@@ -218,7 +220,7 @@
                 <div class="pure-control-group">
                     <label for="release">{{localize 'releases'}}</label>
                     <select class="pure-u-20-24" id="release" name="release">
-                        {{#each ../Releases}}
+                        {{#each ../../Releases}}
                         <option value="{{_id}}"
                                 {{#compare _id '===' ../../release}}
                                 selected

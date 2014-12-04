@@ -240,3 +240,6 @@ $RECYCLE.BIN/
 *.pvk
 *.dat
 *.p12
+start.bat
+public/stylesheets/menu.css
+public/stylesheets/pure-custom.css

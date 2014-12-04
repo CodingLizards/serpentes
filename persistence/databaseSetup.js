@@ -42,7 +42,7 @@ exports.setup = function () {
                         var result = null
                         var applications = []
                         var clients = []
-                        var release = []
+                        var release
                         var departments = []
                         for (var i = 0; i < values.length; i++) {
                             if (values[i]) {
@@ -53,7 +53,7 @@ exports.setup = function () {
                                 } else if (values[i].type == 'client') {
                                     clients.push(values[i])
                                 } else if (values[i].type == 'release') {
-                                    release.push(values[i])
+                                    release = values[i]
                                 } else if (values[i].type == 'department') {
                                     departments.push(values[i])
                                 }
@@ -96,69 +96,8 @@ exports.setup = function () {
                     map: function (doc) {
                         if (doc.type == 'ticket') {
                             if (!doc.archived) {
-                                emit([doc.applications, doc.clients, doc.release, doc.departments, 0], doc)
+                                emit(doc._id, doc)
                             }
-                        } else if (doc.type == 'application') {
-                            emit([doc._id, 1], doc)
-                        } else if (doc.type == 'client') {
-                            emit([doc._id, 2], doc)
-                        } else if (doc.type == 'release') {
-                            emit([doc._id, 3], doc)
-                        } else if (doc.type == 'department') {
-                            emit([doc._id, 4], doc)
-                        }
-                    }, 
-                    reduce: function (keys, values, rereduce) {
-                        var result = null
-                        var applications = []
-                        var clients = []
-                        var release = []
-                        var departments = []
-                        for (var i = 0; i < values.length; i++) {
-                            if (values[i]) {
-                                if (values[i].type == 'ticket') {
-                                    result = values[i]
-                                } else if (values[i].type == 'application') {
-                                    applications.push(values[i])
-                                } else if (values[i].type == 'client') {
-                                    clients.push(values[i])
-                                } else if (values[i].type == 'release') {
-                                    release.push(values[i])
-                                } else if (values[i].type == 'department') {
-                                    departments.push(values[i])
-                                }
-                            }
-                        }
-                        if (result != null) {
-                            var apps = []
-                            var cls = []
-                            var deps = []
-                            if (result.applications) {
-                                for (var i = 0; i < applications.length; i++) {
-                                    if (result.applications.indexOf(applications[i]._id) > -1) {
-                                        apps.push(applications[i])
-                                    }
-                                }
-                            }
-                            if (result.clients) {
-                                for (var i = 0; i < clients.length; i++) {
-                                    if (result.clients.indexOf(clients[i]._id) > -1) {
-                                        cls.push(clients[i])
-                                    }
-                                }
-                            }
-                            if (result.departments) {
-                                for (var i = 0; i < departments.length; i++) {
-                                    if (result.departments.indexOf(departments[i]._id) > -1) {
-                                        deps.push(departments[i])
-                                    }
-                                }
-                            }
-                            result.applications = apps
-                            result.clients = cls
-                            result.departments = deps
-                            result.release = release
-                            return result
                         }
                     }
                 },
@@ -166,69 +105,8 @@ exports.setup = function () {
                     map: function (doc) {
                         if (doc.type == 'ticket') {
                             if (!doc.assignee && doc.priority && !doc.archived) {
-                                emit([doc.applications, doc.clients, doc.release, doc.departments, 0], doc)
+                                emit(doc._id, doc)
                             }
-                        } else if (doc.type == 'application') {
-                            emit([doc._id, 1], doc)
-                        } else if (doc.type == 'client') {
-                            emit([doc._id, 2], doc)
-                        } else if (doc.type == 'release') {
-                            emit([doc._id, 3], doc)
-                        } else if (doc.type == 'department') {
-                            emit([doc._id, 4], doc)
-                        }
-                    }, 
-                    reduce: function (keys, values, rereduce) {
-                        var result = null
-                        var applications = []
-                        var clients = []
-                        var release = []
-                        var departments = []
-                        for (var i = 0; i < values.length; i++) {
-                            if (values[i]) {
-                                if (values[i].type == 'ticket') {
-                                    result = values[i]
-                                } else if (values[i].type == 'application') {
-                                    applications.push(values[i])
-                                } else if (values[i].type == 'client') {
-                                    clients.push(values[i])
-                                } else if (values[i].type == 'release') {
-                                    release.push(values[i])
-                                } else if (values[i].type == 'department') {
-                                    departments.push(values[i])
-                                }
-                            }
-                        }
-                        if (result != null) {
-                            var apps = []
-                            var cls = []
-                            var deps = []
-                            if (result.applications) {
-                                for (var i = 0; i < applications.length; i++) {
-                                    if (result.applications.indexOf(applications[i]._id) > -1) {
-                                        apps.push(applications[i])
-                                    }
-                                }
-                            }
-                            if (result.clients) {
-                                for (var i = 0; i < clients.length; i++) {
-                                    if (result.clients.indexOf(clients[i]._id) > -1) {
-                                        cls.push(clients[i])
-                                    }
-                                }
-                            }
-                            if (result.departments) {
-                                for (var i = 0; i < departments.length; i++) {
-                                    if (result.departments.indexOf(departments[i]._id) > -1) {
-                                        deps.push(departments[i])
-                                    }
-                                }
-                            }
-                            result.applications = apps
-                            result.clients = cls
-                            result.departments = deps
-                            result.release = release
-                            return result
                         }
                     }
                 },
@@ -236,69 +114,8 @@ exports.setup = function () {
                     map: function (doc) {
                         if (doc.type == 'ticket') {
                             if (!doc.priority && !doc.archived) {
-                                emit([doc.applications, doc.clients, doc.release, doc.departments, 0], doc)
+                                emit(doc._id, doc)
                             }
-                        } else if (doc.type == 'application') {
-                            emit([doc._id, 1], doc)
-                        } else if (doc.type == 'client') {
-                            emit([doc._id, 2], doc)
-                        } else if (doc.type == 'release') {
-                            emit([doc._id, 3], doc)
-                        } else if (doc.type == 'department') {
-                            emit([doc._id, 4], doc)
-                        }
-                    },
-                    reduce: function (keys, values, rereduce) {
-                        var result = null
-                        var applications = []
-                        var clients = []
-                        var release = []
-                        var departments = []
-                        for (var i = 0; i < values.length; i++) {
-                            if (values[i]) {
-                                if (values[i].type == 'ticket') {
-                                    result = values[i]
-                                } else if (values[i].type == 'application') {
-                                    applications.push(values[i])
-                                } else if (values[i].type == 'client') {
-                                    clients.push(values[i])
-                                } else if (values[i].type == 'release') {
-                                    release.push(values[i])
-                                } else if (values[i].type == 'department') {
-                                    departments.push(values[i])
-                                }
-                            }
-                        }
-                        if (result != null) {
-                            var apps = []
-                            var cls = []
-                            var deps = []
-                            if (result.applications) {
-                                for (var i = 0; i < applications.length; i++) {
-                                    if (result.applications.indexOf(applications[i]._id) > -1) {
-                                        apps.push(applications[i])
-                                    }
-                                }
-                            }
-                            if (result.clients) {
-                                for (var i = 0; i < clients.length; i++) {
-                                    if (result.clients.indexOf(clients[i]._id) > -1) {
-                                        cls.push(clients[i])
-                                    }
-                                }
-                            }
-                            if (result.departments) {
-                                for (var i = 0; i < departments.length; i++) {
-                                    if (result.departments.indexOf(departments[i]._id) > -1) {
-                                        deps.push(departments[i])
-                                    }
-                                }
-                            }
-                            result.applications = apps
-                            result.clients = cls
-                            result.departments = deps
-                            result.release = release
-                            return result
                         }
                     }
                 },
@@ -306,69 +123,8 @@ exports.setup = function () {
                     map: function (doc) {
                         if (doc.type == 'ticket') {
                             if (doc.archived) {
-                                emit([doc.applications, doc.clients, doc.release, doc.departments, 0], doc)
+                                emit(doc._id, doc)
                             }
-                        } else if (doc.type == 'application') {
-                            emit([doc._id, 1], doc)
-                        } else if (doc.type == 'client') {
-                            emit([doc._id, 2], doc)
-                        } else if (doc.type == 'release') {
-                            emit([doc._id, 3], doc)
-                        } else if (doc.type == 'department') {
-                            emit([doc._id, 4], doc)
-                        }
-                    },
-                    reduce: function (keys, values, rereduce) {
-                        var result = null
-                        var applications = []
-                        var clients = []
-                        var release = []
-                        var departments = []
-                        for (var i = 0; i < values.length; i++) {
-                            if (values[i]) {
-                                if (values[i].type == 'ticket') {
-                                    result = values[i]
-                                } else if (values[i].type == 'application') {
-                                    applications.push(values[i])
-                                } else if (values[i].type == 'client') {
-                                    clients.push(values[i])
-                                } else if (values[i].type == 'release') {
-                                    release.push(values[i])
-                                } else if (values[i].type == 'department') {
-                                    departments.push(values[i])
-                                }
-                            }
-                        }
-                        if (result != null) {
-                            var apps = []
-                            var cls = []
-                            var deps = []
-                            if (result.applications) {
-                                for (var i = 0; i < applications.length; i++) {
-                                    if (result.applications.indexOf(applications[i]._id) > -1) {
-                                        apps.push(applications[i])
-                                    }
-                                }
-                            }
-                            if (result.clients) {
-                                for (var i = 0; i < clients.length; i++) {
-                                    if (result.clients.indexOf(clients[i]._id) > -1) {
-                                        cls.push(clients[i])
-                                    }
-                                }
-                            }
-                            if (result.departments) {
-                                for (var i = 0; i < departments.length; i++) {
-                                    if (result.departments.indexOf(departments[i]._id) > -1) {
-                                        deps.push(departments[i])
-                                    }
-                                }
-                            }
-                            result.applications = apps
-                            result.clients = cls
-                            result.departments = deps
-                            result.release = release
-                            return result
                         }
                     }
                 },
@@ -376,76 +132,49 @@ exports.setup = function () {
                     map: function (doc) {
                         if (doc.type == 'ticket') {
                             if (doc.assignee && !doc.archived) {
-                                emit([doc.applications, doc.clients, doc.release, doc.departments, 0], doc)
+                                emit(doc._id, doc)
                             }
-                        } else if (doc.type == 'application') {
-                            emit([doc._id, 1], doc)
-                        } else if (doc.type == 'client') {
-                            emit([doc._id, 2], doc)
-                        } else if (doc.type == 'release') {
-                            emit([doc._id, 3], doc)
-                        } else if (doc.type == 'department') {
-                            emit([doc._id, 4], doc)
-                        }
-                    }, 
-                    reduce: function (keys, values, rereduce) {
-                        var result = null
-                        var applications = []
-                        var clients = []
-                        var release = []
-                        var departments = []
-                        for (var i = 0; i < values.length; i++) {
-                            if (values[i]) {
-                                if (values[i].type == 'ticket') {
-                                    result = values[i]
-                                } else if (values[i].type == 'application') {
-                                    applications.push(values[i])
-                                } else if (values[i].type == 'client') {
-                                    clients.push(values[i])
-                                } else if (values[i].type == 'release') {
-                                    release.push(values[i])
-                                } else if (values[i].type == 'department') {
-                                    departments.push(values[i])
-                                }
-                            }
-                        }
-                        if (result != null) {
-                            var apps = []
-                            var cls = []
-                            var deps = []
-                            if (result.applications) {
-                                for (var i = 0; i < applications.length; i++) {
-                                    if (result.applications.indexOf(applications[i]._id) > -1) {
-                                        apps.push(applications[i])
-                                    }
-                                }
-                            }
-                            if (result.clients) {
-                                for (var i = 0; i < clients.length; i++) {
-                                    if (result.clients.indexOf(clients[i]._id) > -1) {
-                                        cls.push(clients[i])
-                                    }
-                                }
-                            }
-                            if (result.departments) {
-                                for (var i = 0; i < departments.length; i++) {
-                                    if (result.departments.indexOf(departments[i]._id) > -1) {
-                                        deps.push(departments[i])
-                                    }
-                                }
-                            }
-                            result.applications = apps
-                            result.clients = cls
-                            result.departments = deps
-                            result.release = release
-                            return result
                         }
                     }
                 },
-                byCurrentWorker: {
+                byWorker: {
                     map: function (doc) {
                         if (doc.type == 'ticket' && doc.assignee) {
-                            emit(doc.assignee, { ticketnumber: doc._id, description: doc.description, priority: doc.priority })
+                            emit(doc.assignee._id, doc)
+                        }
+                    }
+                },
+                byClient: {
+                    map: function (doc) {
+                        if (doc.type == 'ticket' && doc.clients && !doc.archived) {
+                            for (c in doc.clients) {
+                                emit(doc.clients[c], doc)
+                            }
+                        }
+                    }
+                },
+                byApplication: {
+                    map: function (doc) {
+                        if (doc.type == 'ticket' && doc.applications && !doc.archived) {
+                            for (a in doc.applications) {
+                                emit(doc.applications[a], doc)
+                            }
+                        }
+                    }
+                },
+                byDepartment: {
+                    map: function (doc) {
+                        if (doc.type == 'ticket' && doc.departments && !doc.archived) {
+                            for (d in doc.departments) {
+                                emit(doc.departments[d], doc)
+                            }
+                        }
+                    }
+                },
+                byRelease: {
+                    map: function (doc) {
+                        if (doc.type == 'ticket' && doc.release && !doc.archived) {
+                            emit(doc.release, doc)
                         }
                     }
                 }
