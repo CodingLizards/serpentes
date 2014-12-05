@@ -12,21 +12,51 @@ var departmentprovider = new DepartmentProvider()
 var releaseprovider = new ReleaseProvider()
 var workerprovider = new WorkerProvider()
 
+var findByIdInList = function (key, data) {
+    return data.filter(function (item) {
+        return item._id == key
+    })
+}
+
 var exportCSV = function (localize, fields, tickets, callback) {
-    applicationprovider.all(function (err, apps) {
+    applicationprovider.all(function (err, applications) {
         departmentprovider.all(function (err, departments) {
             releaseprovider.all(function (err, releases) {
                 clientprovider.all(function (err, clients) {
-                    var toselect = fields.split(',').sort()
+                    var toselect = fields.split(',')
                     var array = typeof tickets != 'object' ? JSON.parse(tickets) : tickets
                     var str = fields.replace(/\,/g, ';')
                     str += '\r\n'
                     for (var i = 0; i < array.length; i++) {
                         var line = ''
-                        var items = array[i].sort()
-                        for (var index in items) {
-                            if (toselect.indexOf(index) > -1)
-                                line += '"' + array[i][index] + '";'
+                        for (var index in toselect) {
+                            index = toselect[index]
+                            var item = array[i][index]
+                            if (/(clients|applications|departments|release)/i.test(index)) {
+                                var res = []
+                                if (/release/i.test(index)) {
+                                    var rel = findByIdInList(item._id, releases)
+                                    if (rel) {
+                                        res.push(rel.name)
+                                    }
+                                }
+                                for (k in item) {
+                                    var list = []
+                                    if (/clients/i.test(index)) {
+                                        list = clients
+                                    } else if (/applications/i.test(index)) {
+                                        list = applications
+                                    } else if (/departments/i.test(index)) {
+                                        list = departments
+                                    }
+                                    var it = findByIdInList(item[k], list)
+                                    if (it[0]) {
+                                        res.push(it[0].name)
+                                    }
+                                }
+                                item = res.join(', ')
+                            }
+                            line += '"' + (item ? item : '') + '";'
                         }
                         line.slice(0, line.Length - 1)
                         str += line + '\r\n'
