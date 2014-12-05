@@ -39,57 +39,44 @@ exports.setup = function () {
                         }
                     }, 
                     reduce: function (keys, values, rereduce) {
-                        var result = null
-                        var applications = []
-                        var clients = []
-                        var release
-                        var departments = []
+                        var replaceKeysWithValues = function (keys, values) {
+                            for (var i = 0; i < keys.length; i++) {
+                                keys[i] = values[keys[i]]
+                            }
+                        }
+                        
+                        var lookups = {
+                            application: {},
+                            client: {},
+                            department: {},
+                            release: {},
+                        }
+                        var lookupKeys = Object.keys(lookups)
+                        var result
                         for (var i = 0; i < values.length; i++) {
-                            if (values[i]) {
-                                if (values[i].type == 'ticket') {
-                                    result = values[i]
-                                } else if (values[i].type == 'application') {
-                                    applications.push(values[i])
-                                } else if (values[i].type == 'client') {
-                                    clients.push(values[i])
-                                } else if (values[i].type == 'release') {
-                                    release = values[i]
-                                } else if (values[i].type == 'department') {
-                                    departments.push(values[i])
-                                }
+                            values[i] = values[i] || {}
+                            if (values[i].type == 'ticket') {
+                                result = values[i]
+                            } else if (lookupKeys.indexOf(values[i].type) != -1) {
+                                lookups[values[i].type][values[i]._id] = values[i]
                             }
                         }
-                        if (result != null) {
-                            var apps = []
-                            var cls = []
-                            var deps = []
-                            if (result.applications) {
-                                for (var i = 0; i < applications.length; i++) {
-                                    if (result.applications.indexOf(applications[i]._id) > -1) {
-                                        apps.push(applications[i])
-                                    }
-                                }
-                            }
-                            if (result.clients) {
-                                for (var i = 0; i < clients.length; i++) {
-                                    if (result.clients.indexOf(clients[i]._id) > -1) {
-                                        cls.push(clients[i])
-                                    }
-                                }
-                            }
-                            if (result.departments) {
-                                for (var i = 0; i < departments.length; i++) {
-                                    if (result.departments.indexOf(departments[i]._id) > -1) {
-                                        deps.push(departments[i])
-                                    }
-                                }
-                            }
-                            result.applications = apps
-                            result.clients = cls
-                            result.departments = deps
-                            result.release = release
-                            return result
+                        if (!result) {
+                            return
                         }
+                        if (result.applications) {
+                            replaceKeysWithValues(result.applications, lookups.application)
+                        }
+                        if (result.clients) {
+                            replaceKeysWithValues(result.clients, lookups.client)
+                        }
+                        if (result.departments) {
+                            replaceKeysWithValues(result.departments, lookups.department)
+                        }
+                        if (result.releases) {
+                            replaceKeysWithValues(result.releases, lookups.release)
+                        }
+                        return result
                     }
                 },
                 all: {
