@@ -1,10 +1,19 @@
 ﻿{{#if error}}
 <pre>{{error}}</pre>
 {{/if}}
-<p>
-    <label for="fields" class="pure-u-1-24">{{localize 'fields'}}</label><input id="fields" type="text" name="fields" value="" class="pure-u-20-24" />
-</p>
-<p>
-    <a class="pure-button pure-button-primary" href="/admin/export/active">{{localize 'export active tickets'}}</a>
-    <a class="pure-button pure-button-primary" href="/admin/export/archived">{{localize 'export archived tickets'}}</a>
-</p>
+<form action="/admin/export" method="post" class="pure-form pure-form-aligned">
+    <div class="pure-control-group">
+        <label for="fields">{{localize 'fields'}}</label>
+        <input id="fields" type="text" name="fields" value="" class="pure-u-20-24" />
+    </div>
+    <div class="pure-control-group">
+        <label for="type">{{localize 'type'}}</label>
+        <select name="type" id="type" class="pure-u-20-24">
+            <option value="all">{{localize 'active tickets'}}</option>
+            <option value="archived">{{localize 'archived tickets'}}</option>
+        </select>
+    </div>
+    <div class="pure-controls">
+        <button class="pure-button pure-button-primary" type="submit">{{localize 'export'}}</button>
+    </div>
+</form>

@@ -19,6 +19,7 @@
     "export active tickets": "Aktive Tickets exportieren",
     "export archived tickets": "Archived Tickets exportieren",
     "fields": "Felder",
+    "type": "Type",
 
     "add application": "Anwendung hinzufügen",
     "add ticket": "Ticket hinzufügen",

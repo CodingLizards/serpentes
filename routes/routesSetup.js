@@ -79,8 +79,7 @@ var adminRouter = function () {
     router.get('/update', admin.update)
     router.post('/update', admin.updatePost)
     router.get('/export', admin.export)
-    router.get('/export/active', admin.exportActive)
-    router.get('/export/archived', admin.exportArchived)
+    router.post('/export', admin.exportPost)
     return router
 }
 

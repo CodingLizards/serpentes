@@ -17,17 +17,16 @@ var exportCSV = function (localize, fields, tickets, callback) {
         departmentprovider.all(function (err, departments) {
             releaseprovider.all(function (err, releases) {
                 clientprovider.all(function (err, clients) {
-                    var array = typeof tickets != 'object' ? JSON.parse(tickets) : tickets;
-                    var str = '';
-                    for (var k in array[0]) {
-                        str += '"' + localize(k) + '";'
-                    }
-                    str.slice(0, str.Length - 1)
+                    var toselect = fields.split(',').sort()
+                    var array = typeof tickets != 'object' ? JSON.parse(tickets) : tickets
+                    var str = fields.replace(/\,/g, ';')
                     str += '\r\n'
                     for (var i = 0; i < array.length; i++) {
                         var line = ''
-                        for (var index in array[i]) {
-                            line += '"' + array[i][index] + '";'
+                        var items = array[i].sort()
+                        for (var index in items) {
+                            if (toselect.indexOf(index) > -1)
+                                line += '"' + array[i][index] + '";'
                         }
                         line.slice(0, line.Length - 1)
                         str += line + '\r\n'
@@ -82,31 +81,14 @@ exports.export = function (req, res) {
 }
 
 /*
- * GET admin/export/active
+ * POST admin/export
  */
-exports.exportActive = function (req, res) {
-    ticketprovider.all(function (err, tickets) {
+exports.exportPost = function (req, res) {
+    ticketprovider.allByState(req.param('type'), function (err, tickets) {
         if (err) {
             res.render('admin/export', { title: req.localize('export tickets'), error: err })
         } else {
-            res.attachment('archivedtickets.csv')
-            res.setHeader('Content-Type', 'text/csv')
-            exportCSV(req.localize, req.param('fields'), tickets, function (data) {
-                res.end(data, 'ascii')
-            })
-        }
-    })
-}
-
-/*
- * GET admin/export/archived
- */
-exports.exportArchived = function (req, res) {
-    ticketprovider.allArchived(function (err, tickets) {
-        if (err) {
-            res.render('admin/export', { title: req.localize('export tickets'), error: err })
-        } else {
-            res.attachment('archivedtickets.csv')
+            res.attachment('tickets.csv')
             res.setHeader('Content-Type', 'text/csv')
             exportCSV(req.localize, req.param('fields'), tickets, function (data) {
                 res.end(data, 'ascii')
