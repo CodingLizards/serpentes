@@ -78,7 +78,11 @@
         </div>
         <div class="pure-controls">
             <div class="pure-checkbox">
-                <input id="isadmin" type="checkbox" name="isadmin" {{bindAttr checked="isadmin"}} />
+                <input id="isadmin" type="checkbox" name="isadmin"
+                       {{#if isadmin}}
+                       checked
+                       {{/if}}
+                       {{bindAttr checked="isadmin"}} />
                 <label for="isadmin">{{localize 'is admin'}}</label>
             </div>
             <button class="pure-button pure-button-primary" type="submit">{{localize 'save'}}</button>
