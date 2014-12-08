@@ -46,8 +46,8 @@ exports.setup = function () {
                         var departments = []
                         for (var i = 0; i < values.length; i++) {
                             if (values[i]) {
-                                if (values[i].type == 'ticket') {
-                                    result = values[i]
+                            if (values[i].type == 'ticket') {
+                                result = values[i]
                                 } else if (values[i].type == 'application') {
                                     applications.push(values[i])
                                 } else if (values[i].type == 'client') {
@@ -56,40 +56,40 @@ exports.setup = function () {
                                     release = values[i]
                                 } else if (values[i].type == 'department') {
                                     departments.push(values[i])
-                                }
                             }
+                        }
                         }
                         if (result != null) {
                             var apps = []
                             var cls = []
                             var deps = []
-                            if (result.applications) {
+                        if (result.applications) {
                                 for (var i = 0; i < applications.length; i++) {
                                     if (result.applications.indexOf(applications[i]._id) > -1) {
                                         apps.push(applications[i])
                                     }
                                 }
-                            }
-                            if (result.clients) {
+                        }
+                        if (result.clients) {
                                 for (var i = 0; i < clients.length; i++) {
                                     if (result.clients.indexOf(clients[i]._id) > -1) {
                                         cls.push(clients[i])
                                     }
                                 }
-                            }
-                            if (result.departments) {
+                        }
+                        if (result.departments) {
                                 for (var i = 0; i < departments.length; i++) {
                                     if (result.departments.indexOf(departments[i]._id) > -1) {
                                         deps.push(departments[i])
-                                    }
-                                }
+                        }
+                        }
                             }
                             result.applications = apps
                             result.clients = cls
                             result.departments = deps
                             result.release = release
-                            return result
-                        }
+                        return result
+                    }
                     }
                 },
                 all: {
