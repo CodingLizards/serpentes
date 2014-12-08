@@ -38,6 +38,25 @@ var postComment = function (req, callback) {
     })
 }
 
+var formatItem = function (ticket, type, array) {
+    var res = []
+    for (var k in array) {
+        if (ticket[type] && ticket[type].indexOf(array[k]._id) > -1) {
+            res.push(array[k])
+        }
+    }
+    ticket[type] = res
+    return ticket
+}
+
+var formatTicket = function (ticket, apps, clients, departments, releases) {
+    ticket = formatItem(ticket, 'clients', clients) 
+    ticket = formatItem(ticket, 'applications', apps)
+    ticket = formatItem(ticket, 'departments', departments)
+    ticket.release = releases[ticket.release]
+    return ticket
+}
+
 /*
  * GET ticket/add
  */
@@ -118,7 +137,10 @@ exports.details = function (req, res) {
                         workerprovider.all(function (err, workers) {
                             if (err)
                                 console.warn(err)
-                            res.render('tickets/details', { title: req.localize('ticket details'), details: result, Applications: apps, Clients: clients, Departments: departments, Releases: releases, Workers: workers })
+                            res.render('tickets/details', {
+                                title: req.localize('ticket details'), details: formatTicket(result, apps, clients, departments, releases),
+                                Applications: apps, Clients: clients, Departments: departments, Releases: releases, Workers: workers
+                            })
                         })
                     })
                 })
