@@ -60,7 +60,7 @@ var server = https.createServer(options, app)
 var io = require('socket.io')(server)
 app.use(require('./updates.js').updateSocket(io))
 
-server.listen(app.get('port'), function () {
+server.listen(app.get('port'), app.get('host'), function () {
     console.log('Express server listening on port ' + app.get('port'))
 })
 
