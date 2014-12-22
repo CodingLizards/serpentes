@@ -1,0 +1,352 @@
+<h1 id="serpentes">Serpentes</h1>
+<p>Serpentes is a very simple ticket system and also useful to prioritize tickets.</p>
+<p>You can use it, fork it, improve it as much as you want. It is one of our first node.js projects, so we would appreciate help :)</p>
+<h1 id="what-are-the-features-">What are the features?</h1>
+<p>Serpentes offers you a good amount of options here is a list with all the features, for details refer to our wiki please :)</p>
+<h2 id="worker-management">Worker management</h2>
+<p>Workers are your users and developer/testers/operation specialists as well, that gives you an easy way, to integrate your existing company structure in Serpentes.</p>
+<h2 id="ticket-management">Ticket management</h2>
+<p>You can filter your tickets by different states</p>
+<ul>
+<li>active</li>
+<li>free </li>
+<li>unprioritized</li>
+<li>archived</li>
+<li>not archived (free, active and unprioritized combined)</li>
+</ul>
+<p>For the ticket management, there are plenty features, which make it easy to track where tickets come from. You can seperate them by...</p>
+<h3 id="-departments">...departments</h3>
+<p>Departments are your company internal departments, you can track where most of the tickets come from, to see if there is anything you need to improve with the department or software which they use.</p>
+<h3 id="-applications">...applications</h3>
+<p>Applications would translate to the applications that you have in your company. With this feature, it is possible to track, which application is the most erroneous applications and then plan e.g. a refactoring by that.</p>
+<h3 id="-clients">...clients</h3>
+<p>Clients can be your real clients or your cost centres, it is up to you. What ever you choose, it gives you the option to check where most tickets come from and which client is the one with the most needs.</p>
+<h3 id="-releases">...releases</h3>
+<p>Releases give you the possibility to sort your tickets by release. So you can see, which tickets go in which release and based on that you can write your release notes.</p>
+<h2 id="customization">Customization</h2>
+<p>You can easily change the colours to match your own CI. For that we have an extra section in the settings part.</p>
+<h2 id="localization">Localization</h2>
+<p>With Serpentes it is super easy, to add new languages. You just need to translate the file <code>languages/default.json</code> to lets say, russian and your russian employees can use the software in their native language.</p>
+<h2 id="windows-authentication">Windows authentication</h2>
+<p>With the help of <a href="https://github.com/tjanczuk/edge">edge.js</a> it is possible to use Windows authentication for your employees. This makes the work for people easy, cause they don&#39;t need to remember a new password.</p>
+<h1 id="what-is-ready-what-is-in-planning-">What is ready, what is in planning?</h1>
+<ul>
+<li class="no-bullet"><i class="fa fa-check-square-o"></i> Ticket management<ul>
+<li class="no-bullet"><i class="fa fa-check-square-o"></i> Assign tickets to users</li>
+</ul>
+</li>
+<li class="no-bullet"><i class="fa fa-check-square-o"></i> Worker management<ul>
+<li class="no-bullet"><i class="fa fa-check-square-o"></i> Filter tickets by worker</li>
+</ul>
+</li>
+<li class="no-bullet"><i class="fa fa-check-square-o"></i> Department management<ul>
+<li class="no-bullet"><i class="fa fa-check-square-o"></i> Filter tickets by departments</li>
+</ul>
+</li>
+<li class="no-bullet"><i class="fa fa-check-square-o"></i> Application management<ul>
+<li class="no-bullet"><i class="fa fa-check-square-o"></i> Filter tickets by applications</li>
+</ul>
+</li>
+<li class="no-bullet"><i class="fa fa-check-square-o"></i> Client management<ul>
+<li class="no-bullet"><i class="fa fa-check-square-o"></i> Filter tickets by clients</li>
+</ul>
+</li>
+<li class="no-bullet"><i class="fa fa-check-square-o"></i> Release management<ul>
+<li class="no-bullet"><i class="fa fa-check-square-o"></i> Filter tickets by releases</li>
+</ul>
+</li>
+<li class="no-bullet"><i class="fa fa-check-square-o"></i> Customization</li>
+<li class="no-bullet"><i class="fa fa-square-o"></i> Localization<ul>
+<li class="no-bullet"><i class="fa fa-check-square-o"></i> German</li>
+<li class="no-bullet"><i class="fa fa-square-o"></i> English</li>
+</ul>
+</li>
+<li class="no-bullet"><i class="fa fa-square-o"></i> Special tickets<ul>
+<li class="no-bullet"><i class="fa fa-square-o"></i> Deadline</li>
+<li class="no-bullet"><i class="fa fa-square-o"></i> Emergency</li>
+<li class="no-bullet"><i class="fa fa-square-o"></i> other?</li>
+</ul>
+</li>
+<li class="no-bullet"><i class="fa fa-check-square-o"></i> Windows authentication</li>
+<li class="no-bullet"><i class="fa fa-square-o"></i> Azure authentication</li>
+</ul>
+<h1 id="what-do-we-need-">What do we need?</h1>
+<ul>
+<li class="no-bullet"><p><i class="fa fa-square-o"></i> It would be great, if someone could improve the file <a href="https://github.com/CodingLizards/serpentes/blob/develop/Serpentes/persistence/databaseSetup.js">databaseSetup.js</a>. &lt;strike&gt;Mostly the <code>reduce</code> functions are horrible messy but it is hard to clean them up (very little experience)&lt;/strike&gt; I figured out, that we (currently) don&#39;t need the reduce, just in <code>tickets/byId</code> so we are fine for now. But if someone would improve that one, it would be great :)</p>
+</li>
+<li class="no-bullet"><p><i class="fa fa-square-o"></i> Someone who could translate the <code>languages/default.json</code> file would be great, together we just speak German and English :)</p>
+</li>
+</ul>
+<h1 id="-installation-install-md-"><a href="install.md">Installation</a></h1>
+<h1 id="technologies-we-use">Technologies we use</h1>
+<p>For licence reasons and because we like to share and appreciate the work of others, here are all components we use with licence</p>
+<ul>
+<li><a href="https://github.com/flatiron/cradle">cradle</a></li>
+<li><a href="https://github.com/tjanczuk/edge">edge</a></li>
+<li><a href="https://github.com/strongloop/express">express</a></li>
+<li><a href="https://github.com/ericf/express-handlebars">express-handlebars</a></li>
+<li><a href="https://github.com/expressjs/session">express-session</a></li>
+<li><a href="https://github.com/gruntjs/grunt">grunt</a></li>
+<li><a href="https://github.com/ForbesLindesay/handle">handle</a></li>
+<li><a href="https://github.com/assemble/handlebars-helpers">handlebars-helpers</a></li>
+<li><a href="https://github.com/emberfeather/less.js-middleware">less-middleware</a></li>
+<li><a href="https://github.com/jed/locale">locale</a></li>
+<li><a href="https://github.com/andris9/pem">pem</a></li>
+<li><a href="https://github.com/Automattic/socket.io">socket.io</a></li>
+<li><a href="https://github.com/chjj/marked">marked</a></li>
+</ul>
+<h4 id="cradle">cradle</h4>
+<p>Copyright (c) 2009 cloudhead</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+&quot;Software&quot;), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+<h4 id="edge">edge</h4>
+<p>Copyright 2012 Tomasz Janczuk</p>
+<p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+<p>   <a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a></p>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+<h4 id="express">express</h4>
+<p>(The MIT License)</p>
+<p>Copyright (c) 2009-2014 TJ Holowaychuk <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x74;&#106;&#64;&#x76;&#x69;&#115;&#x69;&#x6f;&#x6e;&#45;&#x6d;&#101;&#100;&#x69;&#x61;&#46;&#x63;&#97;">&#x74;&#106;&#64;&#x76;&#x69;&#115;&#x69;&#x6f;&#x6e;&#45;&#x6d;&#101;&#100;&#x69;&#x61;&#46;&#x63;&#97;</a></p>
+<p>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+&#39;Software&#39;), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &#39;AS IS&#39;, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+<h4 id="express-handlebars">express-handlebars</h4>
+<p>Copyright 2013 Yahoo! Inc.
+All rights reserved.</p>
+<p>Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:</p>
+<ul>
+<li><p>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</p>
+</li>
+<li><p>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</p>
+</li>
+<li><p>Neither the name of the Yahoo! Inc. nor the names of its contributors may be used to endorse or promote products       derived from this software without specific prior written permission.</p>
+</li>
+</ul>
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL YAHOO! INC. BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+<h4 id="express-session">express-session</h4>
+<p>(The MIT License)</p>
+<p>Copyright (c) 2010 Sencha Inc.
+Copyright (c) 2011 TJ Holowaychuk <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#58;&#116;&#x6a;&#64;&#118;&#x69;&#115;&#x69;&#x6f;&#110;&#45;&#x6d;&#x65;&#100;&#105;&#x61;&#46;&#x63;&#x61;">&#116;&#x6a;&#64;&#118;&#x69;&#115;&#x69;&#x6f;&#110;&#45;&#x6d;&#x65;&#100;&#105;&#x61;&#46;&#x63;&#x61;</a>
+Copyright (c) 2014 Douglas Christopher Wilson <a href="&#109;&#97;&#105;&#x6c;&#x74;&#111;&#x3a;&#x64;&#x6f;&#x75;&#x67;&#x40;&#115;&#111;&#109;&#x65;&#116;&#x68;&#105;&#x6e;&#x67;&#x64;&#111;&#x75;&#x67;&#x2e;&#x63;&#x6f;&#109;">&#x64;&#x6f;&#x75;&#x67;&#x40;&#115;&#111;&#109;&#x65;&#116;&#x68;&#105;&#x6e;&#x67;&#x64;&#111;&#x75;&#x67;&#x2e;&#x63;&#x6f;&#109;</a></p>
+<p>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+&#39;Software&#39;), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &#39;AS IS&#39;, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+<h4 id="grunt">grunt</h4>
+<p>Copyright (c) 2014 &quot;Cowboy&quot; Ben Alman</p>
+<p>Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the &quot;Software&quot;), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:</p>
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.</p>
+<h4 id="handle">handle</h4>
+<p>Copyright (c) 2013 Forbes Lindesay</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>
+<h4 id="handlebars-helpers">handlebars-helpers</h4>
+<p>Copyright (c) 2013 Jon Schlinkert, Brian Woodward</p>
+<p>Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the &quot;Software&quot;), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:</p>
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.</p>
+<h4 id="less-middleware">less-middleware</h4>
+<p>(The MIT License)</p>
+<p>Copyright (c) 2013 Randy Merrill <a href="&#x6d;&#97;&#105;&#x6c;&#116;&#111;&#x3a;&#x5a;&#111;&#x72;&#97;&#x6d;&#105;&#116;&#101;&#43;&#x67;&#x69;&#116;&#104;&#117;&#98;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;">&#x5a;&#111;&#x72;&#97;&#x6d;&#105;&#116;&#101;&#43;&#x67;&#x69;&#116;&#104;&#117;&#98;&#x40;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#99;&#x6f;&#x6d;</a></p>
+<p>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+&#39;Software&#39;), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &#39;AS IS&#39;, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+<h4 id="locale">locale</h4>
+<p>Copyright (c) 2012 Jed Schmidt, <a href="http://jed.is/">http://jed.is/</a></p>
+<p>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+&quot;Software&quot;), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+<h4 id="pem">pem</h4>
+<p>Copyright (c) 2012 Andris Reinman</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+<h4 id="socket-io">socket.io</h4>
+<p>(The MIT License)</p>
+<p>Copyright (c) 2014 Automattic <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#x6f;&#58;&#100;&#101;&#x76;&#64;&#x63;&#108;&#x6f;&#x75;&#x64;&#x75;&#x70;&#46;&#x63;&#111;&#109;">&#100;&#101;&#x76;&#64;&#x63;&#108;&#x6f;&#x75;&#x64;&#x75;&#x70;&#46;&#x63;&#111;&#109;</a></p>
+<p>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+&#39;Software&#39;), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &#39;AS IS&#39;, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+<h4 id="marked">marked</h4>
+<p>Copyright (c) 2011-2014, Christopher Jeffrey (<a href="https://github.com/chjj/">https://github.com/chjj/</a>)</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>
+<h1 id="licence">Licence</h1>
+<p>The MIT License (MIT)</p>
+<p>Copyright (c) 2014 Coding Lizards - Imanuel Ulbricht und Reemt Rühmkorf GbR</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>

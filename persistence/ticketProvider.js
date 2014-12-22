@@ -241,7 +241,8 @@ TicketProvider.prototype.byDepartment = function (department, callback) {
 TicketProvider.prototype.byId = function (id, callback) {
     var opts = {
         startkey: [id],
-        endkey: [{}, {}, {}, {}, id]
+        endkey: [{}, {}, {}, {}, id],
+        reduce: false
     }
     this.db.view('tickets/byId/', opts, function (error, result) {
         if (error) {

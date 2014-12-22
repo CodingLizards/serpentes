@@ -20,6 +20,7 @@ var apiRouter = function () {
 var homeRouter = function () {
     var router = express.Router()
     router.get('/', routes.index)
+    router.get('/about', routes.about)
     router.get('/logout', account.logout)
     router.get('/login', account.login)
     router.post('/login', account.loginPost)
@@ -76,7 +77,9 @@ var adminRouter = function () {
     router.post('/users/add', user.addPost)
     router.post('/users/update/:id', user.update)
     router.get('/update', admin.update)
-    router.post('/update/', admin.updatePost)
+    router.post('/update', admin.updatePost)
+    router.get('/export', admin.export)
+    router.post('/export', admin.exportPost)
     return router
 }
 

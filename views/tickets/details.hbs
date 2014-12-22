@@ -1,4 +1,5 @@
-﻿{{#with details}}
+﻿{{log details}}
+{{#with details}}
 <div class="pure-menu pure-menu-open pure-menu-horizontal">
     <ul>
         <li class="pure-menu-selected"><a href="#general" data-toggle="tabs">{{localize 'general'}}</a></li>
@@ -151,11 +152,19 @@
                 </div>
                 <div class="pure-controls">
                     <div class="pure-checkbox">
-                        <input id="emergency" name="emergency" type="checkbox" {{bindAttr checked="emergency"}} />
+                        <input id="emergency" name="emergency" type="checkbox"
+                               {{#if emergency}}
+                               checked
+                               {{/if}}
+                               {{bindAttr checked="emergency"}} />
                         <label for="emergency">{{localize 'emergency'}}</label>
                     </div>
                     <div class="pure-checkbox">
-                        <input id="brandharming" name="brandharming" type="checkbox" {{bindAttr checked="brandharming"}} />
+                        <input id="brandharming" name="brandharming" type="checkbox"
+                               {{#if brandharming}}
+                               checked
+                               {{/if}}
+                               {{bindAttr checked="brandharming"}} />
                         <label for="brandharming">{{localize 'brand harming'}}</label>
                     </div>
                 </div>
