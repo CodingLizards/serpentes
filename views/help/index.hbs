@@ -1,4 +1,33 @@
-﻿<h1 id="startseite">Startseite</h1>
+﻿<h1 id="inhalt">Inhalt</h1>
+
+<p>
+    <div class="toc">
+        <div class="toc">
+            <ul>
+                <li><a href="#inhalt">Inhalt</a></li>
+                <li><a href="#startseite">Startseite</a></li>
+                <li>
+                    <a href="#ticketverwaltung">Ticketverwaltung</a><ul>
+                        <li><a href="#ticketanzeige">Ticketanzeige</a></li>
+                        <li>
+                            <a href="#ticketdetails">Ticketdetails</a><ul>
+                                <li><a href="#allgemein">Allgemein</a></li>
+                                <li><a href="#impact">Impact</a></li>
+                                <li><a href="#weitere-details">Weitere Details</a></li>
+                                <li><a href="#kommentare">Kommentare</a></li>
+                                <li><a href="#bearbeiterhistorie">Bearbeiterhistorie</a></li>
+                                <li><a href="#ticket-bearbeiten">Ticket bearbeiten</a></li>
+                                <li><a href="#weitere-aktionen">Weitere Aktionen</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</p>
+
+<h1 id="startseite">Startseite</h1>
 
 <p>Auf der Startseite werden die Tickets angezeigt, die dir zugeordnet sind, dadurch hast du einen schnellen Zugriff auf deine Tickets.</p>
 
@@ -18,3 +47,118 @@
         </tr>
     </tbody>
 </table>
+
+<h1 id="ticketverwaltung">Ticketverwaltung</h1>
+
+<p>Zur Anzeige von Tickets gibt es fünf verschiedene Modi. Diese unterscheiden sich wie folgt:</p>
+
+<dl>
+    <dt>Aktive Tickets</dt>
+    <dd>Hierdrunter fallen alle Tickets, die einen Besitzer haben und nicht im Archiv liegen</dd>
+    <dt>Freie Tickets</dt>
+    <dd>Hierdrunter fallen alle Tickets, die keinen Besitzer haben, nicht im Archiv liegen aber eine Priorität haben</dd>
+    <dt>Unpriorisierte Tickets</dt>
+    <dd>Hierdrunter fallen alle Tickets, die keine Priorität haben und nicht im Archiv liegen</dd>
+    <dt>Archivierte Tickets</dt>
+    <dd>Hierdrunter fallen alle Tickets, die im Archiv liegen</dd>
+</dl>
+
+<h2 id="ticketanzeige">Ticketanzeige</h2>
+
+<p>Die Ticketanzeige ist eine, immer gleiche, einfache Tabelle.</p>
+
+<table class="pure-table pure-table-horizontal pure-table-striped pure-table-fullsize" id="data">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Priorität</th>
+            <th>Beschreibung</th>
+            <th>Besitzer</th>
+            <th>Zeitlicher Schaden pro Woche (in Minuten)</th>
+            <th>Finanzieller Schade pro Auftrag (in €)</th>
+            <th>Brandschädigend</th>
+            <th>Emergency</th>
+            <th>Letzter Kommentar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><a>1234567</a></td>
+            <td>1</td>
+            <td>Es geht eine wichtige Komponente nicht mehr…</td>
+            <td>Theo Test</td>
+            <td>120</td>
+            <td>2000</td>
+            <td>
+                <i class="fa fa-toggle-on"></i>
+            </td>
+            <td>
+                <i class="fa fa-toggle-on"></i>
+            </td>
+            <td>
+                Ich habe mit der Arbeit angefangen
+            </td>
+        </tr>
+        <tr>
+            <td><a>1234568</a></td>
+            <td>20</td>
+            <td>Wir möchten bitte einen neuen But…</td>
+            <td>Theo Test</td>
+            <td>20</td>
+            <td>200</td>
+            <td>
+                <i class="fa fa-toggle-off"></i>
+            </td>
+            <td>
+                <i class="fa fa-toggle-off"></i>
+            </td>
+            <td>
+                Priorität hinzugefügt
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="ticketdetails">Ticketdetails</h2>
+
+<p>Die Detailseite für Tickets kann über einen Klick auf die ID erreicht werden. Sie bietet einen Überblick über alle Ticketdaten und folgende Funktionen</p>
+
+<ul>
+    <li>Kommentare hinzufügen</li>
+    <li>Ticket zuweisen</li>
+    <li>Ticket als gereviewed markieren</li>
+    <li>Ticket archivieren</li>
+    <li>Ticket bearbeiten</li>
+</ul>
+
+<h3 id="allgemein">Allgemein</h3>
+
+<p>Diese Seite zeigt allgemeine Informationen über das Ticket an. Es dient als Auskunftsseite.</p>
+
+<h3 id="impact">Impact</h3>
+
+<p>Diese Seite zeigt Informationen über den Impact, den das Ticket verursacht an.</p>
+
+<h3 id="weitere-details">Weitere Details</h3>
+
+<p>Auf dieser Seite werden weitere Details, wie die betroffenen Mandanten, Anwendungen und Abteilungen angezeigt.</p>
+
+<h3 id="kommentare">Kommentare</h3>
+
+<p>Auf dieser Seite sind alle Kommentare des Tickets chronologisch aufgelistet. Es können neue Kommentare hinzugefügt werden, diesen wird automatischer beigefügt, wer den Kommentar erstellt hat und wann.</p>
+
+
+
+<h3 id="bearbeiterhistorie">Bearbeiterhistorie</h3>
+
+<p>Die Bearbeiterhistorie gibt einen Überblick, wann wer das Ticket bearbeitet hat. Dies ist von Nutzen, wenn unklar ist, welcher Mitarbeiter in der QA das Ticket getestet hat.</p>
+
+<h3 id="ticket-bearbeiten">Ticket bearbeiten</h3>
+
+<p>Hier kann das Ticket bearbeitet werden und weitere Details können hinzugefügt werden.</p>
+
+<h3 id="weitere-aktionen">Weitere Aktionen</h3>
+
+<p>Unter diesem Abschnitt kann das Ticket anderen Mitarbeitern zugewiesen und ins Archiv geschoben werden.</p>
+
+<p>Weiterhin ist es möglich den Reviewstatus auf Gereviewed zu setzen. Dadurch ist sehen andere, dass das Ticket ok ist.</p>

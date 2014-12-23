@@ -106,6 +106,7 @@ EDGE_CS_DEBUG=1</Environment>
     <Content Include="views\departments\details.hbs" />
     <Content Include="views\departments\index.hbs" />
     <Content Include="views\help\index.hbs" />
+    <Content Include="views\help\index.md" />
     <Content Include="views\index.hbs">
       <SubType>Code</SubType>
     </Content>
