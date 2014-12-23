@@ -105,6 +105,7 @@ EDGE_CS_DEBUG=1</Environment>
     <Content Include="views\departments\addsuccess.hbs" />
     <Content Include="views\departments\details.hbs" />
     <Content Include="views\departments\index.hbs" />
+    <Content Include="views\help\index.hbs" />
     <Content Include="views\index.hbs">
       <SubType>Code</SubType>
     </Content>
@@ -147,6 +148,7 @@ EDGE_CS_DEBUG=1</Environment>
     <Folder Include="views\layouts\" />
     <Folder Include="views\account\" />
     <Folder Include="views\applications\" />
+    <Folder Include="views\help\" />
     <Folder Include="views\partials\" />
     <Folder Include="views\workers\" />
     <Folder Include="views\releases\" />

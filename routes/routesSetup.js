@@ -1,4 +1,6 @@
-﻿var routes = require('./')
+﻿var fs = require('fs')
+var path = require('path')
+var routes = require('./')
 var account = require('./account.js')
 var ticket = require('./ticket.js')
 var application = require('./application.js')
@@ -10,13 +12,45 @@ var settings = require('./settings.js')
 var user = require('./user.js')
 var admin = require('./admin.js')
 var express = require('express')
+var marked = require('marked')
+var renderer = new marked.Renderer()
+renderer.listitem = function (text) {
+    if (/\[.\]/g.test(text))
+        return '<li class="no-bullet">' + text + '</li>\n'
+    else
+        return '<li>' + text + '</li>\n'
+}
+renderer.html = function (html) {
+    return html
+}
 
+marked.setOptions({
+    renderer: renderer,
+    gfm: true,
+    tables: true,
+    breaks: false,
+    pedantic: false,
+    sanitize: true,
+    smartLists: true,
+    smartypants: false
+})
 var apiRouter = function () {
     var router = express.Router()
     router.post('/ticket/prioritize/:id', ticket.api.prioritize)
     return router
 }
 
+var helpRouter = function () {
+    var router = express.Router()
+    router.get('*', function (req, res) {
+        var pagepath = req.params[0]
+        if (pagepath == '/') {
+            pagepath = 'index'
+        }
+        res.render(path.join('help', pagepath))
+    })
+    return router
+}
 var homeRouter = function () {
     var router = express.Router()
     router.get('/', routes.index)
@@ -93,5 +127,6 @@ exports.setup = function (app) {
     app.use('/ticket', ticketRouter())
     app.use('/admin', adminRouter())
     app.use('/api', apiRouter())
+    app.use('/help', helpRouter())
     app.get('*', routes.index)
 }
