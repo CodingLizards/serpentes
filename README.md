@@ -72,6 +72,12 @@ With the help of [edge.js](https://github.com/tjanczuk/edge) it is possible to u
 
 # [Installation](install.md)
 
+# Development
+
+When you want to contribute in this project, you need the same requirements like for an installation.
+
+If you work on Windows I would recommend to use Visual Studio 2013 with [NTVS](http://nodejstools.codeplex.com/). It gives you the known features of Visual Studio and adds node.js support.
+
 # Technologies we use
 For licence reasons and because we like to share and appreciate the work of others, here are all components we use with licence
 
