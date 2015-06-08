@@ -1,4 +1,5 @@
 ﻿var cradle = require('cradle')
+var formsTools = require('../formsauthentication.js')
 
 WorkerProvider = function () {
     this.db = require('./databaseSetup.js').getDatabase()
@@ -6,6 +7,9 @@ WorkerProvider = function () {
 WorkerProvider.prototype.save = function (worker, callback) {
     worker['type'] = 'worker';
     var username = worker.username
+    if (worker.password) {
+        worker.password = formsTools.hashPassword(worker)
+    }
     delete worker['username']
     this.db.save(username, worker, function (err, res) {
         worker.username = username

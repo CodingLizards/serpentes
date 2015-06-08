@@ -1,6 +1,6 @@
 ﻿var cradle = require('cradle')
 
-getDatabase = function () {
+var getDatabase = function () {
     var connection = new (cradle.Connection)(process.env.COUCHDBSERVERHOST, process.env.COUCHDBSERVERPORT, {
         cache: false,
         raw: false,
