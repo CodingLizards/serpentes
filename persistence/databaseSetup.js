@@ -9,7 +9,7 @@ var getDatabase = function () {
             password: process.env.COUCHDBSERVERPASSWORD
         }
     })
-    var db = connection.database('ticketmanagement')
+    var db = connection.database(process.env.DATABASENAME || 'ticketmanagment')
     return db
 }
 
