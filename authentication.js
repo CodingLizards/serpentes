@@ -28,7 +28,6 @@ exports.authentication = function (env) {
                         isadmin: true,
                         department: 'projectmanagement'
                     }
-                    user.password = formsTools.hashPassword(user)
                     wp.save(user, function (err, result) {
                         middleware()
                     })
