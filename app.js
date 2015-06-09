@@ -1,7 +1,9 @@
 ﻿var express = require('express')
 var https = require('https')
+var http = require('http')
 var path = require('path')
 var log4js = require('log4js')
+var fs = require('fs')
 
 var settings = require('./routes/settings.js')
 var dbsetup = require('./persistence/databaseSetup.js')
@@ -54,9 +56,13 @@ if ('development' == app.get('env')) {
     app.use(require('errorhandler')())
 }
 
-var options = { pfx: require('fs').readFileSync('server.p12') }
-
-var server = https.createServer(options, app)
+var server = undefined
+if (fs.existsSync('server.p12')) {
+    var options = { pfx: fs.readFileSync('server.p12') }
+    server = https.createServer(options, app)
+} else {
+    server = http.createServer(app)
+}
 var io = require('socket.io')(server)
 app.use(require('./updates.js').updateSocket(io))
 

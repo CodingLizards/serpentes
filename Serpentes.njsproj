@@ -5,11 +5,13 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <Name>Serpentes</Name>
     <RootNamespace>ExpressApp7</RootNamespace>
-    <LaunchUrl>https://localhost:1337/</LaunchUrl>
+    <LaunchUrl>http://localhost:1337/</LaunchUrl>
     <Environment>COUCHDBSERVERHOST=localhost
 COUCHDBSERVERPORT=5984
 COUCHDBSERVERUSERNAME=admin
 COUCHDBSERVERPASSWORD=admin
+AUTHENTICATIONMODE=forms
+DATABASENAME=serpentes
 EDGE_CS_DEBUG=1</Environment>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -28,7 +30,7 @@ EDGE_CS_DEBUG=1</Environment>
     <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
     <ProjectView>ProjectFiles</ProjectView>
     <NodejsPort>1337</NodejsPort>
-    <StartWebBrowser>False</StartWebBrowser>
+    <StartWebBrowser>True</StartWebBrowser>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,6 +41,7 @@ EDGE_CS_DEBUG=1</Environment>
   <ItemGroup>
     <Compile Include="app.js" />
     <Compile Include="authentication.js" />
+    <Compile Include="formsauthentication.js" />
     <Compile Include="handlebarsSetup.js" />
     <Compile Include="persistence\applicationProvider.js" />
     <Compile Include="persistence\clientProvider.js" />
