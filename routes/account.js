@@ -1,8 +1,8 @@
-﻿var edge = require('edge')
-var formsTools = require('../formsauthentication.js')
+﻿var formsTools = require('../formsauthentication.js')
 var login = undefined
 
 if (process.env.AUTHENTICATIONMODE === 'windows') {
+    var edge = require('edge')
     login = edge.func(function () { 
     /*
     #r "System.DirectoryServices.AccountManagement.dll" 
