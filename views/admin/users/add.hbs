@@ -5,6 +5,12 @@
             <label for="username">{{localize 'username'}}*</label>
             <input required name="username" class="pure-u-20-24" id="username" type="text" value="{{username}}" placeholder="{{localize 'username'}}">
         </div>
+        {{#isAuthentication 'forms'}}
+        <div class="pure-control-group">
+            <label for="password">{{localize 'password'}}*</label>
+            <input required name="password" class="pure-u-20-24" id="password" type="password" value="{{password}}" placeholder="{{localize 'password'}}">
+        </div>
+        {{/isAuthentication}}
         <div class="pure-control-group">
             <label for="firstname">{{localize 'firstname'}}*</label>
             <input required name="firstname" class="pure-u-20-24" id="firstname" type="text" value="{{firstname}}" placeholder="{{localize 'firstname'}}">

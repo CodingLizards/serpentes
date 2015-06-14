@@ -35,6 +35,12 @@
         } else {
             return opts.fn(data)
         }
+    }, isAuthentication: function (data, opts) {
+        if (process.env.AUTHENTICATIONMODE === data) {
+            return opts.fn(true)
+        } else {
+            return opts.fn(false)
+        }
     }
 }
 exports.requestHelpers = function (hbs) {

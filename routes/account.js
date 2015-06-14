@@ -1,5 +1,9 @@
-﻿var edge = require('edge')
-var login = edge.func(function () { 
+﻿var formsTools = require('../formsauthentication.js')
+var login = undefined
+
+if (process.env.AUTHENTICATIONMODE === 'windows') {
+    var edge = require('edge')
+    login = edge.func(function () { 
     /*
     #r "System.DirectoryServices.AccountManagement.dll" 
     
@@ -24,7 +28,20 @@ var login = edge.func(function () {
         }
      }
      */
-})
+    })
+} else if (process.env.AUTHENTICATIONMODE === 'forms') {
+    login = function (input, callback) {
+        var username = input.UserName
+        var password = input.Password
+        workerprovider.byId(username, function (err, user) {
+            if (err) {
+                callback(err, null);
+            } else {
+                callback(null, formsTools.hashPassword({ username: username, password: password }) == user.password)
+            }
+        })
+    }
+}
 var Workerprovider = require('../persistence/workerProvider.js').WorkerProvider
 var workerprovider = new Workerprovider()
 

@@ -13,7 +13,7 @@ Workers are your users and developer/testers/operation specialists as well, that
 You can filter your tickets by different states
 
  - active
- - free 
+ - free
  - unprioritized
  - archived
  - not archived (free, active and unprioritized combined)
@@ -63,6 +63,7 @@ With the help of [edge.js](https://github.com/tjanczuk/edge) it is possible to u
 	- [ ] Emergency
 	- [ ] other?
 - [x] Windows authentication
+- [x] Forms authentication
 - [ ] Azure authentication
 
 # What do we need?
@@ -71,6 +72,12 @@ With the help of [edge.js](https://github.com/tjanczuk/edge) it is possible to u
 - [ ] Someone who could translate the `languages/default.json` file would be great, together we just speak German and English :)
 
 # [Installation](install.md)
+
+# Development
+
+When you want to contribute in this project, you need the same requirements like for an installation.
+
+If you work on Windows I would recommend to use Visual Studio 2013 with [NTVS](http://nodejstools.codeplex.com/). It gives you the known features of Visual Studio and adds node.js support.
 
 # Technologies we use
 For licence reasons and because we like to share and appreciate the work of others, here are all components we use with licence
@@ -286,7 +293,7 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #### locale
 Copyright (c) 2012 Jed Schmidt, http://jed.is/
- 
+
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
 "Software"), to deal in the Software without restriction, including
@@ -294,10 +301,10 @@ without limitation the rights to use, copy, modify, merge, publish,
 distribute, sublicense, and/or sell copies of the Software, and to
 permit persons to whom the Software is furnished to do so, subject to
 the following conditions:
- 
+
 The above copyright notice and this permission notice shall be
 included in all copies or substantial portions of the Software.
- 
+
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND

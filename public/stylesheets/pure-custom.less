@@ -580,3 +580,32 @@ input[type="checkbox"]:checked + label:before {
 .no-bullet {
     list-style: none;
 }
+
+dl {
+    dt {
+        font-weight: bold;
+    }
+}
+
+.toc {
+    > ul {
+        padding-left: 0;
+
+        li {
+            list-style: none;
+            font-size: 120%;
+
+            a {
+                text-decoration: none;
+                color: @brand-color-30;
+            }
+
+            ul {
+                li {
+                    list-style-type: square;
+                    font-size: 95%;
+                }
+            }
+        }
+    }
+}
