@@ -21,7 +21,7 @@
             vertical-align: top;
         }
 
-        input, span {
+        input, span, select {
             width: 200px;
             padding: 5px;
             display: inline-block;
@@ -33,6 +33,10 @@
             input:invalid {
                 border: solid #d83c3c;
             }
+
+        select {
+            width: 215px;
+        }
 
         fieldset {
             border: none;
@@ -90,15 +94,22 @@
             </div>
             <div>
                 <label for="HOST">Application Host (optional)</label>
-                <input required id="HOST" type="text" name="HOST" />
+                <input id="HOST" type="text" name="HOST" />
             </div>
             <div>
                 <label for="DEFAULTDOMAIN">Default domain for Windows authentication</label>
                 <input required id="DEFAULTDOMAIN" type="text" value="" name="DEFAULTDOMAIN" />
             </div>
             <div>
+                <label for="AUTHENTICATIONMODE">Authenticationmode</label>
+                <select name="AUTHENTICATIONMODE" id="AUTHENTICATIONMODE" required>
+                    <option value="windows">Windows</option>
+                    <option value="forms">Forms</option>
+                </select>
+            </div>
+            <div>
                 <label for="certificate">SSL Certificate</label>
-                <span>Please move your SSL certificate in the installation folder and name it <code>server.js</code></span>
+                <span>Please move your SSL certificate in the installation folder and name it <code>server.p12</code></span>
             </div>
         </fieldset>
         <div>
